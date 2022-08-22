@@ -1,9 +1,206 @@
-Course description
+CIS 301. Logical Foundations of Programming.
 
-Canvas
+Julie Thornton.
+
+What is this class?
+- logical reasoning
+- proofs (why?)
+- basics of proving correctness of programs (why?)
+
+
+Units.
+- Logical reasoning and puzzles
+- Propositional logic
+- Predicate logic
+- Programming logic
+
+
+Syllabus.
+
+Canvas setup.
 
 Discord
 
 HW 0
 
-Test after new version
+/////////////////////////
+
+What is logic?
+
+- analysis of an argument according to a set of rules
+- given a set of premises (and sometimes a conclusion)
+
+
+- we determine if the conclusion is valid when we assume
+the premises are all true
+
+OR...
+
+- we determine what a valid conclusion is given that the
+premises are true
+
+
+Note that the premises might make no sense!
+
+//////////////////////////////////////////////////////////
+
+Premise 1: If a person wears a red shirt, then they don’t
+    like pizza.
+Premise 2: Fred is wearing a red shirt.
+
+Conclusion: Fred doesn’t like pizza.
+
+Is this a valid argument?
+
+
+
+
+
+//////////////////////////////////////////////////////////
+
+Logical Arguments with ”OR”
+
+- can be ambiguous! Is the or inclusive or exclusive?
+- in English, "or" is generally implied to be inclusive (but not always!)
+- in programming?
+
+"Or" in THIS class:
+
+
+
+Premise 1: I have a dog or I have a cat.
+Premise 2: I do not have a cat.
+
+What can I conclude?
+
+
+/////////////////////////////////////////////////////////
+
+I have a bike or I have a car.
+I do not have a bike.
+
+
+What can I conclude?
+
+
+
+
+
+/////////////////////////////////////////////////////////
+
+What rule are we seeing with an ”or” statement,
+where we know that one of the statements is NOT true?
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////
+
+I have a bike or I have a car.
+I have a bike.
+
+What can I conclude?
+
+
+
+
+
+
+//////////////////////////////////////////////////////////
+
+I either have a bike or a car, but not both.
+I have a bike.
+
+What can I conclude?
+
+
+
+
+
+
+/////////////////////////////////////////////////////////
+
+Logical Arguments with ”IF/THEN” (aka "implies" -> )
+
+If it is raining, then I will get wet.
+It is raining.
+
+What can I conclude?
+
+
+
+
+/////////////////////////////////////////////////////////
+
+If I don’t hear my alarm, then I will be late for class.
+I don’t hear my alarm.
+
+What can I conclude?
+
+
+
+
+
+/////////////////////////////////////////////////////////
+
+When we have an ”if/then” statement,
+and we know that the ”if” part IS true?
+    ...what can we always conclude?
+
+
+
+
+
+
+////////////////////////////////////////////////////////
+
+If I don’t hear my alarm, then I will be late for class.
+I am late for class.
+
+What can I conclude?
+
+
+
+
+
+
+///////////////////////////////////////////////////////
+
+If I don’t hear my alarm, then I will be late for class.
+I hear my alarm.
+
+What can I conclude?
+
+
+
+
+
+
+///////////////////////////////////////////////////////
+
+If I don’t hear my alarm, then I will be late for class.
+
+Contrapositive:
+If I am not late for class, then I heard my alarm
+
+I'm not late for class.
+
+What can I conclude?
+
+
+
+
+
+
+/////////////////////////////////////////////////////
+
+Homework 0: due Thursday, August 25
+    - need to join our Discord channel and post (see)
+    - need to have Sireum/IntelliJ + GitHub setup
+    - demo HW process
+
+Next: logic puzzles!
