@@ -3,16 +3,9 @@ CIS 301. Logical Foundations of Programming.
 Julie Thornton.
 
 What is this class?
-- logical reasoning
+- logical reasoning (basics, then puzzles)
 - proofs (why?)
 - basics of proving correctness of programs (why?)
-
-
-Units.
-- Logical reasoning and puzzles
-- Propositional logic
-- Predicate logic
-- Programming logic
 
 
 Syllabus.
@@ -25,7 +18,55 @@ HW 0
 
 /////////////////////////
 
-What is logic?
+Where are we going?
+
+public int min(int[] nums)
+{
+    //how would we write this?
+    int small = nums[0];
+    for (int i = 1; i < nums.length; i++) {
+        if (nums[i] < small) {
+            small = nums[i];
+        }
+    }
+
+    return small;
+}
+
+//elsewhere
+int[] test = {7,10,0,-5,3,2};
+int result = min(test);
+
+
+--> what value should result have? -5
+
+
+--> what could min *promise* to return that would guarantee our
+    answer?
+
+return value is less than or equal to every element in nums
+return value needs to be one of the list elements
+
+postcondition
+
+--> what should be true at the end of each iteration in our loop
+    to be sure we'll return the right thing?
+
+small is less than or equal to the first i numbers in nums
+small is one of the first i numbers in nums
+
+loop invariant
+
+--> in what situations would min not work?
+
+if the array was empty
+
+precondition
+
+
+/////////////////////////
+
+Taking a step back...what is logic?
 
 - analysis of an argument according to a set of rules
 - given a set of premises (and sometimes a conclusion)
@@ -50,7 +91,7 @@ Premise 2: Fred is wearing a red shirt.
 
 Conclusion: Fred doesn’t like pizza.
 
-Is this a valid argument?
+Is this a valid argument? Yes!
 
 
 
@@ -60,18 +101,18 @@ Is this a valid argument?
 
 Logical Arguments with ”OR”
 
-- can be ambiguous! Is the or inclusive or exclusive?
-- in English, "or" is generally implied to be inclusive (but not always!)
-- in programming?
+- can be ambiguous! Is the "or" inclusive or exclusive?
+- in English, "or" is generally implied to be exclusive (but not always!)
+- in programming? inclusive
 
-"Or" in THIS class:
+"Or" in THIS class: means inclusive
 
 
 
 Premise 1: I have a dog or I have a cat.
 Premise 2: I do not have a cat.
 
-What can I conclude?
+What can I conclude? I have a dog.
 
 
 /////////////////////////////////////////////////////////
@@ -80,7 +121,7 @@ I have a bike or I have a car.
 I do not have a bike.
 
 
-What can I conclude?
+What can I conclude? I have car.
 
 
 
@@ -92,7 +133,7 @@ What rule are we seeing with an ”or” statement,
 where we know that one of the statements is NOT true?
 
 
-
+the other one must be true (we'll prove this soon!)
 
 
 
@@ -103,7 +144,7 @@ where we know that one of the statements is NOT true?
 I have a bike or I have a car.
 I have a bike.
 
-What can I conclude?
+What can I conclude? nothing (might have a car, might not)
 
 
 
@@ -115,7 +156,7 @@ What can I conclude?
 I either have a bike or a car, but not both.
 I have a bike.
 
-What can I conclude?
+What can I conclude? no car
 
 
 
@@ -129,7 +170,7 @@ Logical Arguments with ”IF/THEN” (aka "implies" -> )
 If it is raining, then I will get wet.
 It is raining.
 
-What can I conclude?
+What can I conclude? it is raining
 
 
 
@@ -139,7 +180,7 @@ What can I conclude?
 If I don’t hear my alarm, then I will be late for class.
 I don’t hear my alarm.
 
-What can I conclude?
+What can I conclude? I will be late for class
 
 
 
@@ -151,7 +192,7 @@ When we have an ”if/then” statement,
 and we know that the ”if” part IS true?
     ...what can we always conclude?
 
-
+always conclude the then part
 
 
 
@@ -161,7 +202,7 @@ and we know that the ”if” part IS true?
 If I don’t hear my alarm, then I will be late for class.
 I am late for class.
 
-What can I conclude?
+What can I conclude? nothing (might be late for many reasons)
 
 
 
@@ -173,7 +214,7 @@ What can I conclude?
 If I don’t hear my alarm, then I will be late for class.
 I hear my alarm.
 
-What can I conclude?
+What can I conclude? nothing! might still be late.
 
 
 
@@ -184,17 +225,19 @@ What can I conclude?
 
 If I don’t hear my alarm, then I will be late for class.
 
-Contrapositive:
-If I am not late for class, then I heard my alarm
+If I'm not late for class, then I did hear my alarm
 
-I'm not late for class.
+contrapositive
 
-What can I conclude?
-
-
+Can you think of another way to phrase this promise?
+What do we know if we AREN'T late?
 
 
 
+
+
+
+Contrapositive
 
 /////////////////////////////////////////////////////
 
