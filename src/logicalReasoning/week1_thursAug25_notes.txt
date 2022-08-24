@@ -1,0 +1,377 @@
+HW 0 due by midnight tonight (11:59 pm)
+    - can turn in until midnight Friday for 10% late penalty
+
+////////////////////////////////////////
+
+**where to find examples from class
+
+
+////////////////////////////////
+
+Today:
+- logic puzzles
+- begin boolean formulas and truth tables
+
+/////////////////////////////////
+
+The puzzles in this lecture are all either from or inspired by:
+”What is the Name of This Book?”, by Raymond Smullyan
+
+/////////////////////////////////
+The first puzzles involve the island of Knights and Knaves.
+Each inhabitant is either a knight or a knave.
+
+Knights ALWAYS tell the truth, and knaves ALWAYS lie.
+
+/////////////////////////////////
+
+Who can say, "I'm a knave"?
+
+
+
+
+
+
+
+
+/////////////////////////////////
+
+You see two inhabitants, Ava and Bob.
+
+Ava says that Bob is a knave.
+Bob says, ”Neither Ava nor I are knaves.”
+
+What are Ava and Bob?
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////
+
+You see two different inhabitants, Eve and Fred.
+
+Eve says, ”I am a knave or Fred is a knight.”
+
+What are Eve and Fred?
+
+(what does the "or" mean?)
+
+
+
+
+
+
+////////////////////////////////////
+
+You meet three inhabitants: Sarah, Bill and Mae.
+
+Sarah tells you that only a knave would say that
+    Bill is a knave.
+Bill claims that it's false that Mae is a knave.
+Mae tells you, “Bill would tell you that I am a knave.”
+
+What types are Sarah, Bill, and Mae?
+
+How could we rewrite/simplify each statement?
+
+
+
+
+
+////////////////////////////////////
+
+Lion always lies on Mondays, Tuesdays, and Wednesdays.
+Lion always tells the truth on other days.
+Unicorn always lies on Thursdays, Fridays, and Saturdays,
+    and always tells the truth on other days.
+
+On Sunday, everyone tells the truth.
+
+Lion says:  ”Yesterday was one of my lying days.”
+Unicorn says:  ”Yesterday was one of my lying days, too.”
+
+What day is it?
+
+
+
+
+
+
+
+
+
+////////////////////////////////
+
+Tweedledee and Tweedledum are identical.
+You know that one of them lies Mon/Tues/Wed,
+and that the other lies Thurs/Fri/Sat.
+(They tell the truth on non-lying days.)
+
+You don’t know which is which.
+
+You see both of them together.
+The first one says:  ”I’m Tweedledum.”
+The second one says:  ”I’m Tweedledee.”
+
+Which is which?  What day is it?
+
+
+
+
+
+
+//////////////////////////////////
+Another Tweedledee and Tweedledum (same rules).
+
+First twin: Today is Monday or Wednesday
+Second twin: Today is Monday or Sunday
+
+What day of the week is it?
+
+
+
+
+
+
+
+
+//////////////////////////////////
+You know that either Tweedledum or Tweedledee has
+    lost a rattle.
+You find it, and want to return it to the correct one.
+You don’t know what day it is, but are sure that it isn’t
+    Sunday.
+
+(so one must be lying and one must be telling the truth).
+
+The first one says:  "Tweedledee owns the rattle.”
+
+The second one says: ”I'm Tweedledee!”
+
+Who gets the rattle?
+
+
+
+
+
+
+
+Who is who?
+
+
+///////////////////////////////////////////
+Based on Shakespeare's ”Merchant of Venice”.
+
+There are three caskets – one gold, one silver,
+    and one lead.
+One of the caskets contains a portrait.
+Each casket has a message on it, and you know that at most
+    one of the messages is true.
+
+Gold casket:  ”The portrait is in this casket.”
+Silver casket:  ”The portrait is not in this casket.”
+Lead casket:  ”The portrait is not in the gold casket.”
+
+Where is the portrait?
+
+
+
+
+
+
+///////////////////////////////////
+
+Cheryl's birthday problem.
+
+Written for Singapore and Asian Schools Math Olympiad in 2015
+
+Albert and Bernard want to know when Cheryl's birthday is.
+Cheryl gives them 10 potential dates:
+
+May 15, May 16, May 19
+June 17, June 18
+July 14, July 16
+August 14, August 15, August 17
+
+Cheryl privately tells Albert her birthday month.
+Cheryl privately tells Bernard her birthday day (number).
+
+
+Albert says: "I don't know when Cheryl's birthday is, but I know Bernard doesn't know too."
+
+Bernard says: "At first I didn't know Cheryl's birthday, but I do now."
+
+Albert says: "Then I also know when Cheryl's birthday is."
+
+
+When is Cheryl's birthday?
+
+
+
+
+
+///////////////////////////////////
+
+Start truth tables.
+
+    p V q ^ r
+
+Variables can be true or false
+∧ is an AND (can use a caret ^ )
+∨ is an OR (inclusive or) (can use a capital V)
+¬ is a NOT (can use ! or ~ instead)
+
+
+Basic operations:
+
+^ - and
+∨ - or
+¬ - not
+→ - implies
+
+
+///////////////////////////////////////////////////
+
+Fill in basic operations:
+
+
+p q | p ^ q
+------------
+T T |
+T F |
+F T |
+F F |
+
+p q | p V q
+------------
+T T |
+T F |
+F T |
+F F |
+
+p | !p
+-------
+T |
+F |
+
+////////////////////////////////////////////////
+
+IMPLIES operator ->
+
+"If I have a test, then I will study"
+
+p: I have a test
+q: I will study
+
+p -> q
+
+It is false if we have BROKEN A PROMISE.
+It is true otherwise.
+
+p q | p -> q
+------------
+T T |
+T F |
+F T |
+F F |
+
+How does the implies operator relate to programming?
+
+//////////////////////////////////////////
+
+Order of operations
+
+In math? 3 - 2 + 4 - 2 * 8
+
+
+
+
+For logic statements:
+
+From highest to lowest precedence:
+    (), !, ^, V, ->
+
+
+Given this statement:
+    p -> q V !r
+
+Evaluate the following truth assignment for the following variable assignments:
+
+p is T
+q is F
+r is F
+
+
+
+
+////////////////////////////////////////////////
+
+Order of operations
+    ! evaluates right to left
+        !!p is equivalent to....
+
+    ^ and V evaluate left to right
+        p ^ q ^ r is equivalent to....
+        p V q V r is equivalent to....
+
+    -> evaluates right to left
+        p -> q -> r is equivalent to....
+
+
+
+
+
+//////////////////////////////////////////
+
+Top-level operator (what happens LAST?)
+Rewrite each with parentheses to show order of operations.
+
+p -> q V !r ^ p
+
+rewrite:
+
+top-level operator:
+
+///////////////////////////////
+
+p ^ q V r ^ p
+
+rewrite:
+
+top-level operator:
+
+
+//////////////////////////////
+
+p ^ q ^ r ^ s
+
+rewrite:
+
+top-level operator:
+
+////////////////////////////////////////////////////
+
+Truth tables in Logika
+
+Contingent, contradictory, tautology
+
+Contigent:
+Contradictory:
+Tautology:
+
+Tautology example :
+Contradictory example:
+
+Satisfiable:
+
+/////////////////////////////////////
+Next:
+more with truth tables
+equivalent formulae
+begin propositional logic
