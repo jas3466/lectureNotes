@@ -101,7 +101,9 @@ Suppose Sarah is a knight. Then Bill must be a knight. Then Mae must
     also be a knight. Mae's statement would be false.
 
 Suppose Sarah is a knave. Then Bill is a knave. Then Mae must also be
-    a knave.
+    a knave. Mae's statement works - she knows Bill would lie and
+    say she was a knight, so she lies and says he would say
+    she is a knave.
 
 All knaves.
 
@@ -128,8 +130,9 @@ Is it Thursday? Lion's statement is true (and it should be), and
 Monday?  Lion's statement would be good, Unicorn's would not (should
     be telling the truth).
 
-Tuesday/Wednesday/Friday: have a truth/lie combination between the two,
-    and no one lies on same days.
+Tues/Wed? Unicorn would be lying and should be telling the truth
+
+Fri/Sat? Lion would be lying and should be telling the truth
 
 
 
@@ -153,8 +156,9 @@ The second one says:  ”I’m Tweedledee.”
 Which is which?  What day is it?
 
 
-Sunday - they would give the same name on all other days. They are who
-they say.
+Sunday - they would give the same name on all other days.
+
+They are who they say.
 
 
 
@@ -197,14 +201,15 @@ Suppose first one is telling the truth. Then second one is lying.
 
 Suppose second one is telling the truth. Then first one is lying,
     so Tweedledum owns rattle. We know first one is Tweedledum,
-    since second one is telling the truth. The first twin gets the rattle.
+    since second one is telling the truth. The first twin gets
+    the rattle.
 
 
 
 
 
 
-Who is who?
+Who is who? we don't have enough information
 
 
 ///////////////////////////////////////////
@@ -222,9 +227,9 @@ Lead casket:  ”The portrait is not in the gold casket.”
 
 Where is the portrait? silver casket
 
-Gold? T, T (too many!)
+Gold? T, T, F (too many!)
 Silver? F, F, T (sure)
-Lead? F, T, T (too many!
+Lead? F, T, T (too many!)
 
 
 
@@ -249,32 +254,44 @@ Cheryl privately tells Bernard her birthday day (number).
 
 Albert says: "I don't know when Cheryl's birthday is,
     but I know Bernard doesn't know too."
-
-May? no! 19 is a unique day. Albert knows Bernard might know the answer
-    if it was a May birthday.
-June? also no. 18 is a unique day.
-July or August? sure. Both have no unique days.
-
-
-Bernard says: "At first I didn't know Cheryl's birthday, but I do now."
-    Bernard knows birthday must be in July or August.
-        14, 15, 16, 17: possible days.
-        14? no! There is one in July and one in August.
-        15? no! Albert wouldn't know afterwards if it was Aug 15 or 17
-        17? no! same problem.
-        16? yes!
-
- July 16
-
-
 Albert says: "Then I also know when Cheryl's birthday is."
-
 
 When is Cheryl's birthday?
 
+Answer:
 
 
+Consider Albert's statement, "I don't know when Cheryl's birthday is,
+    but I know Bernard doesn't know too."
 
+    May? no! 19 is a unique day. Albert knows Bernard might
+        know the answer if it was a May birthday.
+    June? also no. 18 is a unique day.
+    July or August? sure. Both have no unique days.
+
+
+Consider Bernard's statement: "At first I didn't know Cheryl's
+    birthday, but I do now."
+
+    Bernard knows birthday must be in July or August.
+        July 14/August 14: no! If day was "14", Bernard wouldn't
+            have the answer - it could be either of these days.
+        August 15/17: Bernard WOULD know the answer if he was
+            told either "15" or "17" - these are unique to Aug.
+        July 16? Bernard would know the answer if he was told
+            "16" -- the birthday would be July 16.
+
+
+Consider Albert's statement: "Then I also know when Cheryl's
+birthday is."
+
+
+We are down to August 15, August 17, or July 16. If the answer
+was August 15 or 17, Albert would NOT know when Cheryl's birthday is -
+it could be either day. The only date of these where Albert would
+be sure he was right is July 16.
+
+Answer: July 16.
 
 ///////////////////////////////////
 
