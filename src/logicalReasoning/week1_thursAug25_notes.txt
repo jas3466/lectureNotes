@@ -1,6 +1,8 @@
 HW 0 due by midnight tonight (11:59 pm)
     - can turn in until midnight Friday for 10% late penalty
 
+what link to submit
+
 ////////////////////////////////////////
 
 **where to find examples from class
@@ -27,7 +29,7 @@ Knights ALWAYS tell the truth, and knaves ALWAYS lie.
 
 Who can say, "I'm a knave"?
 
-
+nobody!
 
 
 
@@ -43,9 +45,13 @@ Bob says, ”Neither Ava nor I are knaves.”
 
 What are Ava and Bob?
 
+Suppose Ava is a knight. Then Bob must be a knave. His statement is good -
+    he is supposed to lie and it is TRUE that one of them is a knave.
 
+Suppose Ava is a knave. Then Bob must be a knight. Bob's statement would
+    be a lie (one of them IS a knave). Doesn't work.
 
-
+Ava: knight, Bob: knave
 
 
 
@@ -62,7 +68,13 @@ What are Eve and Fred?
 
 (what does the "or" mean?)
 
+Suppose Eve is a knight. Then Fred would have to be a knight for her
+    statement to be true.
 
+Suppose Eve is a knave. Then her statement would be true, and that doesn't
+    work.
+
+Eve: knight, Fred: knight
 
 
 
@@ -80,9 +92,18 @@ What types are Sarah, Bill, and Mae?
 
 How could we rewrite/simplify each statement?
 
+Sarah tells you Bill is a knight.
+Bill says Mae is a knight.
+Mae tells you, “Bill would tell you that I am a knave.”
 
 
+Suppose Sarah is a knight. Then Bill must be a knight. Then Mae must
+    also be a knight. Mae's statement would be false.
 
+Suppose Sarah is a knave. Then Bill is a knave. Then Mae must also be
+    a knave.
+
+All knaves.
 
 ////////////////////////////////////
 
@@ -98,7 +119,17 @@ Unicorn says:  ”Yesterday was one of my lying days, too.”
 
 What day is it?
 
+not Sunday - they would both be telling the truth, and Saturday
+    is not a lying day for both.
 
+Is it Thursday? Lion's statement is true (and it should be), and
+    Unicorn's statement is false (and it should be).
+
+Monday?  Lion's statement would be good, Unicorn's would not (should
+    be telling the truth).
+
+Tuesday/Wednesday/Friday: have a truth/lie combination between the two,
+    and no one lies on same days.
 
 
 
@@ -122,7 +153,8 @@ The second one says:  ”I’m Tweedledee.”
 Which is which?  What day is it?
 
 
-
+Sunday - they would give the same name on all other days. They are who
+they say.
 
 
 
@@ -132,9 +164,12 @@ Another Tweedledee and Tweedledum (same rules).
 First twin: Today is Monday or Wednesday
 Second twin: Today is Monday or Sunday
 
-What day of the week is it?
+What day of the week is it? Wednesday
 
-
+Monday: no! both statement would be true
+Tuesday/Thursday/Saturday? no! both statements would be a lie
+Sunday: no! one statement would be a lie
+Wednesday: yes! one truth one lie
 
 
 
@@ -154,8 +189,15 @@ The first one says:  "Tweedledee owns the rattle.”
 
 The second one says: ”I'm Tweedledee!”
 
-Who gets the rattle?
+Who gets the rattle? the first one
 
+Suppose first one is telling the truth. Then second one is lying.
+    Tweedledee owns the rattle. Second one must be Tweedledum.
+    First one must be Tweedledee. The first twin gets the rattle.
+
+Suppose second one is telling the truth. Then first one is lying,
+    so Tweedledum owns rattle. We know first one is Tweedledum,
+    since second one is telling the truth. The first twin gets the rattle.
 
 
 
@@ -178,9 +220,11 @@ Gold casket:  ”The portrait is in this casket.”
 Silver casket:  ”The portrait is not in this casket.”
 Lead casket:  ”The portrait is not in the gold casket.”
 
-Where is the portrait?
+Where is the portrait? silver casket
 
-
+Gold? T, T (too many!)
+Silver? F, F, T (sure)
+Lead? F, T, T (too many!
 
 
 
@@ -203,9 +247,25 @@ Cheryl privately tells Albert her birthday month.
 Cheryl privately tells Bernard her birthday day (number).
 
 
-Albert says: "I don't know when Cheryl's birthday is, but I know Bernard doesn't know too."
+Albert says: "I don't know when Cheryl's birthday is,
+    but I know Bernard doesn't know too."
+
+May? no! 19 is a unique day. Albert knows Bernard might know the answer
+    if it was a May birthday.
+June? also no. 18 is a unique day.
+July or August? sure. Both have no unique days.
+
 
 Bernard says: "At first I didn't know Cheryl's birthday, but I do now."
+    Bernard knows birthday must be in July or August.
+        14, 15, 16, 17: possible days.
+        14? no! There is one in July and one in August.
+        15? no! Albert wouldn't know afterwards if it was Aug 15 or 17
+        17? no! same problem.
+        16? yes!
+
+ July 16
+
 
 Albert says: "Then I also know when Cheryl's birthday is."
 
@@ -243,22 +303,22 @@ Fill in basic operations:
 
 p q | p ^ q
 ------------
-T T |
-T F |
-F T |
-F F |
+T T |   T
+T F |   F
+F T |   F
+F F |   F
 
 p q | p V q
 ------------
-T T |
-T F |
-F T |
-F F |
+T T |   T
+T F |   T
+F T |   T
+F F |   F
 
 p | !p
 -------
-T |
-F |
+T | F
+F | T
 
 ////////////////////////////////////////////////
 
@@ -276,12 +336,12 @@ It is true otherwise.
 
 p q | p -> q
 ------------
-T T |
-T F |
-F T |
-F F |
+T T |   T
+T F |   F
+F T |   T (vacuously true)
+F F |   T (vacuously true)
 
-How does the implies operator relate to programming?
+How does the implies operator relate to programming? if statement
 
 //////////////////////////////////////////
 
@@ -289,8 +349,13 @@ Order of operations
 
 In math? 3 - 2 + 4 - 2 * 8
 
+P
+E
+M D
+A S
 
 
+(((3 - 2) + 4) - (2 * 8))
 
 For logic statements:
 
@@ -301,27 +366,31 @@ From highest to lowest precedence:
 Given this statement:
     p -> q V !r
 
+    (p -> (q V (!r)))
+
+
 Evaluate the following truth assignment for the following variable assignments:
 
 p is T
 q is F
 r is F
 
-
-
+(p -> (F V (T)))
+ T -> T
+ T
 
 ////////////////////////////////////////////////
 
 Order of operations
     ! evaluates right to left
-        !!p is equivalent to....
+        !!p is equivalent to....(!(!p))
 
     ^ and V evaluate left to right
-        p ^ q ^ r is equivalent to....
-        p V q V r is equivalent to....
+        p ^ q ^ r is equivalent to....((p ^ q) ^ r)
+        p V q V r is equivalent to....((p V q) V r)
 
     -> evaluates right to left
-        p -> q -> r is equivalent to....
+        p -> q -> r is equivalent to....(p -> (q -> r))
 
 
 
@@ -330,13 +399,7 @@ Order of operations
 //////////////////////////////////////////
 
 Top-level operator (what happens LAST?)
-Rewrite each with parentheses to show order of operations.
 
-p -> q V !r ^ p
-
-rewrite:
-
-top-level operator:
 
 ///////////////////////////////
 
@@ -361,14 +424,21 @@ Truth tables in Logika
 
 Contingent, contradictory, tautology
 
-Contigent:
-Contradictory:
-Tautology:
+Contingent: a mix
+Contradictory: every truth assignment makes the formula false
+Tautology: every truth assignment makes the formula true
+
+////////////////////////////////////////
+
+(finish next week)
 
 Tautology example :
 Contradictory example:
 
 Satisfiable:
+
+
+complete truth table in truth.logika
 
 /////////////////////////////////////
 Next:
