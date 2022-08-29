@@ -1,0 +1,436 @@
+HW 1 due Thursday, September 1
+
+
+what explanation to give
+
+what link to submit
+
+////////////////////////////////////////////
+
+Today:
+
+- more with truth tables
+- equivalent statements
+- translations to propositional logic
+
+///////////////////////////////////////////
+
+Truth table classifications?
+
+Tautology example :
+Contradictory example:
+
+Satisfiable:
+
+////////////////////////////////////////////
+
+Write truth table in Logika:
+
+p V q ^ r ^ q -> !p
+
+
+Order of operations?
+
+
+top-level (last applied) operator?
+
+parse tree
+
+
+//////////////////////////
+
+Equivalent statements
+
+
+If I stay up late, then I will be tired.
+
+
+
+--> what are equivalent statements (true in the same cases, and false in the same cases?)
+
+Another implies?
+
+As an OR?
+
+
+
+
+p: I stay up late
+q: I will be tired
+
+
+
+How could we translate each statement?
+
+
+
+
+How could we show they were equivalent
+    with truth tables?
+
+-------------
+p q | p -> q
+-------------
+T T |   T
+T F |   F
+F T |   T
+F F |   T
+-------------
+
+-------------
+p q | !p V q
+-------------
+T T | F  T
+T F | F  F
+F T | T  T
+F F | T  T
+-------------
+
+--------------
+p q | !q -> !p
+--------------
+T T | F  T  F
+T F | T  F  F
+F T | F  T  T
+F F | T  T  T
+--------------
+
+/////////////////////////
+
+if (!p && !q)
+
+
+--> how else could we write this if-statement?
+
+--> how could we write these as logical formulas?
+
+
+if (!p || !q)
+
+--> how else could we write this if-statement?
+
+--> how could we write these as logical formulas?
+
+//////////////////////////
+
+Propositional logic
+- a set of propositions (statements that can be T/F)
+- connected by logical operators
+
+To translate:
+1) Identify all propositional atoms in the sentence,
+    assign letters to them
+2) Make sure propositional atoms don't include logical
+    operators (like "not")
+3) Translate to propositional statements with appropriate
+    operators
+
+
+
+
+//////////////////////////
+
+Negation (NOT): look for "un", "ir", "not" in sentence
+
+**Example: I am not going to work today.
+
+Atom:
+
+
+Translation:
+
+
+
+
+
+
+
+
+//////////////////////////
+
+Conjunction (AND): look for "and", "but", "however",
+    "moreover", "nevertheless", etc.
+
+I like cake, but I also like ice cream.
+
+**Example: I am hungry and thirsty.
+
+Atoms:
+
+
+
+Translation:
+
+
+
+
+**Example: I am short but John is not tall.
+
+Atoms:
+
+
+Translation:
+
+
+
+
+
+//////////////////////////
+
+Disjunction (OR): look for "or", interpret whether the or
+is inclusive or exclusive. Ours will be inclusive unless we use
+"either...but not both" language
+
+
+
+**Example: You can watch a movie and/or eat a snack.
+
+Atoms:
+p: You can watch a movie
+q: You can eat a snack
+
+Translation:
+
+
+
+
+
+
+**Example: You can have chips or fries, but not both.
+
+Atoms:
+p: You can have chips
+q: You can have fries
+
+Translation:
+
+
+
+
+
+
+
+
+
+**Example: Fred neither washed the car nor
+    went to the mechanic.
+
+Atoms:
+
+
+Translation:
+
+
+
+
+
+**In this class, it's safe to assume "or" is inclusive
+    unless otherwise clearly specified.
+
+///////////////////////////////////////////
+
+Implication (IMPLIES): "if...then", "provided...then",
+    "only...", "given...", "assuming...", "unless..."
+
+**Pay attention to what is being promised, like:
+    (given this condition) -> (we can infer this conclusion)
+
+
+
+
+**Example: If it is hot today, then I'll get ice cream.
+
+Atoms:
+p: It's hot today
+q: I'll get ice cream
+
+Translation:
+
+
+
+
+
+
+**Example: You can login to a CS lab computer if you have
+    a CS account.
+
+Atoms:
+p: You have a CS account
+q: You can login to a CS lab computer
+
+What conditions need to be met for me to SURE I can login?
+
+
+Translation:
+
+
+
+
+
+
+
+
+
+**Example: Wilma eats cookies only if Evelyn makes them.
+
+Atoms:
+p: Wilma eats cookies
+q: Evelyn makes cookies
+
+What conditions need to be met for Wilma to eat cookies?
+...if Wilma is eating cookies?
+...if Evelyn didn't make them?
+
+Translations (write TWO):
+
+
+
+
+
+
+**Example: I will walk to campus unless it is raining.
+(Think of UNLESS as "EXCEPT POSSIBLY IF")
+
+Atoms:
+p: I will walk to campus
+q: It is raining
+
+What conditions need to be met for me to walk?
+
+Translation:
+
+
+
+
+
+
+
+
+
+
+
+
+**Example: If it snows today, I will go sledding;
+    otherwise, I'll stay inside.
+
+Atoms:
+p: It snows today
+q: I will go sledding
+r: I'll stay inside
+
+What is being promised? More than one thing?
+
+
+
+
+Translation:
+
+
+
+
+
+
+
+
+
+
+**Example: I will not like radishes unless my tastes change
+    or I learn to cook them in another way.
+
+Atoms:
+
+What am I promising?
+
+Translations:
+
+
+
+
+
+
+
+//////////////////////////////////
+Summary:
+
+p: I swim
+q: It is hot
+
+
+IF p THEN q:
+If I swim, then it is hot
+
+
+
+
+p ONLY IF q:
+I will swim ONLY if it is hot
+
+
+
+p IF q:
+I will swim if it is hot.
+
+
+
+p UNLESS q:
+I will swim unless it is hot.
+
+
+
+
+//////////////////////////////////
+
+Contrapositive.
+
+
+
+
+//////////////////////////////////
+
+Implication as a disjunction.
+
+
+
+
+
+
+...BUT! We should still build our translations to match
+the English sentence as well as we can.
+
+
+////////////////////////////////////
+
+Knights and knaves with truth tables
+
+Eve says, ”I am a knave or Fred is a knight.”
+
+(they must both be knights)
+
+e: Eve is a knight
+!e: Eve is not a knight (Eve is a knave)
+f: Fred is a knight
+!f: Fred is not a knight (Fred is a knave)
+
+
+Translation?
+
+Solve with a truth table?
+
+/////////////////////////
+
+Ava says that Bob is a knave.
+Bob says, ”Neither Ava nor I are knaves.”
+
+a: Ava is a knight
+!a: Ava is a knave
+b: Bob is a knight
+!b: Bob is a knave
+
+Translation?
+
+
+
+
+////////////////////////
+
+Next: intro to propositional logic proofs

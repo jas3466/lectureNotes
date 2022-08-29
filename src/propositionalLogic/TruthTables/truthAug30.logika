@@ -1,0 +1,3 @@
+//want to write a truth table:
+
+//p V q ^ r ^ q -> !p
