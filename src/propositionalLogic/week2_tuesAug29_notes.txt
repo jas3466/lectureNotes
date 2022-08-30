@@ -519,7 +519,7 @@ b: Bob is a knight
 
 Translation?
 
-
+(try doing this one on your own)
 
 
 ////////////////////////
