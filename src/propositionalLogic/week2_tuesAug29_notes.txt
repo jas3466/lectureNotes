@@ -5,6 +5,10 @@ what explanation to give
 
 what link to submit
 
+URL to the commit
+
+    name/tree/hex value
+
 ////////////////////////////////////////////
 
 Today:
@@ -17,10 +21,19 @@ Today:
 
 Truth table classifications?
 
-Tautology example :
-Contradictory example:
+Tautology example : all truth assignments make the overall statement true
 
-Satisfiable:
+    p V !p
+
+Contradictory example: all truth assignments make the overall statement false
+
+    p ^ !p
+
+Contingent: a mix - some truth assignments make the overall statement true,
+    some make it false
+
+Satisfiable - at least one truth assignment makes a statement true
+    (tautology and contingent are satisfiable)
 
 ////////////////////////////////////////////
 
@@ -39,18 +52,19 @@ parse tree
 
 //////////////////////////
 
-Equivalent statements
+Equivalent statements - what does this mean?
 
 
 If I stay up late, then I will be tired.
 
 
 
---> what are equivalent statements (true in the same cases, and false in the same cases?)
 
-Another implies?
+--> what are equivalent statements for the above?
 
-As an OR?
+Another implies? If I'm not tired, I must not have stayed up late.
+
+As an OR? I didn't stay up late or I am tired.
 
 
 
@@ -63,10 +77,26 @@ q: I will be tired
 How could we translate each statement?
 
 
+If I stay up late, then I will be tired.
+
+p -> q
+
+If I'm not tired, I must not have stayed up late.
+
+!q -> !p
+
+I didn't stay up late or I am tired.
+
+!p V q
 
 
-How could we show they were equivalent
-    with truth tables?
+How could we show they were equivalent?
+
+truth tables should be the same
+
+
+
+
 
 -------------
 p q | p -> q
@@ -102,14 +132,33 @@ if (!p && !q)
 
 --> how else could we write this if-statement?
 
+if (!(p V q))
+
+
+
 --> how could we write these as logical formulas?
+
+
+
+
+
+
+
 
 
 if (!p || !q)
 
 --> how else could we write this if-statement?
 
+if (!(p ^ q))
+
+
+
 --> how could we write these as logical formulas?
+
+
+
+
 
 //////////////////////////
 
@@ -136,8 +185,9 @@ Negation (NOT): look for "un", "ir", "not" in sentence
 
 Atom:
 
+p: I am going to work today
 
-Translation:
+Translation: !p
 
 
 
@@ -157,9 +207,12 @@ I like cake, but I also like ice cream.
 
 Atoms:
 
+p: I am hungry
+q: I am thirsty
 
 
-Translation:
+
+Translation: p ^ q
 
 
 
@@ -168,8 +221,10 @@ Translation:
 
 Atoms:
 
+p: I am short
+q: John is tall
 
-Translation:
+Translation: p ^ !q
 
 
 
@@ -189,7 +244,7 @@ Atoms:
 p: You can watch a movie
 q: You can eat a snack
 
-Translation:
+Translation: p V q
 
 
 
@@ -202,7 +257,7 @@ Atoms:
 p: You can have chips
 q: You can have fries
 
-Translation:
+Translation: !(p ^ q) ^ (p V q)
 
 
 
@@ -216,9 +271,11 @@ Translation:
     went to the mechanic.
 
 Atoms:
+p: Fred washed the car
+q: Fred went to the mechanic
 
-
-Translation:
+Translation: !p ^ !q
+!(p V q)
 
 
 
@@ -237,6 +294,71 @@ Implication (IMPLIES): "if...then", "provided...then",
 
 
 
+//////////////////////////////////
+Summary:
+
+p: I swim
+q: It is hot
+
+
+IF p THEN q:
+If I swim, then it is hot
+
+p -> q (false when p is true and q is false)
+
+
+p ONLY IF q:
+I will swim ONLY if it is hot
+
+I promise if it's not hot I won't swim
+!q -> !p
+
+
+p IF q:
+I will swim if it is hot.
+If it is hot, then I will swim
+
+q -> p (false when q is true and p is false)
+
+
+p UNLESS q (unless possibly if, except [possibly if])
+I will swim unless [possibly if] it is hot.
+
+If it's not hot, I will always swim
+
+!q -> p
+
+!p -> q
+
+
+//////////////////////////////////
+
+Contrapositive.
+
+p -> q
+
+!q -> !p
+
+
+
+//////////////////////////////////
+
+Implication as a disjunction.
+
+
+p -> q
+
+!p V q
+
+
+
+...BUT! We should still build our translations to match
+the English sentence as well as we can.
+
+
+
+
+///////////////////////////////////////////
 
 **Example: If it is hot today, then I'll get ice cream.
 
@@ -244,7 +366,7 @@ Atoms:
 p: It's hot today
 q: I'll get ice cream
 
-Translation:
+Translation: p -> q
 
 
 
@@ -260,6 +382,7 @@ q: You can login to a CS lab computer
 
 What conditions need to be met for me to SURE I can login?
 
+p -> q
 
 Translation:
 
@@ -278,8 +401,8 @@ p: Wilma eats cookies
 q: Evelyn makes cookies
 
 What conditions need to be met for Wilma to eat cookies?
-...if Wilma is eating cookies?
-...if Evelyn didn't make them?
+...if Wilma is eating cookies? p -> q
+...if Evelyn didn't make them? !q -> !p
 
 Translations (write TWO):
 
@@ -297,7 +420,9 @@ q: It is raining
 
 What conditions need to be met for me to walk?
 
-Translation:
+if it's not raining, then I'll walk
+
+Translation: !q -> p
 
 
 
@@ -320,82 +445,44 @@ r: I'll stay inside
 
 What is being promised? More than one thing?
 
+if it snows, I'll sled. If it doesn't snow, I'll stay inside.
 
 
-
-Translation:
-
-
-
-
+Translation: (p -> q) ^ (!p -> r)
 
 
 
 
 
 
-**Example: I will not like radishes unless my tastes change
+
+
+
+**Example: I will not like radishes unless [possibly if] my tastes change
     or I learn to cook them in another way.
 
 Atoms:
+
+p: I like radishes
+q: My tastes change
+r: I learn to cook them differently
 
 What am I promising?
 
 Translations:
 
+If I do like radishes, then [one of those things happened]
+p -> (q V r)
+
+If neither happened, then I still hate radishes
+
+!(q V r) -> !p
 
 
 
 
 
 
-//////////////////////////////////
-Summary:
-
-p: I swim
-q: It is hot
-
-
-IF p THEN q:
-If I swim, then it is hot
-
-
-
-
-p ONLY IF q:
-I will swim ONLY if it is hot
-
-
-
-p IF q:
-I will swim if it is hot.
-
-
-
-p UNLESS q:
-I will swim unless it is hot.
-
-
-
-
-//////////////////////////////////
-
-Contrapositive.
-
-
-
-
-//////////////////////////////////
-
-Implication as a disjunction.
-
-
-
-
-
-
-...BUT! We should still build our translations to match
-the English sentence as well as we can.
 
 
 ////////////////////////////////////
@@ -410,6 +497,10 @@ e: Eve is a knight
 !e: Eve is not a knight (Eve is a knave)
 f: Fred is a knight
 !f: Fred is not a knight (Fred is a knave)
+
+(e -> (!e V f)) ^ (!e -> !(!e V f))
+
+(e -> (!e V f)) ^ (!e -> (e ^ f))
 
 
 Translation?
@@ -433,4 +524,7 @@ Translation?
 
 ////////////////////////
 
-Next: intro to propositional logic proofs
+Next:
+
+semantic entailment
+intro to propositional logic proofs
