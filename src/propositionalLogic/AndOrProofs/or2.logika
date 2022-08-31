@@ -1,0 +1,9 @@
+/*
+Given premise:
+q ^ !s ^ r
+
+Prove:
+s V !s V !p
+
+q ^ !s ^ r |- s V !s V !p
+*/

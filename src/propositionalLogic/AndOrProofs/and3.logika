@@ -1,0 +1,3 @@
+//prove (no parentheses)
+
+p, q, r ⊢ r ∧ q ∧ p

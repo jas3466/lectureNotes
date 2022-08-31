@@ -1,0 +1,10 @@
+/*
+Given premises:
+p
+!r V s
+
+Prove:
+(!r V s) ^ p
+*/
+
+p, !r V s |- (!r V s) ^ p

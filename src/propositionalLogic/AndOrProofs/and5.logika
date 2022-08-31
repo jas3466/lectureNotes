@@ -1,0 +1,8 @@
+/*Given premises:
+p ^ q ^ r
+
+Prove:
+q
+*/
+
+p ^ q ^ r |- q

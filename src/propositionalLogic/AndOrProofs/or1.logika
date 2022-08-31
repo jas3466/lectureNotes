@@ -1,0 +1,11 @@
+/*
+Given premise:
+p ^ q
+
+Prove:
+p V q
+
+p ^ q |- p V q
+
+Can we do the proof in two ways?
+*/

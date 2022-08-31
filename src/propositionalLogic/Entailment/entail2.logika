@@ -1,0 +1,3 @@
+//Show with a truth table
+
+//p V q |= (p V r) V (q V r)

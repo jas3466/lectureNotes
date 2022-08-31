@@ -1,0 +1,7 @@
+/*
+Given premises:
+p V q, !r ^ s, p -> r
+
+Prove:
+s ^ (p V q) ^ (p -> r)
+*/

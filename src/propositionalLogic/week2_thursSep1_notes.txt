@@ -50,6 +50,8 @@ Want to prove:
 
 p ^ q |= p V q
 
+(entail1.logika)
+
 
 IF p ^ q is true, THEN p V q is also true.
 
@@ -64,6 +66,7 @@ Show that the premises entail the conclusion:
 
 p V q |= (p V r) V (q V r)
 
+(entail2.logika)
 
 /////////////////////////////////////
 
@@ -177,16 +180,21 @@ Prove:
 
 p, !r V s |- (!r V s) ^ p
 
+(and1.logika)
+
 ///////////////////////////
 
 Prove:
 
 p, q, r ⊢ r ∧ (q ∧ p)
 
+(and2.logika)
 
 What if there are no parentheses? Prove:
 
 r ^ q ^ p
+
+(and3.logika)
 
 ///////////////////////////
 
@@ -209,6 +217,10 @@ Examples in Logika:
 Given premise: p ^ q
 Prove that: q ^ p
 
+(and4.logika)
+
+
+/////////////////////////////////
 
 Given premises:
 p ^ q ^ r
@@ -217,6 +229,8 @@ Prove:
 q
 
 p ^ q ^ r |- q
+
+(and5.logika)
 
 //////////////////////////////////
 
@@ -228,6 +242,8 @@ p V q, !r ^ s, p -> r
 Prove:
 s ^ (p V q) ^ (p -> r)
 
+
+(and6.logika)
 
 /////////////////////////////////
 
@@ -276,6 +292,8 @@ p ^ q |- p V q
 
 Can we do the proof in two ways?
 
+(or1.logika)
+
 ///////////////////////////////////
 
 Example in Logika:
@@ -287,6 +305,8 @@ Prove:
 s V !s V !p
 
 q ^ !s ^ r |- s V !s V !p
+
+(or2.logika)
 
 /////////////////////////////////
 
