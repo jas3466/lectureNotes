@@ -1,0 +1,296 @@
+HW 1 due tonight
+
+submit URL to the commit
+
+    name/tree/hex value
+
+HW 2 will be posted after class
+
+////////////////////////////////////////////
+
+How to clone the lecture notes from GitHub
+
+///////////////////////////////////////////
+
+Today:
+
+- semantic entailment
+- intro to propositional logic proofs
+
+////////////////////////////////////////////
+
+Semantic entailment:
+
+If we have logical statements P1, ..., Pn, C, then statements P1, ..., Pn
+*semantically entail* C if whenever P1, ..., Pn are all true, then C is also true.
+
+Example:
+
+Does p ^ q semantically entail p V q?
+
+
+////////////////////////////////////////////
+
+Formal definition of semantic entailment
+
+P1, ..., Pn |= C
+
+P1, ..., Pn ENTAILS C
+
+if whenever P1, ..., Pn are true in a truth table, then
+C is also true.
+
+IF each Pi is true, THEN we promise C is true
+
+///////////////////////////////////////////
+
+How could we use a truth table to prove semantic entailment?
+
+Want to prove:
+
+p ^ q |= p V q
+
+
+IF p ^ q is true, THEN p V q is also true.
+
+How could we write this as one statement?
+
+If we completed a truth table...what type of truth table would show semantic entailment?
+
+/////////////////////////////////////
+
+
+Show that the premises entail the conclusion:
+
+p V q |= (p V r) V (q V r)
+
+
+/////////////////////////////////////
+
+Sequent - a logical conclusion
+
+Looks like:
+
+p1, p2, ..., pn |- q
+
+    p1, p2, ..., pn are premises
+
+    q is our goal conclusion
+
+Called *deduction*.
+
+Each logical operator will have its own rules.
+
+////////////////////////////////////////
+
+construction: introduction rules, or i-rules
+    build up something new from parts we already have
+
+destruction: elimination rules, or e-rules
+    break apart things we already know, or process them in
+    some way
+
+Rule form:
+
+ P  Q
+------
+  R
+
+Given P and Q, we can conclude R.
+
+///////////////////////////////////////
+
+To prove:
+
+p1, p2, ..., pn |- q
+
+
+
+
+each line consists of:
+    lineNum. claim       justification
+
+
+
+where "claim" is an intermediate conclusion
+    and "justification" is either "premise", "assume",
+    or one of our proof rules (citing previous lines)
+
+
+
+sometimes there are sub-proofs where we
+    make different assumptions
+
+...not the only way to write propositional logic
+    proofs
+
+BUT, Logika will make sure we follow the rules.
+
+/////////////////////////////////////////////
+
+AND inference rules
+
+       P Q
+∧i : -------
+      P ∧ Q
+
+
+      P ∧ Q
+∧e1 : -------
+        P
+
+
+      P ∧ Q
+∧e2 : -------
+        Q
+
+
+//////////////////////////////////
+^i (AND-introduction) example:
+
+Given premises:
+It is cold.
+It is raining.
+
+We can conclude:
+It is cold and it is raining.
+
+
+
+Given premises:
+x > 0
+x < 10
+
+We can conclude:
+x > 0 AND x < 10
+
+///////////////////////////
+
+Example in Logika:
+
+Given premises:
+p
+!r V s
+
+Prove:
+(!r V s) ^ p
+
+p, !r V s |- (!r V s) ^ p
+
+///////////////////////////
+
+Prove:
+
+p, q, r ⊢ r ∧ (q ∧ p)
+
+
+What if there are no parentheses? Prove:
+
+r ^ q ^ p
+
+///////////////////////////
+
+^e1, ^e2 (AND-elimination 1 and 2) examples:
+
+Given premise:
+I am cold and hungry
+
+We can conclude:
+I am cold.
+
+We can also conclude:
+I am hungry.
+
+//////////////////////////////////
+
+Examples in Logika:
+
+
+Given premise: p ^ q
+Prove that: q ^ p
+
+
+Given premises:
+p ^ q ^ r
+
+Prove:
+q
+
+p ^ q ^ r |- q
+
+//////////////////////////////////
+
+Example in Logika:
+
+Given premises:
+p V q, !r ^ s, p -> r
+
+Prove:
+s ^ (p V q) ^ (p -> r)
+
+
+/////////////////////////////////
+
+OR introduction rules
+
+--> if we already know p is true, then p V (anything)
+    and (anything) V p are both also true!
+
+
+        P
+Vi1 : -------
+      P V Q
+
+
+        Q
+Vi2 : -------
+       P V Q
+
+
+(...we'll save OR-elimination for next week)
+
+///////////////////////////////////
+
+Vi (OR-introduction) example:
+
+Given premise:
+The year is 2022.
+
+We can conclude:
+The year is 2022 or I am a flying elephant.
+
+And:
+I am a space wizard or the year is 2022.
+
+///////////////////////////////////
+
+Example in Logika:
+
+Given premise:
+p ^ q
+
+Prove:
+p V q
+
+p ^ q |- p V q
+
+Can we do the proof in two ways?
+
+///////////////////////////////////
+
+Example in Logika:
+
+Given premise:
+q ^ !s ^ r
+
+Prove:
+s V !s V !p
+
+q ^ !s ^ r |- s V !s V !p
+
+/////////////////////////////////
+
+Next up: OR-elimination
+
+This one is harder!
+
