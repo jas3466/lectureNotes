@@ -8,3 +8,8 @@ Prove:
 */
 
 p, !r V s |- (!r V s) ^ p
+{
+    1. p                    premise
+    2. !r V s               premise
+    3. (!r V s) ^ p         ^i 2 1
+}

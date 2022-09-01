@@ -9,3 +9,11 @@ p ^ q |- p V q
 
 Can we do the proof in two ways?
 */
+
+p ^ q |- p V q
+{
+    1. p ^ q                premise
+    2. p                    ^e1 1
+    3. q                    ^e2 1
+    4. p V q                Vi2 3 //or, could say Vi1 2
+}

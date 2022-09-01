@@ -21,13 +21,31 @@ Today:
 
 Semantic entailment:
 
-If we have logical statements P1, ..., Pn, C, then statements P1, ..., Pn
-*semantically entail* C if whenever P1, ..., Pn are all true, then C is also true.
+If we have logical statements P1, ..., Pn, C, then statements
+    P1, ..., Pn *semantically entail* C
+if whenever P1, ..., Pn are all true, then C is also true.
 
 Example:
 
 Does p ^ q semantically entail p V q?
 
+
+(Whenever "it is hot and sunny" is true, is it also true
+that "it is hot or sunny"?)
+
+p q | p ^ q
+------------
+T T |   T
+T F |   F
+F T |   F
+F F |   F
+
+p q | p V q
+------------
+T T |   T
+T F |   T
+F T |   T
+F F |   F
 
 ////////////////////////////////////////////
 
@@ -57,7 +75,13 @@ IF p ^ q is true, THEN p V q is also true.
 
 How could we write this as one statement?
 
-If we completed a truth table...what type of truth table would show semantic entailment?
+(p ^ q) -> (p V q)
+
+If we completed a truth table...what type of truth table would
+show semantic entailment?
+
+
+p, q |= p V q
 
 /////////////////////////////////////
 
@@ -65,6 +89,9 @@ If we completed a truth table...what type of truth table would show semantic ent
 Show that the premises entail the conclusion:
 
 p V q |= (p V r) V (q V r)
+
+
+what truth table do we need to complete?
 
 (entail2.logika)
 

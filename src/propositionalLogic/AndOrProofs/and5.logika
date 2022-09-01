@@ -4,5 +4,10 @@ p ^ q ^ r
 Prove:
 q
 */
-
+//(p ^ q) ^ r
 p ^ q ^ r |- q
+{
+    1. p ^ q ^ r            premise
+    2. p ^ q                ^e1 1
+    3. q                    ^e2 2
+}

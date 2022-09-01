@@ -5,3 +5,12 @@ p V q, !r ^ s, p -> r
 Prove:
 s ^ (p V q) ^ (p -> r)
 */
+p V q, !r ^ s, p -> r |- s ^ (p V q) ^ (p -> r)
+{
+    1. p V q                    premise
+    2. !r ^ s                   premise
+    3. p -> r                   premise
+    4. s                        ^e2 2
+    5. s ^ (p V q)              ^i 4 1
+    6. s ^ (p V q) ^ (p -> r)   ^i 5 3
+}
