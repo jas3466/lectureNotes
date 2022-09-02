@@ -1,0 +1,2 @@
+//Tues Sep 6
+p → (q → r) ⊢  (q ∧ p) →  r

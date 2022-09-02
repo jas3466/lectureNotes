@@ -1,0 +1,3 @@
+//Tues Sep 6
+
+(p ∧ r) ∨ (q ∧ r) |- (p V q) ^ r

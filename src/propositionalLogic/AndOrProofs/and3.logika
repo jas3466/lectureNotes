@@ -1,3 +1,5 @@
+//Thurs Sep 1
+
 //prove (no parentheses)
 //(r ^ q) ^ p
 p, q, r ⊢ r ∧ q ∧ p

@@ -1,0 +1,203 @@
+HW 2 due Thurs Sep 8
+
+Solutions to previous HW assignments are in Canvas
+
+Exam 1 will be Thursday, September 15
+
+////////////////////////////////////////////
+
+Today:
+- finish OR deduction rules
+- Implies deduction rules
+
+////////////////////////////////////////////
+
+OR-introduction:
+
+p
+
+p V q
+q V p
+
+////////////////////////////////////////////
+
+OR-elimination, Ve
+
+
+      P V Q   {P assume    {Q assume
+                ... R}       ... R}
+Ve : ---------------------------------
+                    R
+
+What is the idea?
+
+
+How does this relate to programming?
+
+if (condition) {
+    some result
+}
+else {
+    some result
+}
+
+condition V !condition,
+    prove some result
+
+//////////////////////
+
+Syntax for using Ve:
+
+p ∨ p ⊢ p
+{
+    1. p V p            premise
+    2. {
+        3. p            assume
+        //last line should be what you are trying
+        //to prove overall
+    }
+    4. {
+        5. p            assume
+        //last line should be what you are trying
+        //to prove overall
+    }
+    6. p                Ve 1 2 4
+}
+
+///////////////////////////////////////
+
+Logika examples
+
+//(or3.logika)
+p V q |- (p V r) V (q V r)
+
+
+//(or4.logika)
+(p ∨ q) ^ r ⊢ (p ∧ r) ∨ (q ∧ r)
+
+
+//(or5.logika)
+(p ∧ r) ∨ (q ∧ r) |- (p V q) ^ r
+
+
+//(or6.logika)
+(p ∨ q) ∧ (p ∨ r) ⊢ p ∨ (q ∧ r)
+
+
+//(or7.logika)
+p V (q ^ r) |- (p ∨ q) ∧ (p ∨ r)
+
+
+/////////////////////////////////////
+
+Strategy for using V-e
+
+/////////////////////////////////////
+
+Implies-elimination, ->e
+
+      P, P -> Q
+->e: -----------
+        Q
+
+///////////////////////////////////
+
+English example:
+
+If it is hot, then I will go swimming.
+It is hot.
+
+Conclusion? I will go swimming.
+
+How does this relate to programming?
+
+//////////////////////////////////
+
+Syntax for using ->e:
+
+p, p->q |- q
+{
+    1. p            premise
+    2. p->q         premise
+    3. q            ->e 2 1
+}
+
+//////////////////////////////////
+
+Logika example:
+
+
+//(implies1.logika)
+(p ∧ q) → r,  p → q,  p  ⊢  r
+
+
+////////////////////////////////
+
+Strategy for using ->e
+
+/////////////////////////////////
+
+Implies-introduction, ->i
+
+        {P assume
+         ... Q}
+->i:  -----------
+         P -> Q
+
+
+Idea?
+
+///////////////////////////////
+
+Syntax for using ->i:
+
+p ^ r |- q->p
+{
+    1. p ^ r                premise
+    2. {
+        3. q                assume
+        4. p                ^e1 1
+    }
+    5. q->p                 ->i 2
+}
+
+///////////////////////////////
+
+Logika examples.
+
+
+//(implies2.logika)
+p, (q ∧ p) → r  ⊢  q → r
+
+
+
+//(implies3.logika)
+p → q,  q → r  ⊢ p → r
+
+
+
+//(implies4.logika)
+p → (q → r) ⊢  (q ∧ p) →  r
+
+
+
+//(implies5.logika)
+q ⊢ p → (q ∧ p)
+
+
+
+//(implies6.logika)
+p → r,  q → r  ⊢  (p ∨ q) → r
+
+
+
+//(implies7.logika)
+p → (q → r) ⊢ (p → q) → (p → r)
+
+//////////////////////////////////
+
+Strategy for using ->i
+
+/////////////////////////////////
+
+Next: begin negation rules
