@@ -1,3 +1,27 @@
 //Tues Sep 6
 
 (p ∨ q) ∧ (p ∨ r) ⊢ p ∨ (q ∧ r)
+{
+    1. (p ∨ q) ∧ (p ∨ r)            premise
+    2. p V q                        ^e1 1
+    3. p V r                        ^e2 1
+    4. {
+        5. p                        assume
+        6. p ∨ (q ∧ r)              Vi1 5
+    }
+    7. {
+        8. q                        assume
+        //use Ve on p V r
+        9. {
+            10. p                   assume
+            11. p ∨ (q ∧ r)         Vi1 10
+        }
+        12. {
+            13. r                   assume
+            14. q ^ r               ^i 8 13
+            15. p ∨ (q ∧ r)         Vi2 14
+        }
+        16. p ∨ (q ∧ r)             Ve 3 9 12
+    }
+    17. p ∨ (q ∧ r)                 Ve 2 4 7
+}

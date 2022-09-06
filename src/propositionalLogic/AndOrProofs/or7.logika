@@ -1,3 +1,4 @@
 //Tues Sep 6
+//not worked in class - would be a good example to do on your own
 
 p V (q ^ r) |- (p ∨ q) ∧ (p ∨ r)

@@ -1,5 +1,16 @@
 HW 2 due Thurs Sep 8
 
+a V b V c |- c V b V a
+
+
+this is really:
+
+(a V b) V c |- (c V b) V a
+
+assume a V b in first subproof
+
+///////////////////////////////////////////
+
 Solutions to previous HW assignments are in Canvas
 
 Exam 1 will be Thursday, September 15
@@ -41,8 +52,9 @@ else {
     some result
 }
 
-condition V !condition,
-    prove some result
+What do we know about "some result"? Why?
+
+condition V !condition
 
 //////////////////////
 
@@ -92,6 +104,11 @@ p V (q ^ r) |- (p ∨ q) ∧ (p ∨ r)
 
 Strategy for using V-e
 
+
+
+
+
+
 /////////////////////////////////////
 
 Implies-elimination, ->e
@@ -100,6 +117,9 @@ Implies-elimination, ->e
 ->e: -----------
         Q
 
+
+
+
 ///////////////////////////////////
 
 English example:
@@ -107,9 +127,12 @@ English example:
 If it is hot, then I will go swimming.
 It is hot.
 
-Conclusion? I will go swimming.
+Conclusion? I will go swimming
 
 How does this relate to programming?
+
+
+
 
 //////////////////////////////////
 
@@ -121,6 +144,8 @@ p, p->q |- q
     2. p->q         premise
     3. q            ->e 2 1
 }
+
+
 
 //////////////////////////////////
 
@@ -165,11 +190,16 @@ p ^ r |- q->p
 
 Logika examples.
 
-
 //(implies2.logika)
 p, (q ∧ p) → r  ⊢  q → r
 
 
+
+///////////////////////////////
+
+(will finish below this line on Thursday)
+
+///////////////////////////////
 
 //(implies3.logika)
 p → q,  q → r  ⊢ p → r

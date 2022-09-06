@@ -1,3 +1,22 @@
 //Tues Sep 6
 
 (p ∧ r) ∨ (q ∧ r) |- (p V q) ^ r
+{
+    1. (p ∧ r) ∨ (q ∧ r)            premise
+    2. {
+        3. p ^ r                    assume
+        4. p                        ^e1 3
+        5. r                        ^e2 3
+        6. p V q                    Vi1 4
+        7. (p V q) ^ r              ^i 6 5
+        //goal: (p V q) ^ r
+    }
+    8. {
+        9. q ^ r                    assume
+        10. q                       ^e1 9
+        11. r                       ^e2 9
+        12. p V q                   Vi2 10
+        13. (p V q) ^ r             ^i 12 11
+    }
+    14. (p V q) ^ r                 Ve 1 2 8
+}
