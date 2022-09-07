@@ -1,0 +1,142 @@
+HW 2 due before midnight
+
+HW 3 will be posted after class
+
+///////////////////////////////////////////
+
+Exam 1 will be Thursday, September 15
+
+I strongly recommend that you finish the homework before the exam!
+
+////////////////////////////////////////////
+
+Today:
+- Finish implies deduction rules
+- Begin negation deduction rules
+
+///////////////////////////////////////////
+
+
+Implies-elimination, ->e
+
+      P, P -> Q
+->e: -----------
+        Q
+
+
+
+
+///////////////////////////////////
+
+Implies-introduction, ->i
+
+        {P assume
+         ... Q}
+->i:  -----------
+         P -> Q
+
+
+Idea?
+
+///////////////////////////////
+
+//(implies3.logika)
+p → q,  q → r  ⊢ p → r
+
+
+
+//(implies4.logika)
+p → (q → r) ⊢  (q ∧ p) →  r
+
+
+
+//(implies5.logika)
+q ⊢ p → (q ∧ p)
+
+
+
+//(implies6.logika)
+p → r,  q → r  ⊢  (p ∨ q) → r
+
+
+
+//(implies7.logika)
+p → (q → r) ⊢ (p → q) → (p → r)
+
+//////////////////////////////////
+
+Strategy for using ->i
+
+
+
+
+//////////////////////////////////
+
+Negation rules in propositional logic.
+
+Not-elimination:
+
+        P    !P
+!e:    ----------
+          _|_
+
+
+_|_ (underscore bar underscore) - bottom operator
+means contradiction
+
+Not-introduction:
+
+        {P assume
+          ... _|_ }
+!i:    -------------
+           !P
+
+
+Real-world examples:
+1) I am both standing and not standing
+
+What can I conclude?
+    things are bad, contradiction
+
+
+
+2) If I am awake, then I am standing.
+   I am not standing.
+
+What can I conclude?
+
+/////////////////////////
+
+Trying to prove something with NOT as top-level operator?
+
+//(negation1.logika)
+p->q, !q |- !p
+
+
+//(negation2.logika)
+p ⊢ ¬ ¬ p
+
+
+//(negation3.logika)
+p → ¬q ⊢ ¬(p ∧ q)
+
+
+//(negation4.logika)
+!p ^ !q |- !(p V q)
+
+
+//(negation5.logika)
+p -> q |- !q -> !p (what is this?)
+
+
+////////////////////////////////////////////////
+
+(We still have two more negation rules we'll save
+until after Exam 1)
+
+
+////////////////////////////////////////////////
+
+Next:
+- strategies to approaching proofs
+- review for exam 1
