@@ -1,3 +1,19 @@
 //Thurs, Sep 8
 
 p → (q → r) ⊢ (p → q) → (p → r)
+{
+    1. p -> (q -> r)                    premise
+    2. {
+        3. p -> q                       assume
+        4. {
+            5. p                        assume //LHS of what we want to prove
+            6. q-> r                    ->e 1 5
+            7. q                        ->e 3 5
+            8. r                        ->e 6 7
+            //want: r (RHS of what we want to prove right now)
+        }
+        9. p->r                         ->i 4
+        //want: p->r
+    }
+    10. (p -> q) -> (p -> r)            ->i 2
+}

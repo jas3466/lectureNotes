@@ -1,3 +1,25 @@
 //Thurs Sep 8
 
 p->q, !q |- !p
+{
+    1. p->q             premise
+    2. !q               premise
+    3. {
+        4. p            assume
+        5. q            ->e 1 4
+        6. _|_          !e 5 2
+        //goal: _|_ (contradiction)
+    }
+    7. !p               !i 3
+}
+
+
+//p: It is sunny
+//q: It is hot
+
+//Premises:
+//p->q If it is sunny, then it is hot
+//!q: It is not hot
+
+//Conclusion:
+//!p: It is not sunny

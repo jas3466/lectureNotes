@@ -1,2 +1,14 @@
 //Thurs, Sep 8
-p → (q → r) ⊢  (q ∧ p) →  r
+p → (q → r) ⊢  (q ∧ p) → r
+{
+    1. p -> (q -> r)            premise
+    2. {
+        3. q ^ p                assume
+        4. q                    ^e1 3
+        5. p                    ^e2 3
+        6. q->r                 ->e 1 5
+        7. r                    ->e 6 4
+        //goal: r
+    }
+    8. (q ^ p) ->r              ->i 2
+}

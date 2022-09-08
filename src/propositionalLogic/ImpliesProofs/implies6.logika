@@ -1,3 +1,22 @@
 //Thurs, Sep 8
 
 p → r,  q → r  ⊢  (p ∨ q) → r
+{
+    1. p -> r                           premise
+    2. q -> r                           premise
+    3. {
+        4. p V q                        assume
+        5. {
+            6. p                        assume
+            7. r                        ->e 1 6
+            //want: r
+        }
+        8. {
+            9. q                        assume
+            10. r                       ->e 2 9
+        }
+        11. r                           Ve 4 5 8
+        //want: r
+    }
+    12. (p V q) -> r                    ->i 3
+}

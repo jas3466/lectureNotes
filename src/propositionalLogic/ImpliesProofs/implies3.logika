@@ -1,2 +1,23 @@
 //Thurs, Sep 8
 p → q,  q → r  ⊢ p → r
+{
+    1. p -> q               premise
+    2. q -> r               premise
+    3. {
+        4. p                assume
+        5. q                ->e 1 4
+        6. r                ->e 2 5
+        //goal: r
+    }
+    7. p -> r               ->i 3
+}
+
+//p: It is sunny
+//q: I am hot
+//r: I get ice cream
+
+//p->q: If it is sunny, then I am hot
+//q->r: It I am hot, then I will get ice cream
+
+//p->r: It if it sunny, then I will get ice cream.
+

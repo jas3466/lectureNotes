@@ -1,3 +1,15 @@
 //Thurs Sep 8
 
 p → ¬q ⊢ ¬(p ∧ q)
+{
+    1. p -> !q                  premise
+    2. {
+        3. p ^ q                assume
+        4. q                    ^e2 3
+        5. p                    ^e1 3
+        6. !q                   ->e 1 5
+        7. _|_                  !e 4 6
+        //want: contradiction
+    }
+    8. !(p ^ q)                 !i 2
+}

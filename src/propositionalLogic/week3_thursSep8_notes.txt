@@ -100,10 +100,12 @@ What can I conclude?
 
 
 
-2) If I am awake, then I am standing.
+2) If I'm awake, then I'm standing.
    I am not standing.
 
-What can I conclude?
+What should I be able to conclude?
+
+What is the idea for the proof?
 
 /////////////////////////
 

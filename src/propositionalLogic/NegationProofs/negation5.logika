@@ -1,3 +1,21 @@
 //Thurs Sep 8
 
 p -> q |- !q -> !p
+{
+    1. p -> q               premise
+    2. {
+        3. !q               assume
+        4. {
+            5. p            assume
+            6. q            ->e 1 5
+            7. _|_          !e 6 3
+        }
+        8. !p               !i 4
+        //want: !p
+    }
+    9. !q -> !p             ->i 2
+}
+
+//contrapositive
+//If it is sunny, then it is hot
+//If it is not hot, then it is not sunny
