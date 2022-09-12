@@ -1,0 +1,149 @@
+HW 3 due Thursday, September 15
+    (HW 4 will be posted then, due
+    Thursday, September 22)
+
+Exam 1: Thursday, September 15
+    This room
+    9:30-10:45 am
+    No notes/no computers
+
+** I strongly recommend finishing the homework before
+    the exam -- it will help you review **
+
+///////////////////////////////
+
+Office hours: come to ANY times in syllabus
+    (even graders and undergraduate teaching assistants)
+
+Christopher Loura: will help with exam 1 review + HW 3 questions
+    Monday-Wednesday  2:30-4:30 PM (could go overtime if needed)
+
+//////////////////////////////
+
+HW submission: MUST be in specified format
+
+..../tree/(digital fingerprint)
+
+Received a warning on HW 1/HW 2
+
+On future homeworks, links in wrong format will get a 0
+
+//////////////////////////////
+
+Proving arguments in English.
+
+Suppose we know:
+
+I only do laundry if I go home for the weekend.
+I don't do homework if I go home for the weekend.
+I do homework.
+
+
+
+We want to prove: I don't do laundry.`
+
+///////////////////////////////
+
+Approaching proofs
+
+1) extract any information you can from the premises
+
+2) look at the top-level operator of what you want to prove
+    is it an ^?
+
+    is it an ->?
+
+    is it an V?
+
+    is it a !?
+
+3) if you are doing a subproof, think about what you are trying to prove RIGHT THEN
+    --> follow step 2 for your subproof
+
+
+
+We have two more rules: pbc and bottom elimination
+    - Will be covered on HW 4
+    - Will discuss next Tuesday, but can read ahead in textbook to get started
+
+//////////////////////////
+
+Exam review.
+
+Closed notes/computers.
+Please sit every other chair.
+
+Topics:
+- basic logical reasoning (multiple choice)
+- logic puzzles (multiple choice)
+- truth tables
+- translating to propositional logic
+- proofs in propositional logic (AND, OR, IMPLIES,
+    !i, !e rules)
+
+Multiple choice section + open-ended section
+
+10 multiple choice, 6 open-ended (probably)
+
+//////////////////////////////
+
+Types of multiple choice problems:
+- basic logical reasoning (like day 1)
+- logic puzzles (knights and knaves, etc.)
+- logical operator precedence
+- top-level operator
+- other truth table concepts (plugging in T/F values,
+    seeing if something is contradictory/contingent/
+    tautology, satisfiability (at least one truth
+    assignment makes the formula true),
+    seeing whether two statements are equivalent),
+    semantic entailment
+- translating an English sentence to propositional logic
+- what different proof rules do, best approaches to starting a
+    proof, what justification matches a proof step)
+
+/////////////////////////////////////
+
+Types of open-ended problems:
+- completing a truth table (including marking the top-level
+    operator and classifying the formula as contradictory/
+    contingent/tautology)
+- explaining any of the proof rules we've seen
+    - in what situation can they be used?
+    - what is the process of using them?
+    - why does the rule "make sense" as something we can do?
+- finding errors in a proof I give you
+- adding either claims or justification to complete a
+        partial proof
+- completing full propositional logic proofs
+- proofs on English arguments (translation, then proof)
+
+//////////////////////////////////////
+
+How to study
+
+- memorize the truth tables for all operators (!, ^, V, ->)
+- memorize the rules for order of operations
+    which operators are processed first?
+        (), !, ^, V, ->
+    if multiple of the same operator, which is first?
+        ^, V: left to right
+        -> right to left
+        ! right to left
+    which is the top-level operator?
+- memorize the format of Logika truth tables
+- memorize the usage of all proof rules we've covered
+    ^i, ^e1, ^e2, Vi1, Vi2, Ve, ->e, ->i, !e, !i
+    look at online "proof guide"
+- finish HW 3 before the exam
+- complete all quiz problems
+- rework homework problems without looking at the solutions
+- rework all examples from lecture
+    (without looking at solutions)
+
+/////////////////////////////////////////
+
+Review - exam 1 from Fall 2021
+
+(this exam did NOT include !i, !e - refer to HW 3
+    to study for these questions)
