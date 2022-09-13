@@ -12,9 +12,6 @@ Exam 1: Thursday, September 15
 
 ///////////////////////////////
 
-Office hours: come to ANY times in syllabus
-    (even graders and undergraduate teaching assistants)
-
 Christopher Loura: will help with exam 1 review + HW 3 questions
     Monday-Wednesday  2:30-4:30 PM (could go overtime if needed)
 
@@ -39,8 +36,57 @@ I don't do homework if I go home for the weekend.
 I do homework.
 
 
-
 We want to prove: I don't do laundry.`
+
+Propositional atoms?
+
+p: I do laundry
+q: I go home for the weekend
+r: I do homework
+
+
+Translations?
+
+I only do laundry if I go home for the weekend.
+
+    !q -> !p
+
+I don't do homework if I go home for the weekend.
+
+    q -> !r
+
+I do homework.
+
+    r
+
+I don't do laundry.` (conclusion)
+
+    !p
+
+
+Need to prove:
+
+!q->!p, q->!r, r |- !p
+{
+    1. !q->!p               premise
+    2. q->!r                premise
+    3. r                    premise
+    4. {
+        5. p                assume
+        //goal: to get !q, so we would have a _|_
+        6. {
+            7. q            assume
+            8. !r           ->e 2 7
+            9. _|_          !e 3 8
+        }
+        10. !q              !i 6
+        11. !p              ->e 1 10
+        12. _|_             !e 5 11
+        //goal: contradiction
+    }
+    13. !p                  !i 4
+}
+
 
 ///////////////////////////////
 
@@ -51,20 +97,104 @@ Approaching proofs
 2) look at the top-level operator of what you want to prove
     is it an ^?
 
+        think of each side as a separate proof, then put together
+
     is it an ->?
+
+        use a subproof, assume LHS, get to RHS by end of subproof
+        use ->i afterwards to get LHS->RHS
 
     is it an V?
 
-    is it a !?
+        if a premise is an OR: try using OR-elimination on it
+        if you already one of the OR sides (or could get one side),
+            use OR introduction
 
-3) if you are doing a subproof, think about what you are trying to prove RIGHT THEN
-    --> follow step 2 for your subproof
+    is it a !? (trying to prove !p)
+
+        subproof, assume p, get a contradiction, use !i to conclude !p
+
+
+3) if you are doing a subproof, think about what you are trying to prove
+    RIGHT THEN --> follow step 2 for your subproof
 
 
 
 We have two more rules: pbc and bottom elimination
     - Will be covered on HW 4
-    - Will discuss next Tuesday, but can read ahead in textbook to get started
+    - Will discuss in detail on Tuesday, and they are in the textbook
+    - We will see a brief intro now (they will NOT be on Exam 1)
+
+
+//////////////////////////////
+
+Last propositional logic proof rules.
+
+(NOT on exam 1 -- but are needed for HW 4)
+
+Bottom-elimination:
+
+          _|_
+_|_e:  ----------
+           R
+
+
+
+
+Proof by contradiction (reductio ad absurdum):
+
+       {!P assume
+        ... _|_}
+pbc:  ----------
+          P
+
+
+
+//////////////////////////
+
+Demonstrate _|_e rule:
+
+F -> (anything)
+
+p ^ !p |- r
+{
+    1. p ^ !p                   premise
+    2. p                        ^e1 1
+    3. !p                       ^e2 1
+    4. _|_                      !e 2 3
+    5. r                        _|_e 4
+
+    //now what?
+}
+
+Not used as much - just when you need to pull
+    something out of nothing
+
+
+
+
+//////////////////////////
+
+Demonstrate pbc rule (opposite of !i):
+
+!p->!q, q |- p
+{
+    1. !p->!q           premise
+    2. q                premise
+    3. {
+        4. !p           assume
+        5. !q           ->e 1 4
+        6. _|_          !e 2 5
+    }
+    7. p                pbc 3
+    //now what?
+}
+
+
+Not used as much as !i, and harder to detect:
+    If you need to prove something involving negation,
+    and it doesn't fit another pattern, try pbc
+
 
 //////////////////////////
 
@@ -88,34 +218,58 @@ Multiple choice section + open-ended section
 //////////////////////////////
 
 Types of multiple choice problems:
+
 - basic logical reasoning (like day 1)
+
 - logic puzzles (knights and knaves, etc.)
+
 - logical operator precedence
+
 - top-level operator
-- other truth table concepts (plugging in T/F values,
+
+- other truth table concepts: plugging in T/F values,
     seeing if something is contradictory/contingent/
-    tautology, satisfiability (at least one truth
-    assignment makes the formula true),
-    seeing whether two statements are equivalent),
+    tautology, satisfiability, equivalent statements,
     semantic entailment
+
+Semantic entailment:
+
+!q->!p, q->!r, r |= !p
+
+  any time premises are all true in a truth table, then !p is also true
+  in a truth table
+
+  AND all premises together -> conclusion
+
+  (!q->!p) ^ (q->!r) ^ r -> !p
+
+  want this to be a tautology
+
 - translating an English sentence to propositional logic
+
 - what different proof rules do, best approaches to starting a
-    proof, what justification matches a proof step)
+    proof, what justification matches a proof step
 
 /////////////////////////////////////
 
 Types of open-ended problems:
+
 - completing a truth table (including marking the top-level
     operator and classifying the formula as contradictory/
     contingent/tautology)
+
 - explaining any of the proof rules we've seen
     - in what situation can they be used?
     - what is the process of using them?
     - why does the rule "make sense" as something we can do?
+
 - finding errors in a proof I give you
+
 - adding either claims or justification to complete a
         partial proof
+
 - completing full propositional logic proofs
+
 - proofs on English arguments (translation, then proof)
 
 //////////////////////////////////////
