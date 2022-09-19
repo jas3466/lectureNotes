@@ -1,0 +1,2 @@
+//(negation8.logika)
+¬(¬p ∨ ¬q) ⊢ p ∧ q

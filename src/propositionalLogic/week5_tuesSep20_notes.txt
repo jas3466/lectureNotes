@@ -1,0 +1,134 @@
+HW 4 due Thursday, September 22 before midnight
+
+////////////////////////////////
+
+Today:
+
+- Discuss exam 1
+- Last negation rules (bottom elimination, proof by contradiction)
+- Final summary of approaching proofs
+- Sequent validity
+- Proving theorems
+
+///////////////////////////////
+
+Exam 1 results.
+
+High: 80/80
+Average: 57/80
+
+A (72-80): 18 students
+B (64-71): 15 students
+C (56-63): 16 students
+D (48-55): 7 students
+F (below 48): 25 students
+
+How to improve on exams.
+
+If you scored below 40/80 -
+
+////////////////////////////////////
+
+Work parts of exam 1 (will post full solution after class)
+
+///////////////////////////////////
+
+Bottom-elimination:
+
+          _|_
+_|_e:  ----------
+           R
+
+
+Proof by contradiction (reductio ad absurdum):
+
+       {!P assume
+        ... _|_}
+pbc:  ----------
+          P
+
+///////////////////////////////////
+
+(negation6.logika)
+p V q, !p |- q
+
+
+(negation7.logika)
+!q -> !p |- p -> q
+
+
+(negation8.logika)
+¬(¬p ∨ ¬q) ⊢ p ∧ q
+
+
+(lem.logika)
+⊢ p ∨ ¬p
+    (law of the excluded middle, LEM)
+
+(negation9.logika)
+p → q ⊢ ¬p ∨ q
+
+
+
+///////////////////////////////////
+
+Revisiting...how do we approach proofs?
+
+////////////////////////////////////
+
+P1, ..., Pn |- C
+
+the premises together with the conclusion
+    is a sequent
+
+P1, ..., PN *prove* C
+
+
+///////////////////////////////////
+
+A sequent is *invalid* if there exists a truth assignment
+that makes the premises true but the conclusion false
+
+
+
+Example:
+
+p → q, r -> q |- ¬r → ¬p
+
+Is the sequent valid?
+
+
+
+
+
+
+
+
+
+///////////////////////////////////
+
+A THEOREM in propositional logic is something that is
+always true with no need for premises. For example,
+LEM is a theorem:
+
+|- p V !p
+
+
+The LEM theorem is p V !p.
+
+|- (theorem that you are trying to prove)
+
+//////////////////////////////////
+
+Example: prove the following theorem:
+
+(theorem1.logika)
+(p -> q) -> ((!p -> q) -> q)
+
+/////////////////////////////////
+
+Next:
+- revisit semantic entailment
+- provable equivalence and logical equivalence
+- soundness and completeness
+- begin predicate logic

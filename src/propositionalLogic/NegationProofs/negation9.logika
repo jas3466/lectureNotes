@@ -1,0 +1,7 @@
+//(negation9.logika)
+
+//Hint: start with LEM
+
+//Can we do it without LEM...just straight pbc?
+
+p → q ⊢ ¬p ∨ q

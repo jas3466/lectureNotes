@@ -1,0 +1,2 @@
+//(negation7.logika)
+!q -> !p |- p -> q

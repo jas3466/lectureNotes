@@ -1,0 +1,2 @@
+//(theorem1.logika)
+(p -> q) -> ((!p -> q) -> q)
