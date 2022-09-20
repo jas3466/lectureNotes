@@ -1,2 +1,27 @@
 //(lem.logika) - Law of the Excluded Middle
 ⊢ p ∨ ¬p
+{
+    1. {
+        2. !(p V !p)            assume
+
+        //prove !p
+        3. {
+            4. p                assume
+            5. p V !p           Vi1 4
+            6. _|_              !e 5 2
+            //want contradiction
+        }
+        7. !p                   !i 3
+        8. p V !p               Vi2 7
+        9. _|_                  !e 8 2
+        //use !i    to conclude !p
+
+        //need: p V !p to get contradiction
+        //if I had just p or just !p
+        //could use Vi to get p V !p
+
+        //want: contradiction
+    }
+    10. p V !p                  pbc 1
+    //conclude p V !p from pbc
+}

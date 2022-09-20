@@ -1,2 +1,24 @@
 //(negation8.logika)
 ¬(¬p ∨ ¬q) ⊢ p ∧ q
+{
+    1. !(!p V !q)           premise
+    //want to prove p
+    2. {
+        3. !p               assume
+        4. !p V !q          Vi1 3
+        5. _|_              !e 4 1
+        //want: contradiction
+    }
+    6. p                    pbc 2
+    //use pbc to conclude p
+
+    //want to prove q
+    7. {
+        8. !q               assume
+        9. !p V !q          Vi2 8
+        10. _|_             !e 9 1
+        //want: contradiction
+    }
+    11. q                    pbc 7
+    12. p ^ q               ^i 6 11
+}

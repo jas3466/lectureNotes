@@ -62,6 +62,11 @@ p V q, !p |- q
 
 
 (lem.logika)
+
+Law of the excluded middle.
+
+p V !p
+
 ⊢ p ∨ ¬p
     (law of the excluded middle, LEM)
 
@@ -123,7 +128,7 @@ The LEM theorem is p V !p.
 Example: prove the following theorem:
 
 (theorem1.logika)
-(p -> q) -> ((!p -> q) -> q)
+(p -> q) -> (!q -> !p)
 
 /////////////////////////////////
 

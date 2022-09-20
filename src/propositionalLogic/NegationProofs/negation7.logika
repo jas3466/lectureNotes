@@ -1,2 +1,17 @@
 //(negation7.logika)
 !q -> !p |- p -> q
+{
+    1. !q -> !p         premise
+    2. {
+        3. p            assume
+        4. {
+            5. !q       assume
+            6. !p       ->e 1 5
+            7. _|_      !e 3 6
+            //want: _|_ (then use pbc)
+        }
+        8. q            pbc 4
+        //want: q
+    }
+    9. p -> q           ->i 2
+}
