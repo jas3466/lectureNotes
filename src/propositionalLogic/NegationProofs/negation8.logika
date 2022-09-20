@@ -1,4 +1,5 @@
 //(negation8.logika)
+//Tues Sep 20
 ¬(¬p ∨ ¬q) ⊢ p ∧ q
 {
     1. !(!p V !q)           premise

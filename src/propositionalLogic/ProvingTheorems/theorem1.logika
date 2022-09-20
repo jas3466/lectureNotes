@@ -1,2 +1,3 @@
 //(theorem1.logika)
+//Will do Thurs Sep 22
 (p -> q) -> (!q -> !p)

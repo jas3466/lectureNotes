@@ -1,4 +1,5 @@
 //(negation6.logika)
+//Tues Sep 20
 p V q, !p |- q
 {
     1. p V q                premise
