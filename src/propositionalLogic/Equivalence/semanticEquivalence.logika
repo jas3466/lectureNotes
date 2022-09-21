@@ -1,0 +1,6 @@
+//Thurs Sep 22
+
+//First formula: (p → ¬ q)
+//Second formula: ¬ (p ∧ q)
+
+//Show that they are semantically equivalent

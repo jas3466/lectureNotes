@@ -1,0 +1,387 @@
+HW 4 due tonight
+
+HW submission: MUST be in specified format
+    ..../tree/(digital fingerprint)
+    or will receive a 0
+
+HW 5 will be posted later today
+    involves concepts from today's class
+
+////////////////////////////////////
+
+A THEOREM in propositional logic is something that is
+always true with no need for premises.
+
+
+Example: prove the following theorem:
+
+(theorem1.logika)
+(p -> q) -> (!q -> !p)
+
+/////////////////////////////////
+
+Revisiting...how do we approach proofs?
+
+////////////////////////////////////
+
+P1, ..., Pn |- C
+
+the premises together with the conclusion
+    is a sequent
+
+P1, ..., PN *prove* C
+
+
+///////////////////////////////////
+
+A sequent is *invalid* if there exists a truth assignment
+that makes the premises true but the conclusion false
+
+
+
+Example:
+
+p → q, r -> q |- ¬r → ¬p
+
+Is the sequent valid?
+
+
+///////////////////////////////////
+
+Semantic entailment.
+
+P1, ..., Pn |= C
+
+P1, ..., Pn ENTAILS C
+
+if whenever P1, ..., Pn are true in a truth table, then
+C is also true.
+
+IF each Pi is true, THEN we promise C is true
+
+How could we write this in a truth table?
+
+(P1 ^ ... ^ Pn) -> C
+
+What kind of truth table would it need to be?
+
+tautology
+
+
+/////////////////////////////////////
+
+Example: proofs with truth tables
+
+Show that the premises entail the conclusion:
+
+p ^ q |= p -> q
+
+using ONE truth table
+
+
+(entail3.logika)
+
+
+
+/////////////////////////////////////
+
+SOUNDNESS and COMPLETENESS of propositional logic
+
+SOUNDNESS: everything that is provable is actually true
+
+everything we can prove with our proof rules is
+also true in truth tables
+
+
+COMPLETENESS: everything that is true is provable
+
+everything we can show is true in a truth table
+can also be proved with our proof rules
+
+What would it mean to be sound and complete?
+
+
+
+//////////////////////////////////////
+
+Propositional logic is SOUND, because whenever we use
+natural deduction to prove
+
+P1, P2, ..., Pn ⊢ q
+
+we can also use truth tables to show that
+
+(P1 ^ ... ^ Pn) -> q
+
+is a tautology
+
+
+/////////////////////////////
+
+Reasoning idea:
+
+^e1 rule lets us have p ^ q |- p
+
+
+Does p ^ q |= p?
+
+
+
+///
+
+
+^i rule lets us have p, q |- p ^ q
+
+Does p, q |= p ^ q?
+
+
+///
+
+
+Would need to show this with all proof rules.
+
+
+
+What about bottom elimination, _|_e?
+
+Bottom elimination rule lets us do: _|_ |- anything
+
+Does _|_ |= (anything)?
+
+
+
+
+////////////////////////////////////////
+
+Propositional logic is COMPLETE, because whenever we
+use truth tables to show that
+
+(P1 ^ ... ^ Pn) -> q
+
+is a tautology (that P1, ..., Pn |= q)
+
+we can also use natural deduction to prove
+
+P1, P2, ..., Pn ⊢ q
+
+...idea involves turning each line of a truth table
+    into a sequent
+
+relies heavily on LEM (p V !p)
+
+
+
+///////////////////////////////////////
+
+Provable equivalence
+
+Two propositional logic statements S1, S2 are
+*provably equivalent* if and only if:
+
+S1 |- S2
+S2 |- S1
+
+
+
+
+
+
+/////////////////////////
+
+Semantic equivalence
+
+Two propositional logic statements S1, S2 are
+    *semantically equivalent* if and only if:
+
+(S1 -> S2 ) ^ (S2 -> S1)
+
+
+
+
+/////////////////////////
+
+Example:
+
+First formula: (p → ¬ q)
+Second formula: ¬ (p ∧ q)
+
+Show that they are provably equivalent (provableEquivalence.logika)
+
+
+
+
+Show that they are semantically equivalent (semanticEquivalence.logika)
+
+First formula: (p → ¬ q)
+Second formula: ¬ (p ∧ q)
+
+
+
+/////////////////////////
+
+
+How do you think Logika works?
+    ...for truth tables?
+
+
+
+    ...for proofs?
+
+
+How does this relate to compilers?
+
+/////////////////////////////////
+
+Limitations of propositional logic:
+
+All humans are mortal.
+Socrates is human.
+Therefore, Socrates is mortal.
+
+
+p: All humans are mortal
+q: Socrates is a human
+r: Socrates is mortal
+
+p, q |- r
+
+How would we prove this is propositional logic?
+
+///////////////
+
+Predicate logic:
+
+Instead of propositions, we will break statements into:
+
+verbs: predicates
+nouns: individuals
+quantifiers: specifying all individuals /
+        at least one individual
+
+
+
+
+
+///////////////
+
+Domains: a set of individuals
+(then we can make claims about different domains)
+
+For example:
+    ...the domain of all animals
+    ...the domain of all people
+    ...the domain of all states
+    ...the domain of all college classes
+
+
+Individuals are elements within a particular domain
+
+For example:
+    "Bob" might be an individual within the domain
+        of all people
+    "Kansas" is an individual within the domain of states
+    "CIS 301" is an individual within the domain
+        of all college classes
+
+
+
+
+
+//////////////////
+
+Predicate:
+- a function that returns a boolean
+- can have one or many parameters
+- parameters are individuals in a particular domain
+
+A predicate will describe a characteristic of
+    an individual, or a comparison between
+    multiple individuals
+
+
+Example:
+    Domain: people
+    Maybe Alice, Bob, and Carla are individuals in
+        the domain
+
+    isAdult(takes a person)
+    isMotherOf(person 1, person 2) - return whether
+                person 1 is the mother of person2
+
+    isTallerThan(person 1, person2) - return whether
+                person 2 is taller than person 2
+
+    isAdult(Alice) might be true (maybe Alice is 35)
+    isAdult(Bob) might be false (Bob is 10)
+    isMotherOf(Alice, Bob) might be true
+    isMotherOf(Carla, Bob) might be false
+    isTallerThan(Carla, Alice) might true
+
+
+A x isAdult(x) - all people are adults
+E x isAdult(x) - there exists a person who is an adult
+
+
+/////////////////
+
+∀ quantifier: for all (something is true FOR ALL
+    elements in a domain)
+
+∃ quantifier: there exists (THERE EXISTS at least one
+    element in a domain where something is true)
+
+∀ n P(n) means: for every individual n (in some domain),
+    P(n) is true
+
+∃ n P(n) means: there exists at least one individual n
+    (in some domain) where P(n) is true
+
+
+
+//////////////
+
+Domain: people
+
+    inCIS_301(x) - person x is in CIS 301
+    tookExam1(x) - person x took exam 1
+
+
+∀ x inCIS_301(x)  --> what does this mean?
+
+
+
+
+∃ x tookExam1(x) --> what does this mean?
+
+
+
+
+
+
+∀ x (inCIS_301(x) ^ tookExam1(x)) --> what does this mean?
+
+
+
+
+How would we say: all people in CIS 301 took Exam 1?
+
+
+
+
+
+
+
+What operator usually goes with the about the ∀ quantifier?
+
+
+
+
+
+How would we say: there is a person in CIS 301
+    who took exam 1?
+
+
+
+
+
+
