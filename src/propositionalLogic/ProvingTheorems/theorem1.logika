@@ -1,3 +1,22 @@
 //(theorem1.logika)
 //Will do Thurs Sep 22
-(p -> q) -> (!q -> !p)
+|- ((p -> q) -> (!q -> !p))
+{
+    1. {
+        2. p -> q               assume
+        3. {
+            4. !q               assume
+            5. {
+                6. p            assume
+                7. q            ->e 2 6
+                8. _|_          !e 7 4
+                //want: contradiction
+            }
+            9. !p               !i 5
+            //want: !p
+        }
+        11. !q -> !p            ->i 3
+        //want: !q -> !p
+    }
+    12. (p -> q) -> (!q -> !p)  ->i 1
+}

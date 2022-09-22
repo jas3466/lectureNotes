@@ -1,11 +1,16 @@
 HW 4 due tonight
 
+#6 - may want to bring in LEM proof
+
 HW submission: MUST be in specified format
     ..../tree/(digital fingerprint)
     or will receive a 0
 
 HW 5 will be posted later today
     involves concepts from today's class
+
+    (IT Help desk)
+    Jadin OReilly - jadinoreilly20@ksu.edu
 
 ////////////////////////////////////
 
@@ -21,6 +26,38 @@ Example: prove the following theorem:
 /////////////////////////////////
 
 Revisiting...how do we approach proofs?
+
+1. Write out all the premises
+2. Extract all information from premises (^e, ->e)
+3. Look at what you are trying to prove (find its top level operator)
+
+    ^ - prove the left and right sides separately, use ^i to build
+
+    V - do you have an OR statement already? Try OR-elimination.
+        can you get just one side? (think of them as separate things)
+        then use Vi. (is there negation involved? maybe try pbc
+        if nothing else works. or try _|_e if you can get a contradiction
+        to conclude whatever you want.)
+
+    -> - subproof, assume LHS, get to RHS, ->i
+
+    ! - subproof, assume is true, get _|_, use !i
+
+
+Inside a subproof, think about what you are trying to prove right then.
+Treat it like a separate proof, apply strategies above.
+
+Doesn't fit a pattern or doesn't work out from above:
+- trying to prove just a propositional atom? Negation involved? Try pbc.
+- or anytime above strategies don't work out, assume !(what you want),
+    try to get _|_, use pbc
+
+
+Need a contradiction? Look at all information, see where _|_ could possibly
+come from. Prove whatever parts needed to get there.
+
+As a last resort, copy/paste LEM proof to have (something) V !(something).
+Use OR-elimination on it.
 
 ////////////////////////////////////
 
@@ -45,6 +82,14 @@ p → q, r -> q |- ¬r → ¬p
 
 Is the sequent valid?
 
+to show invalid, find truth assignment that makes premises true
+and conclusion false
+
+T->F is false
+
+r = F
+p = T
+q = T
 
 ///////////////////////////////////
 
@@ -61,11 +106,13 @@ IF each Pi is true, THEN we promise C is true
 
 How could we write this in a truth table?
 
-(P1 ^ ... ^ Pn) -> C
+(P1 ^ P2 ^ ... ^ Pn) -> C
+
+tautology
 
 What kind of truth table would it need to be?
 
-tautology
+
 
 
 /////////////////////////////////////
@@ -78,6 +125,7 @@ p ^ q |= p -> q
 
 using ONE truth table
 
+(p ^ q) -> (p -> q)
 
 (entail3.logika)
 
@@ -100,7 +148,7 @@ can also be proved with our proof rules
 
 What would it mean to be sound and complete?
 
-
+that deduction proofs and entailment with truth tables were equivalent
 
 //////////////////////////////////////
 
@@ -182,9 +230,9 @@ S1 |- S2
 S2 |- S1
 
 
+(how to do with one sequent?)
 
-
-
+|- (S1 -> S2) ^ (S2 -> S1)
 
 /////////////////////////
 
@@ -196,7 +244,7 @@ Two propositional logic statements S1, S2 are
 (S1 -> S2 ) ^ (S2 -> S1)
 
 
-
+should be a tautology
 
 /////////////////////////
 
@@ -221,14 +269,19 @@ Second formula: ¬ (p ∧ q)
 
 
 How do you think Logika works?
-    ...for truth tables?
 
 
 
     ...for proofs?
 
+    claim           ->i m
+
 
 How does this relate to compilers?
+
+assignment statement
+
+something = something else
 
 /////////////////////////////////
 
@@ -309,7 +362,7 @@ Example:
                 person 1 is the mother of person2
 
     isTallerThan(person 1, person2) - return whether
-                person 2 is taller than person 2
+                person 1 is taller than person 2
 
     isAdult(Alice) might be true (maybe Alice is 35)
     isAdult(Bob) might be false (Bob is 10)
@@ -348,24 +401,24 @@ Domain: people
 
 ∀ x inCIS_301(x)  --> what does this mean?
 
-
+All people are in CIS 301
 
 
 ∃ x tookExam1(x) --> what does this mean?
 
-
+There exists (at least one) person who took exam 1
 
 
 
 
 ∀ x (inCIS_301(x) ^ tookExam1(x)) --> what does this mean?
 
-
+All people are both in CIS 301 and took exam 1
 
 
 How would we say: all people in CIS 301 took Exam 1?
 
-
+∀ x (inCIS_301(x) -> tookExam1(x))
 
 
 
@@ -373,15 +426,23 @@ How would we say: all people in CIS 301 took Exam 1?
 
 What operator usually goes with the about the ∀ quantifier?
 
-
+->
 
 
 
 How would we say: there is a person in CIS 301
     who took exam 1?
 
+E x (inCIS_301(x) ^ tookExam1(x))
 
 
+E tends to go with ^
 
 
+What does this mean:
 
+E x (inCIS_301(x) -> tookExam1(x))
+
+would be true if:
+    there is a person not in CIS 301 (making LHS of -> false)
+    or if a person in 301 took exam 1

@@ -4,3 +4,40 @@
 //Second formula: ¬ (p ∧ q)
 
 //Show that they are provably equivalent
+
+|- ((p-> !q) -> !(p ^ q)) ^ (!(p ^ q) -> (p -> !q))
+{
+    1. {
+        2. p -> !q                  assume
+        3. {
+            4. p ^ q                assume
+            5. p                    ^e1 4
+            6. q                    ^e2 4
+            7. !q                   ->e 2 5
+            9. _|_                  !e 6 7
+        }
+        10. !(p ^ q)                !i 3
+        //want: !(p ^ q)
+    }
+    11. (p-> !q) -> !(p ^ q)        ->i 1
+
+    //then:
+
+    12. {
+        13. !(p ^ q)                assume
+        14. {
+            15. p                   assume
+            16. {
+                17. q               assume
+                18. p ^ q           ^i 15 17
+                19. _|_             !e 18 13
+            }
+            20. !q                  !i 16
+            //want !q
+        }
+        21. p -> !q                 ->i 14
+        //want: p -> !q
+    }
+    22. (!(p ^ q) -> (p -> !q))     ->i 12
+    23. ((p-> !q) -> !(p ^ q)) ^ (!(p ^ q) -> (p -> !q))    ^i 11 22
+}

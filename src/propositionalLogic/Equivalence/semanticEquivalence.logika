@@ -4,3 +4,24 @@
 //Second formula: ¬ (p ∧ q)
 
 //Show that they are semantically equivalent
+
+//semantically = truth tables
+
+//make a truth table for:
+
+//((p-> !q) -> !(p ^ q)) ^ (!(p ^ q) -> (p -> !q))
+
+
+//want it to be a tautology
+
+                             *
+-------------------------------------------------------
+p q | ((p-> !q) -> !(p ^ q)) ^ (!(p ^ q) -> (p -> !q))
+-------------------------------------------------------
+T T |    F  F   T  F   T     T  F   T    T     F  F
+T F |    T  T   T  T   F     T  T   F    T     T  T
+F T |    T  F   T  T   F     T  T   F    T     T  F
+F F |    T  T   T  T   F     T  T   F    T     T  T
+-------------------------------------------------------
+
+Tautology
