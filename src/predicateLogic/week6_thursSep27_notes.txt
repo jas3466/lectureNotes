@@ -1,0 +1,392 @@
+HW 5 due Thursday, September 29
+
+////////////////////////////
+
+Today:
+
+- Predicate logic translations
+
+////////////////////////////
+
+Domain: a set of individuals
+
+Predicates: like verbs, or functions with
+    a boolean return type
+
+A (or upside down): For all individuals in the domain
+
+E (or backwards): There exists at least one
+    individual in the domain
+
+
+different ways to type them in Logika
+
+Ctrl->Shift->Command->; and then A
+Ctrl->Shift->Command->; and then E
+
+∀ A all
+∃ E exists
+
+
+///////////////////////////////////////
+
+Domain: living creatures
+isMouse(x): creature x is a mouse
+inHouse(x): creature x is in the house
+
+
+Squeaky is an individual
+
+--> How would we say, "Squeaky is a mouse but not in the house"?
+
+
+--> Translate the following (together)
+
+1) ∃ x isMouse(x)
+
+2) !(∃ x isMouse(x))
+
+3) ∃ x !isMouse(x)
+
+4) ∀ x isMouse(x)
+
+5) !(∀ x isMouse(x))
+
+6) ∀ x !isMouse(x)
+
+
+
+//////////////////////////////
+
+--> Try on your own: translate each one to English
+
+7) ∀ x (isMouse(x) -> inHouse(x))
+
+8) ∀ x (isMouse(x) ^ inHouse(x))
+
+9) !(∀ x (isMouse(x) -> inHouse(x)))
+
+10) ∀ x (inHouse(x) -> isMouse(x))
+
+11) !(∀ x (inHouse(x) -> isMouse(x)))
+
+12) ∃ x (isMouse(x) ^ inHouse(x))
+
+13) ∃ x (isMouse(x) -> inHouse(x))
+
+14) !(∃ x (isMouse(x) ^ inHouse(x)))
+
+
+
+/////////// (regroup) //////////////
+
+
+How to translate from English to predicate logic:
+
+--> Every/all/each/any x:
+
+A x (describing entire group)
+
+
+
+
+--> Some/at least one/there exists a/there is a:
+
+E x (a statement about one or more)
+
+
+
+
+
+--> None.../no.../there doesn't exist:
+
+(TWO translations?)
+
+
+
+
+
+
+--> Not every... /not all...:
+
+(TWO translations?)
+
+
+
+
+
+
+
+
+--> these equivalent translations are another of DeMorgan's Laws
+
+
+////////////////////////////////////
+
+All bunnies are fluffy.
+P(x): x is a bunny
+Q(x): x is fluffy
+
+
+
+
+Some P-ish thing is a Q-ish thing
+P(x): x is a bunny
+Q(x): x is fluffy
+
+Some bunny is fluffy.
+
+
+
+
+
+No P-ish thing is a Q-ish thing
+P(x): x is a bunny
+Q(x): x is fluffy
+
+No bunny is fluffy.
+
+
+
+
+
+
+
+///////////////////////
+
+More examples.
+
+Domain: people
+
+K(x) means x is a kid
+M(x) means x like marshmallows
+
+
+--> Try to translate each one on your own:
+
+1) No kids like marshmallows.
+
+
+2) Not all kids like marshmallows.
+
+
+3) Everyone who likes marshmallows is a kid.
+
+
+4) Some people who like marshmallows are not kids.
+
+
+5) Some kids don't like marshmallows.
+
+
+6) Anyone who doesn't like marshmallows is not a kid.
+
+
+
+/////////// (regroup) //////////////
+
+Translations with more than one quantifier.
+
+--> several of the same quantifier is easier
+
+
+Predicates (domain of shapes):
+isCircle(x): shape x is a circle
+isSquare(x): shape x is a square
+isRectangle(x): shape x is a rectangle
+biggerThan(x, y): shape x has a bigger area than shape y
+
+/////////////
+
+Some circle is bigger than some square.
+
+both are E quantifiers (E circle, E square)
+
+First version, quantifiers out front: prenex form
+
+E x E y (isCircle(x) ^ isSquare(y) ^ biggerThan(x, y))
+E x E y (isCircle(y) ^ isSquare(x) ^ biggerThan(y, x))
+
+
+OR:
+
+Second version, quantifiers embedded: Aristotlian form
+
+E x (isCircle(x) ^ (E y (isSquare(y) ^ biggerThan(x, y))))
+
+
+
+///////////
+
+Each circle is bigger than every rectangle.
+
+Quantifiers out front:
+
+all circles, all rectangles
+
+A x A y (isCircle(x) ^ isRectangle(y) -> biggerThan(x, y))
+
+
+
+OR:
+
+Quantifiers embedded:
+
+A x (isCircle(x) -> (A y (isRectangle(y) -> biggerThan(x, y))))
+
+
+
+/////////////
+
+How might we systematically translate?
+
+Each circle is bigger than every rectangle.
+
+
+
+
+
+
+
+
+/////////////
+
+Multiple quantifiers, mixed (A and E)
+
+Every circle is bigger than a square
+
+
+How might we translate (use systematic approach)?
+
+For all circles, SOMETHING
+
+--> try to finish on your own
+
+
+
+
+
+////////////// (regroup) /////////////////////
+
+Order matters!
+
+Suppose we have this predicate:
+
+
+
+likes(x, y) : person x likes person y
+
+likes(y, x): not necessarily!
+
+
+Consider these statements:
+
+A x A y likes(x, y)     vs.  A y A x likes(x, y)
+E x E y likes(x, y)     vs.  E y E x likes(x, y)
+
+
+Is there any difference between the pairs?
+
+
+
+What about:
+
+A x E y likes(x, y)     vs.  E y A x likes(x, y)
+
+
+A x E y likes(x, y)  : (does y change?)
+
+--> translation?
+
+
+E y A x likes(x, y): (does y change?)
+
+--> translation?
+
+
+
+
+
+
+/////////////////////////////////
+
+
+There are (at least) two squares.
+
+Domain: {2x2 square, radius 3 circle, 3x4 rectangle}
+
+
+--> translation?
+
+/////////////
+
+There is at most one square.
+
+--> translation?
+
+
+/////////////////////////////////
+
+Domain: animals
+
+El(x): x is an elephant
+Hip(x): x is a hippo
+Wt(x, y): x weighs more than y
+
+
+/////////////////////////////////
+
+There is exactly one hippo.
+
+1) There is a hippo
+2) Any other hippo is the same one
+
+
+--> try to translate on your own
+--> then, regroup
+
+Use our systematic approach.
+
+
+
+/////////////////////////////////
+
+--> try to translate each statement on your own
+--> then, regroup
+
+1) Every elephant is heavier than some hippo.
+
+
+2) There is an elephant that is heavier than all hippos.
+
+
+3) No hippo is heavier than every elephant.
+
+
+
+
+/////////////////
+
+Evaluating (small) domains.
+
+Domain: the animals in the lists below
+
+Hippos: Hal (3000 lbs), Helga (2200 lbs)
+Elephants: Ed (10000 lbs), Eve (2500 lbs)
+
+Evaluate:
+
+All elephants weigh more than some hippo.
+
+
+A x (E(x) -> (E y (H(y) ^ W(x, y))))
+
+
+Is the statement true or false overall?
+
+Like going through truth assignments in propositional logic
+
+
+/////////////////////////////////////
+
+Next: begin proofs in predicate logic
