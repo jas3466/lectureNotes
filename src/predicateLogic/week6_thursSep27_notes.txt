@@ -13,9 +13,9 @@ Domain: a set of individuals
 Predicates: like verbs, or functions with
     a boolean return type
 
-A (or upside down): For all individuals in the domain
+A (or ∀): For all individuals in the domain
 
-E (or backwards): There exists at least one
+E (or ∃): There exists at least one
     individual in the domain
 
 
@@ -23,6 +23,8 @@ different ways to type them in Logika
 
 Ctrl->Shift->Command->; and then A
 Ctrl->Shift->Command->; and then E
+
+∀
 
 ∀ A all
 ∃ E exists
@@ -39,22 +41,35 @@ Squeaky is an individual
 
 --> How would we say, "Squeaky is a mouse but not in the house"?
 
+isMouse(Squeaky) ^ !inHouse(Squeaky)
 
 --> Translate the following (together)
 
 1) ∃ x isMouse(x)
 
+There exists a mouse.
+
 2) !(∃ x isMouse(x))
+
+There does not exist a mouse.
 
 3) ∃ x !isMouse(x)
 
+There is something that is not a mouse.
+
 4) ∀ x isMouse(x)
+
+Every living creature is a mouse.
+Everything is a mouse.
 
 5) !(∀ x isMouse(x))
 
+Not everything is a mouse.
+
+
 6) ∀ x !isMouse(x)
 
-
+All living creatures are not mice.
 
 //////////////////////////////
 
@@ -62,21 +77,57 @@ Squeaky is an individual
 
 7) ∀ x (isMouse(x) -> inHouse(x))
 
+For all living creatures, if a creature is a mouse, then they are in the house.
+All mice are in the house.
+
+True: if no creatures were mice, if I had one mouse in the house
+False: if I had a mouse that was not in the house (even if every other mouse
+    WAS in the house)
+
 8) ∀ x (isMouse(x) ^ inHouse(x))
+
+
+All creatures are mice and live in a house.
+
+Would be false if ANY creature was not a mouse.
+
 
 9) !(∀ x (isMouse(x) -> inHouse(x)))
 
+Not all mice are in the house.
+
+True: need at least one mouse who is not in the house.
+
 10) ∀ x (inHouse(x) -> isMouse(x))
+
+Everything in the house is a mouse.
+
+True: as long as everything in the house is a mouse (plus any creatures elsewhere),
+OR if nothing is in the houes.
 
 11) !(∀ x (inHouse(x) -> isMouse(x)))
 
+Not everything in the house is a mouse.
+
+True: need a creature in the house that is not a mouse
+
 12) ∃ x (isMouse(x) ^ inHouse(x))
+
+There is a mouse in the house.
+
+True: need at least one mouse (and it needs to be in the house)
 
 13) ∃ x (isMouse(x) -> inHouse(x))
 
+There exists a creature, where if that creature is a mouse, then they are in the house.
+Would ALSO be true if there are no mice!
+
 14) !(∃ x (isMouse(x) ^ inHouse(x)))
 
+It's not the case that there is a mouse in the house.
+There does not exist a mouse in the house.
 
+Always true unless I have a mouse living in the house.
 
 /////////// (regroup) //////////////
 
@@ -102,7 +153,8 @@ E x (a statement about one or more)
 
 (TWO translations?)
 
-
+!(E x ...)
+A x !(..)
 
 
 
@@ -112,7 +164,8 @@ E x (a statement about one or more)
 (TWO translations?)
 
 
-
+!(A x ...)
+E x !(...)
 
 
 
@@ -123,11 +176,16 @@ E x (a statement about one or more)
 
 ////////////////////////////////////
 
-All bunnies are fluffy.
+All P-ish things are Q-ish things.
+
 P(x): x is a bunny
 Q(x): x is fluffy
 
+All bunnies are fluffy.
 
+A x (P(x) -> Q(x))
+
+A x (P(Q(x))) - NO! Don't nest predicates!
 
 
 Some P-ish thing is a Q-ish thing
@@ -136,7 +194,7 @@ Q(x): x is fluffy
 
 Some bunny is fluffy.
 
-
+E x (P(x) ^ Q(x))
 
 
 
@@ -147,7 +205,7 @@ Q(x): x is fluffy
 No bunny is fluffy.
 
 
-
+!(E x (P(x) ^ Q(x)))
 
 
 
@@ -166,22 +224,31 @@ M(x) means x like marshmallows
 
 1) No kids like marshmallows.
 
+There does not exist
+
+!(E x (K(x) ^ M(x)))
+A x !(K(x) -> M(x))
 
 2) Not all kids like marshmallows.
 
+!(A x (K(x) -> M(x)))
+E x (K(x) ^ !M(x))
 
 3) Everyone who likes marshmallows is a kid.
 
+A x (M(x) -> K(x))
 
 4) Some people who like marshmallows are not kids.
 
+E x (!K(x) ^ M(x))
 
 5) Some kids don't like marshmallows.
 
+E x (K(x) ^ !M(x))
 
 6) Anyone who doesn't like marshmallows is not a kid.
 
-
+A x (!M(x) -> !K(x))
 
 /////////// (regroup) //////////////
 
@@ -199,6 +266,8 @@ biggerThan(x, y): shape x has a bigger area than shape y
 /////////////
 
 Some circle is bigger than some square.
+
+Circle with area 5, square with area 2
 
 both are E quantifiers (E circle, E square)
 
@@ -227,6 +296,7 @@ all circles, all rectangles
 A x A y (isCircle(x) ^ isRectangle(y) -> biggerThan(x, y))
 
 
+A x A y (biggerThan(isCircle(x), isRectangle(y))) - NO! Don't nest predicates.
 
 OR:
 
@@ -242,18 +312,27 @@ How might we systematically translate?
 
 Each circle is bigger than every rectangle.
 
+For all circles, SOMETHING
+For each circle x, SOMETHING(x)
+A x (isCircle(x) -> SOMETHING(x))
+
+SOMETHING(x):
+x is bigger than every rectangle
+For each rectangle, x is bigger than that rectangle
+A y (isRectangle(y) -> biggerThan(x, y))
 
 
+Plug in SOMETHING(x):
 
-
-
-
+A x (isCircle(x) -> (A y (isRectangle(y) -> biggerThan(x, y))))
 
 /////////////
 
 Multiple quantifiers, mixed (A and E)
 
 Every circle is bigger than a square
+
+
 
 
 How might we translate (use systematic approach)?
@@ -263,8 +342,18 @@ For all circles, SOMETHING
 --> try to finish on your own
 
 
+For all circles, SOMETHING
+For each circle x, SOMETHING(x)
+A x (isCircle(x) -> SOMETHING(x))
+
+SOMETHING(x):
+x is bigger than some square
+There exists a square and x is bigger than it
+E y (isSquare(y) ^ biggerThan(x, y))
 
 
+Combine:
+A x (isCircle(x) -> (E y (isSquare(y) ^ biggerThan(x, y))))
 
 ////////////// (regroup) /////////////////////
 
@@ -281,8 +370,8 @@ likes(y, x): not necessarily!
 
 Consider these statements:
 
-A x A y likes(x, y)     vs.  A y A x likes(x, y)
-E x E y likes(x, y)     vs.  E y E x likes(x, y)
+A x A y likes(x, y)     vs.  A y A x likes(x, y) - everyone likes everyone else
+E x E y likes(x, y)     vs.  E y E x likes(x, y) - there is a person who likes another person
 
 
 Is there any difference between the pairs?
@@ -298,10 +387,14 @@ A x E y likes(x, y)  : (does y change?)
 
 --> translation?
 
+All people have someone they like. (but they might like DIFFERENT people)
+
 
 E y A x likes(x, y): (does y change?)
 
 --> translation?
+
+There exists a person (THE SAME PERSON) that is liked by everyone.
 
 
 
@@ -318,11 +411,15 @@ Domain: {2x2 square, radius 3 circle, 3x4 rectangle}
 
 --> translation?
 
+E x E y (isSquare(x) ^ isSquare(y) ^ (x != y))
+
 /////////////
 
 There is at most one square.
 
---> translation?
+--> translation? (then there are NOT at least two)
+
+!(E x E y (isSquare(x) ^ isSquare(y) ^ (x != y)))
 
 
 /////////////////////////////////
@@ -342,27 +439,17 @@ There is exactly one hippo.
 2) Any other hippo is the same one
 
 
---> try to translate on your own
---> then, regroup
-
-Use our systematic approach.
+E x (Hip(x) ^ (A y (Hip(y) -> (x == y))))
 
 
 
 /////////////////////////////////
 
---> try to translate each statement on your own
---> then, regroup
+No hippo is heavier than every elephant.
 
-1) Every elephant is heavier than some hippo.
+There does not exist (something)
 
-
-2) There is an elephant that is heavier than all hippos.
-
-
-3) No hippo is heavier than every elephant.
-
-
+!(E x (Hip(x) ^ (A y (El(y) -> Wt(x, y)))))
 
 
 /////////////////
@@ -383,6 +470,11 @@ A x (E(x) -> (E y (H(y) ^ W(x, y))))
 
 
 Is the statement true or false overall?
+
+x = Hal: overall true, because Hal is not an elephant, and E(x) -> anything is true
+x = Helga: overall true (same reason)
+x = Ed: when y is Hal, Ed is heavier than Hal, so true.
+x = Eve: when y is Helga, Eve is heavier, so true.
 
 Like going through truth assignments in propositional logic
 
