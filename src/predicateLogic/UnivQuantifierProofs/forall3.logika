@@ -1,0 +1,3 @@
+//Thurs Sep 29
+
+A n isStudent(n), A n canProgram(n) |- A n (isStudent(n) ^ canProgram(n))

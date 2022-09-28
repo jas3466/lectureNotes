@@ -1,0 +1,185 @@
+HW 5 due before midnight tonight
+
+HW 6 will be posted later today
+- will involve more translations and some
+    predicate logic proofs
+
+/////////////////////////////////
+
+Today:
+
+- order of operations
+- a couple more translations
+- intro to predicate logic proofs
+
+/////////////////////////////////
+
+Order of operations with quantifiers
+
+()
+quantifiers/negation
+^
+V
+->
+
+...BUT, Logika places quantifiers last in order of
+operations. Best to use () to be clear.
+
+/////////////////////////////////
+
+A couple of more translation examples.
+
+Domain: cookies
+
+CC(x): cookie x contains chocolate chips
+N(x): cookie x contains nuts
+T(x, y): cookie x tastes better than cookie y
+
+
+No cookie with just nuts and no chocolate chips tastes
+    better than a cookie with both nuts and chocolate chips.
+
+(there does not exist a cookie....)
+
+
+
+
+
+
+
+There is exactly one cookie with both chocolate chips and
+    nuts.
+
+(there is a cookie with both, and all others are the same)
+
+
+
+
+
+
+
+/////////////////////////////////
+
+Intro and elimination rules for universal quantifier
+    (for all, ∀ or A)
+
+       { a
+        ... P(a) }
+∀i: --------------
+       ∀x P(x)
+
+//a is "fresh" (never used before)
+
+
+
+       ∀x P(x)
+∀e: --------------
+       P(v)
+
+//...for some specific individual v
+
+
+//////////////////////////////////
+
+Idea behind for-all elimination (∀e):
+
+
+if we know that a statement is true for ALL individuals in
+our domain
+
+...then what would we know about a specific individual
+in that domain?
+
+
+
+
+/////////////////////////////////
+
+Example:
+
+(forall1.logika)
+
+A x Human(x) |- Human(Socrates)
+
+
+
+
+
+...and then:
+
+(forall2.logika)
+
+A x (Human(x)->Mortal(x)), Human(Socrates) |- Mortal(Socrates)
+
+
+
+
+
+/////////////////////////////////
+
+Idea behind for-all introduction (∀i)
+
+- We know a statement holds for some arbitrary individual
+- That individual could have been anything!
+
+...what can we say about that statement for all individuals?
+
+
+
+
+Structure involves a subproof:
+
+4. {
+    5. a            //no justification here
+    ...
+    10. P(a)        //or some combination statement
+}
+11. A x P(x)        Ai 4
+
+
+//////////////////////
+
+Examples:
+
+(forall3.logika)
+A n isStudent(n), A n canProgram(n) |-
+                            A n (isStudent(n) ^ canProgram(n))
+
+
+(forall4.logika)
+A x P(x) |- A y P(y)
+
+
+(forall5.logika)
+A x (P(x) -> Q(x) V K(x)), A y P(y) |- A n (Q(n) V K(n))
+
+///////////////////////////////////////
+
+Combining translations and proofs
+
+Given:
+
+All kids like ice cream or broccoli.
+No kids like broccoli. (i.e., all kids don't like broccoli)
+
+Want to prove: All kids like ice cream.
+
+
+Proof: forall6.logika
+
+/////////////////////////////////
+
+Given:
+
+Everyone wearing a red shirt likes pizza.
+Everyone who likes pizza likes donuts.
+No one likes donuts.
+
+Want to prove: No one is wearing a red shirt.
+
+
+Proof: forall7.logika
+
+////////////////////////////////
+
+Next: proofs rules with the existential quantifier

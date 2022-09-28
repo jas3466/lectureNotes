@@ -1,0 +1,9 @@
+//Thurs Sep 29
+
+//Given:
+
+//Everyone wearing a red shirt likes pizza.
+//Everyone who likes pizza likes donuts.
+//No one likes donuts.
+
+//Want to prove: No one is wearing a red shirt.
