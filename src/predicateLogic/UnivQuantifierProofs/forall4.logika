@@ -1,3 +1,12 @@
 //Thurs Sep 29
 
 A x P(x) |- A y P(y)
+{
+    1. A x P(x)                 premise
+    2. {
+        3. freshIndividual
+        4. P(freshIndividual)   Ae 1 freshIndividual
+        //need: P(freshIndividual)
+    }
+    5. A y P(y)                 Ai 2
+}

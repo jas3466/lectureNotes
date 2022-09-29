@@ -1,3 +1,7 @@
 //Thurs Sep 29
 
 A x Human(x) |- Human(Socrates)
+{
+    1. A x Human(x)                 premise
+    2. Human(Socrates)              Ae 1 Socrates
+}

@@ -1,3 +1,9 @@
 //Thurs Sep 29
 
 A x (Human(x)->Mortal(x)), Human(Socrates) |- Mortal(Socrates)
+{
+    1. A x (Human(x) -> Mortal(x))              premise
+    2. Human(Socrates)                          premise
+    3. Human(Socrates) -> Mortal(Socrates)      Ae 1 Socrates
+    4. Mortal(Socrates)                         ->e 3 2
+}

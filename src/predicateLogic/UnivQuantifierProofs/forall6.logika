@@ -4,3 +4,42 @@
 //No kids like broccoli. (i.e., all kids don't like broccoli ?)
 
 //Want to prove: All kids like ice cream.
+
+//domain: people
+//predicates:
+//Kid(x): person x is a kid
+//Broc(x): person x likes broccoli
+//IC(x): person x likes ice cream
+
+//All kids like ice cream or broccoli: A x (Kid(x) -> IC(x) V Broc(x))
+//No kids like broccoli: A x (Kid(x) -> !Broc(x))
+//All kids like ice cream: A x (Kid(x) -> IC(x))
+
+A x (Kid(x) -> IC(x) V Broc(x)), A x (Kid(x) -> !Broc(x)) |- A x (Kid(x) -> IC(x))
+{
+    1. A x (Kid(x) -> IC(x) V Broc(x))              premise
+    2. A x (Kid(x) -> !Broc(x))                     premise
+    3. {
+        4. randomPerson
+        5. Kid(randomPerson) -> IC(randomPerson) V Broc(randomPerson)   Ae 1 randomPerson
+        6. Kid(randomPerson) -> !Broc(randomPerson)                     Ae 2 randomPerson
+        7. {
+            8. Kid(randomPerson)                                        assume
+            9. IC(randomPerson) V Broc(randomPerson)                    ->e 5 8
+            10. !Broc(randomPerson)                                     ->e 6 8
+            11. {
+                12. IC(randomPerson)                                     assume
+            }
+            13. {
+                14. Broc(randomPerson)                                  assume
+                15. _|_                                                 !e 14 10
+                16. IC(randomPerson)                                    _|_e 15
+            }
+            17. IC(randomPerson)                                        Ve 9 11 13
+            //need: IC(randomPerson)
+        }
+        18. Kid(randomPerson) -> IC(randomPerson)                       ->i 7
+        //need: Kid(randomPerson) -> IC(randomPerson)
+    }
+    19. A x (Kid(x) -> IC(x))                                           Ai 3
+}

@@ -1,3 +1,16 @@
 //Thurs Sep 29
 
 A n isStudent(n), A n canProgram(n) |- A n (isStudent(n) ^ canProgram(n))
+{
+    1. A n isStudent(n)                     premise
+    2. A n canProgram(n)                    premise
+    3. {
+        4. randomPerson
+        5. isStudent(randomPerson)          Ae 1 randomPerson
+        6. canProgram(randomPerson)         Ae 2 randomPerson
+        7. isStudent(randomPerson) ^ canProgram(randomPerson)   ^i 5 6
+        //need: isStudent(randomPerson) ^ canProgram(randomPerson)
+    }
+    8. A n (isStudent(n) ^ canProgram(n))   Ai 3
+    //use Ai to claim A n (isStudent(n) ^ canProgram(n))
+}

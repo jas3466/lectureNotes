@@ -39,38 +39,74 @@ T(x, y): cookie x tastes better than cookie y
 No cookie with just nuts and no chocolate chips tastes
     better than a cookie with both nuts and chocolate chips.
 
-(there does not exist a cookie....)
+(how can we express "no cookie"?)
+
+there does not exist a cookie ....
+
+it's not the case that there exists a cookie ...
+
+!(E x (N(x) ^ !CC(x) ^ (E y (N(y) ^ CC(y) ^ T(x, y)))))
 
 
 
 
 
+////////////////////////////////
+
+We want to translate the following statements:
+
+Only 5th graders won prizes.
+
+Every 5th grader won a prize.
+
+Every prize was won by a 5th grader.
+
+No 5th grader won a prize.
+
+Not every 5th grader won a prize.
 
 
-There is exactly one cookie with both chocolate chips and
-    nuts.
-
-(there is a cookie with both, and all others are the same)
 
 
+What is our domain? What predicates should we use?
+
+Domain: students
+Predicate:
+
+in5th(x): student x is in 5th grade
+wonPrize(x): student x won a prize
 
 
+Only 5th graders won prizes.
 
+!(E x (!is5th(x) ^ wonPrize(x)))
+A x (wonPrize(x) -> is5th(x))
+
+Every 5th grader won a prize.
+
+A x (is5th(x) -> wonPrize(x))
+!(E x (is5th(x) ^ !wonPrize(x)))
+
+Every prize was won by a 5th grader.
+(same as "only 5th graders won prizes")
+
+No 5th grader won a prize.
+
+!(E x (is5th(x) ^ wonPrize(x)))
+
+A x (wonPrize(x) -> !is5th(x))
+
+Not every 5th grader won a prize.
+
+(not every = at least one 5th grader didn't win a prize)
+
+E x (is5th(x) ^ !wonPrize(x))
+!(A x (is5th(x) -> wonPrize(x)))
 
 
 /////////////////////////////////
 
-Intro and elimination rules for universal quantifier
-    (for all, ∀ or A)
-
-       { a
-        ... P(a) }
-∀i: --------------
-       ∀x P(x)
-
-//a is "fresh" (never used before)
-
-
+For-all elimination (∀e):
 
        ∀x P(x)
 ∀e: --------------
@@ -79,12 +115,10 @@ Intro and elimination rules for universal quantifier
 //...for some specific individual v
 
 
-//////////////////////////////////
 
-Idea behind for-all elimination (∀e):
+Idea:
 
-
-if we know that a statement is true for ALL individuals in
+- if we know that a statement is true for ALL individuals in
 our domain
 
 ...then what would we know about a specific individual
@@ -117,7 +151,17 @@ A x (Human(x)->Mortal(x)), Human(Socrates) |- Mortal(Socrates)
 
 /////////////////////////////////
 
-Idea behind for-all introduction (∀i)
+For-all introduction (∀i):
+
+       { a
+        ... P(a) }
+∀i: --------------
+       ∀x P(x)
+
+//a is a "fresh" individual (never used before)
+
+
+Idea:
 
 - We know a statement holds for some arbitrary individual
 - That individual could have been anything!
@@ -130,9 +174,9 @@ Idea behind for-all introduction (∀i)
 Structure involves a subproof:
 
 4. {
-    5. a            //no justification here
+    5. a            //no justification here, could be any (fresh) individual name
     ...
-    10. P(a)        //or some combination statement
+    10. P(a)        //or some combination statement with our individual, a
 }
 11. A x P(x)        Ai 4
 
@@ -168,6 +212,8 @@ Want to prove: All kids like ice cream.
 Proof: forall6.logika
 
 /////////////////////////////////
+
+(edit: we'll do this proof on Tuesday, October 4)
 
 Given:
 

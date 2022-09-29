@@ -1,3 +1,27 @@
 //Thurs Sep 29
 
-A x (P(x) -> Q(x) V K(x)), A y P(y) |- A n (Q(n) V K(n))
+A x (P(x) -> Q(x) V K(x)), A y P(y) |- A n (K(n) V Q(n))
+{
+    1. A x (P(x) -> Q(x) V K(x))            premise
+    2. A y P(y)                             premise
+    3. {
+        4. randomStudent
+        5. P(randomStudent) -> Q(randomStudent) V K(randomStudent)  Ae 1 randomStudent
+        6. P(randomStudent)                                         Ae 2 randomStudent
+        7. Q(randomStudent) V K(randomStudent)                      ->e 5 6
+        8. {
+            9. Q(randomStudent)                                     assume
+            10. K(randomStudent) V Q(randomStudent)                 Vi2 9
+        }
+        11. {
+            12. K(randomStudent)                                    assume
+            13. K(randomStudent) V Q(randomStudent)                 Vi1 12
+        }
+        14. K(randomStudent) V Q(randomStudent)                     Ve 7 8 11
+    }
+    15. A n (K(n) V Q(n))                                           Ai 3
+}
+
+//suppose P(x): person x is a student
+//Q(x): person x studies
+//K(x): person x sleeps
