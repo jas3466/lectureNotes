@@ -1,0 +1,3 @@
+//Tues Oct 4
+
+∃x (P(x) V Q(x)) ⊢ (∃x P(x)) V (∃x Q(x))

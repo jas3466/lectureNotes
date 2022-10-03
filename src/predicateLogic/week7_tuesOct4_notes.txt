@@ -1,0 +1,196 @@
+HW 6 due Thursday, October 6
+
+Exam 2 will be Thursday, October 13
+    - more details posted by the end of the week
+    - can bring one 8.5"x11" sheet of handwritten notes (both sides)
+
+/////////////////////////////////
+
+Today:
+
+- one more proof with translations
+- proof rules with the existential quantifier
+
+///////////////////////////////
+
+Given:
+
+Everyone wearing a red shirt likes pizza.
+Everyone who likes pizza likes donuts.
+No one likes donuts.
+
+Want to prove: No one is wearing a red shirt.
+
+
+Proof: forall7.logika
+
+////////////////////////////////
+
+Idea behind there exists-introduction (∃i):
+
+        P(v)
+∃i: --------------
+       ∃x P(x)
+
+//v is some individual
+
+
+
+
+Human(Socrates)
+
+E x (Human(x))
+
+If we find ONE individual in a domain where a statement holds
+
+...then THERE EXISTS an individual in the domain where the
+    statement holds
+
+
+/////////////////////////////////
+
+Example:
+
+(exist1.logika)
+Human(Socrates) |- E x (Human(x))
+
+
+
+Example:
+
+(exist2.logika)
+A x (Human(x)->Mortal(x)), Human(Socrates) |- E x (Mortal(x))
+
+
+
+//////////////////////////////////
+
+Idea behind there exists-elimination (∃e):
+
+                { a P(a)    assume
+     ∃x P(x),    ... Q }
+∃e: ------------------------------
+                  Q
+
+//think of a as an alias for the individual the E statement held for
+//a is "fresh" (never used before)
+
+
+If we know there is at least one individual where some statement holds
+
+...then we can introduce a (or whatever) as an ALIAS for that
+    individual in a subproof
+
+    ...whatever conclusion we reach in the subproof must be true
+        overall, since a was an EXISTING individual
+
+
+
+Structure of the subproof:
+
+3. E x P (x)
+4. {
+    5. a P(a)       assume //plug into your E statement
+    ...
+    10. Q
+}
+11. Q               Ee 3 4
+
+
+
+**If you have an E statement as a premise, you almost always
+want to start with a block where you create an alias (e.g. a)
+and plug it into your E statement, as above
+
+///////////////////////////////
+
+Examples:
+
+(exist3.logika)
+A x (Human(x)->Mortal(x)), E x (Human(x)) |- E x (Mortal(x))
+
+
+(exist4.logika)
+E x (P(x)) |-E y (P(y))
+
+
+(exist5.logika)
+∃x (P(x) V Q(x)) ⊢ (∃x P(x)) V (∃x Q(x))
+
+
+(exist6.logika)
+A x (Q(x) -> H(x)), E x (P(x) ^ Q(x)) ⊢ ∃ x (P(x) ^ H(x))
+
+
+(exist7.logika)
+E x (!P(x) ^ !Q(x)) |- E x (!(P(x) V Q(x)))
+
+////////////////////////////
+
+Proof tactics for predicate logic
+
+- see if you can do anything right away with the premises
+
+- look at top-level operator for what you are trying to prove
+    trying to prove A x (P(x)):
+
+
+    trying to prove E x (P(x)):
+        usually have a E statement as a premise
+
+    trying to prove ->
+
+
+    trying to prove !(something)
+
+
+
+
+    trying to prove an V
+        can you get just one side?
+        do you have an V statement?
+        do you have a E statement?
+
+
+    when you are in a subproof, think about what you are trying
+    to prove. Find its top-level operator, approach as above.
+
+
+Unsure what to do?
+    - Do you have an V statement available?
+
+    - Do you have an E statement available?
+
+    - Is negation involved, but not creating !(something)?
+
+
+
+/////////////////////////////////////////
+
+Equivalences in predicate logic:
+
+example sentences in English
+
+P(x): person x attends K-State
+Q(x): person x attends KU
+
+
+¬ (∃x P(x)) is equivalent to ∀x ¬ P(x)
+There is no person who attends K-State
+All people don't attend K-State.
+
+
+
+
+
+¬ (∀x P(x)) is equivalent to ∃x ¬ P(x)
+
+
+
+
+A x P(x) -> !Q(x) is equivalent to !(E x P(x) ^ Q(x))
+
+///////////////////////////////////////////////
+
+Next: mathematical induction
+If time, predicate logic proofs with nested quantifiers

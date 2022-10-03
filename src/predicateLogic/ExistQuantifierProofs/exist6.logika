@@ -1,0 +1,3 @@
+//Tues Oct 4
+
+A x (Q(x) -> H(x)), E x (P(x) ^ Q(x)) ⊢ ∃ x (P(x) ^ H(x))
