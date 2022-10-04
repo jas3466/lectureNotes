@@ -1,3 +1,30 @@
 //Tues Oct 4
 
 E x (!P(x) ^ !Q(x)) |- E x (!(P(x) V Q(x)))
+{
+    1. E x (!P(x) ^ !Q(x))              premise
+    2. {
+        3. a !P(a) ^ !Q(a)              assume
+        4. !P(a)                        ^e1 3
+        5. !Q(a)                        ^e2 3
+        6. {
+            7. P(a) V Q(a)              assume
+            8. {
+                9. P(a)                 assume
+                10. _|_                 !e 9 4
+            }
+            11. {
+                12. Q(a)                assume
+                13. _|_                 !e 12 5
+            }
+            14. _|_                     Ve 7 8 11
+            //want: contradiction
+        }
+        15. !(P(a) V Q(a))              !i 6
+        16. E x (!(P(x) V Q(x)))        Ei 15 a
+        //want: !(P(a) V Q(a))
+        //want: E x (!(P(x) V Q(x)))
+    }
+    17. E x (!(P(x) V Q(x)))            Ee 1 2
+    //use Ee to reclaim E x (!(P(x) V Q(x)))
+}

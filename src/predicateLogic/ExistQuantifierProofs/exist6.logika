@@ -1,3 +1,19 @@
 //Tues Oct 4
 
 A x (Q(x) -> H(x)), E x (P(x) ^ Q(x)) ⊢ ∃ x (P(x) ^ H(x))
+{
+    1. A x (Q(x) -> H(x))               premise
+    2. E x (P(x) ^ Q(x))                premise
+    3. {
+       4. a P(a) ^ Q(a)                 assume
+       5. Q(a) -> H(a)                  Ae 1 a
+       6. P(a)                          ^e1 4
+       7. Q(a)                          ^e2 4
+       8. H(a)                          ->e 5 7
+       9. P(a) ^ H(a)                   ^i 6 8
+       10. ∃ x (P(x) ^ H(x))            Ei 9 a
+       //want: ∃ x (P(x) ^ H(x))
+    }
+    11. ∃ x (P(x) ^ H(x))               Ee 2 3
+    //use Ee to reclaim ∃ x (P(x) ^ H(x))
+}

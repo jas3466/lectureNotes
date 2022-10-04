@@ -1,4 +1,22 @@
 //Tues Oct 4
 
 //(first direction)
-//¬ (∀x P(x)) is equivalent to ∃x ¬ P(x)
+//¬ (∃x P(x)) is equivalent to ∀x ¬ P(x)
+
+¬ (∃x P(x)) |- ∀x ¬ P(x)
+{
+    1. ¬ (∃x P(x))                  premise
+    2. {
+        3. a
+        4. {
+            5. P(a)                 assume
+            6. E x P(x)             Ei 5 a
+            7. _|_                  !e 6 1
+            //goal: _|_
+        }
+        8. !P(a)                    !i 4
+        //goal: ¬ P(a)
+    }
+    9. ∀x ¬ P(x)                    Ai 2
+    //use Ai to conclude ∀x ¬ P(x)
+}

@@ -1,3 +1,12 @@
 //Tues Oct 4
 
-E x (P(x)) |-E y (P(y))
+E x (P(x)) |- E y (P(y))
+{
+    1. E x (P(x))               premise
+    2. {
+        3. a P(a)               assume
+        4. E y (P(y))           Ei 3 a
+        //want:  E y (P(y))
+    }
+    5. E y (P(y))               Ee 1 2
+}

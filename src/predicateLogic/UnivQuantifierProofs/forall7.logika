@@ -1,5 +1,31 @@
 //Tues Oct 4
 
+A x (RedShirt(x) -> Pizza(x)), A x (Pizza(x) -> Donuts(x)), A x !Donuts(x) |- A x !RedShirt(x)
+{
+    1. A x (RedShirt(x) -> Pizza(x))            premise
+    2. A x (Pizza(x) -> Donuts(x))              premise
+    3. A x !Donuts(x)                           premise
+
+    4. {
+        5. randomPerson
+        6. {
+            7. RedShirt(randomPerson)                           assume
+            8. RedShirt(randomPerson) -> Pizza(randomPerson)    Ae 1 randomPerson
+            9. Pizza(randomPerson) -> Donuts(randomPerson)      Ae 2 randomPerson
+            10. !Donuts(randomPerson)                           Ae 3 randomPerson
+            11. Pizza(randomPerson)                             ->e 8 7
+            12. Donuts(randomPerson)                            ->e 9 11
+            13. _|_                                             !e 12 10
+            //goal: contradiction
+        }
+        14. !RedShirt(randomPerson)                             !i 6
+        //use !i to conclude !RedShirt(randomPerson)
+        //goal: !RedShirt(randomPerson)
+    }
+    15. A x !RedShirt(x)                                        Ai 4
+    //use Ai to conclude A x !RedShirt(x)
+}
+
 //Given:
 
 //Everyone wearing a red shirt likes pizza.
@@ -7,3 +33,18 @@
 //No one likes donuts.
 
 //Want to prove: No one is wearing a red shirt.
+
+//Domain: people
+//Predicates:
+
+//RedShirt(x): person x is wearing a red shirt
+//Pizza(x): person x likes pizza
+//Donuts(x): person x likes donuts
+
+//translations:
+
+//Everyone wearing a red shirt likes pizza: A x (RedShirt(x) -> Pizza(x))
+//Everyone who likes pizza likes donuts : A x (Pizza(x) -> Donuts(x))
+//No one likes donuts: A x !Donuts(x)
+//No one is wearing a red shirt: A x !RedShirt(x)
+

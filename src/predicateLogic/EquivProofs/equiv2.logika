@@ -1,7 +1,4 @@
-//Tues Oct 4
+//Thurs Oct 6
 
 //(second direction)
-//¬ (∀x P(x)) is equivalent to ∃x ¬ P(x)
-
-//what do we do when no obvious path + negation?
-    //...and what might we prove to get a contradiction with something?
+//¬ (∃x P(x)) is equivalent to ∀x ¬ P(x)

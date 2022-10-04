@@ -130,38 +130,55 @@ E x (!P(x) ^ !Q(x)) |- E x (!(P(x) V Q(x)))
 Proof tactics for predicate logic
 
 - see if you can do anything right away with the premises
+    - ^ elimination
+    - ->, and the LHS, do ->e
+    - A, individual, Ae
 
 - look at top-level operator for what you are trying to prove
     trying to prove A x (P(x)):
-
+        pattern for Ai
+        subproof where I introduce a random individual
+        by end of subproof: P(randomIndividual)
 
     trying to prove E x (P(x)):
         usually have a E statement as a premise
+        assume an alias for the E statement in a subproof
+        get E x (P(x)) at end of subproof (*)will probably need Ei on your alias)
+        afterwards claim E x (P(x)) using Ee
 
     trying to prove ->
-
+        subproof
+        assume LHS
+        get to RHS
+        afterwards use ->i to conclude LHS->RHS
 
     trying to prove !(something)
-
+        assume something in subproof
+        get _|_
+        afterwards, use !i to conclude !(something)
 
 
 
     trying to prove an V
-        can you get just one side?
-        do you have an V statement?
+        can you get just one side? then use Vi
+        do you have an V statement? use Ve
         do you have a E statement?
-
+            assume an alias for the E statement in a subproof
+            get V statement at end of subproof
+            afterwards claim V statement using Ee
 
     when you are in a subproof, think about what you are trying
     to prove. Find its top-level operator, approach as above.
 
 
 Unsure what to do?
-    - Do you have an V statement available?
+    - Do you have an V statement available? try Ve
 
-    - Do you have an E statement available?
+    - Do you have an E statement available? use an Ee subproof, try to
+        get to your goal conclusion
 
     - Is negation involved, but not creating !(something)?
+        pbc
 
 
 
@@ -179,16 +196,19 @@ Q(x): person x attends KU
 There is no person who attends K-State
 All people don't attend K-State.
 
+(equiv1.logika and equiv2.logika)
 
+(**** STOPPED HERE ****)
+(**** will do other direction of equivalence on Thurs Oct 6 ***(
 
-
-
-¬ (∀x P(x)) is equivalent to ∃x ¬ P(x)
-
-
+//////////////////////////////////////////////
 
 
 A x P(x) -> !Q(x) is equivalent to !(E x P(x) ^ Q(x))
+(equiv3.logika and equiv4.logika)
+
+¬ (∀x P(x)) is equivalent to ∃x ¬ P(x)
+(equiv5.logika and equiv6.logika)
 
 ///////////////////////////////////////////////
 

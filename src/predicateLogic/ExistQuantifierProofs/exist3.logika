@@ -1,3 +1,15 @@
 //Tues Oct 4
 
 A x (Human(x)->Mortal(x)), E x (Human(x)) |- E x (Mortal(x))
+{
+    1. A x (Human(x)->Mortal(x))                premise
+    2. E x (Human(x))                           premise
+    3. {
+        4. humanIndiv Human(humanIndiv)             assume
+        5. Human(humanIndiv)->Mortal(humanIndiv)    Ae 1 humanIndiv
+        6. Mortal(humanIndiv)                       ->e 5 4
+        7. E x (Mortal(x))                          Ei 6 humanIndiv
+        //want E x (Mortal(x))
+    }
+    8. E x (Mortal(x))                              Ee 2 3
+}
