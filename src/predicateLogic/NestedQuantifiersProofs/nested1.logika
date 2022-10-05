@@ -1,0 +1,3 @@
+//Thurs Oct 6
+
+A x (A y (P(x, y))) |- A y (A x (P(x, y)))
