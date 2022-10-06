@@ -1,4 +1,55 @@
 //Thurs Oct 6
 
-//(first direction)
-//A x P(x) -> !Q(x) is equivalent to !(E x P(x) ^ Q(x))
+//(both directions)
+//A x (P(x) -> !Q(x)) is equivalent to !(E x P(x) ^ Q(x))
+
+|- ((A x (P(x) -> !Q(x)))->(!(E x P(x) ^ Q(x)))) ^ (((!(E x P(x) ^ Q(x)))) -> ((A x (P(x) -> !Q(x)))))
+{
+    //prove the LHS of the ^
+    1. {
+        2. A x (P(x) -> !Q(x))                      assume
+        3. {
+            4. E x P(x) ^ Q(x)                      assume
+            5. {
+                6. a P(a) ^ Q(a)                    assume
+                7. P(a) -> !Q(a)                    Ae 2 a
+                8. P(a)                             ^e1 6
+                9. Q(a)                             ^e2 6
+                10. !Q(a)                           ->e 7 8
+                11. _|_                             !e 9 10
+                //want: _|_
+            }
+            12. _|_                                 Ee 4 5
+            //want: _|_
+        }
+        13. !(E x P(x) ^ Q(x))                      !i 3
+        //use !i to get !(E x P(x) ^ Q(x)))
+    }
+    14. (A x (P(x) -> !Q(x)))->(!(E x P(x) ^ Q(x))) ->i 1
+
+    //prove the RHS of the ^
+    15. {
+        16. !(E x P(x) ^ Q(x))                      assume
+        17. {
+            18. b
+            19. {
+                20. P(b)                            assume
+                21. {
+                    22. Q(b)                        assume
+                    23. P(b) ^ Q(b)                 ^i 20 22
+                    24. E x P(x) ^ Q(x)             Ei 23 b
+                    25. _|_                         !e 24 16
+                    //want: _|_
+                }
+                26. !Q(b)                           !i 21
+                //want: !Q(b)
+            }
+            27. P(b) -> !Q(b)                       ->i 19
+            //want: P(b) -> !Q(b)
+        }
+        28. A x (P(x) -> !Q(x))                     Ai 17
+        //want: A x (P(x) -> !Q(x))
+    }
+    29. !(E x P(x) ^ Q(x)) -> (A x (P(x) -> !Q(x)))  ->i 15
+    30. ((A x (P(x) -> !Q(x)))->(!(E x P(x) ^ Q(x)))) ^ (((!(E x P(x) ^ Q(x)))) -> ((A x (P(x) -> !Q(x)))))   ^i 14 29
+}

@@ -2,3 +2,21 @@
 
 //(second direction)
 //¬ (∃x P(x)) is equivalent to ∀x ¬ P(x)
+
+∀x ¬ P(x) |- ¬ (∃x P(x))
+{
+    1. A x !P(x)                    premise
+    2. {
+        3. E x P(x)                 assume
+        4. {
+            5. a P(a)               assume
+            6. !P(a)                Ae 1 a
+            7. _|_                  !e 5 6
+            //goal: contradiction
+        }
+        8. _|_                      Ee 3 4
+        //want contradiction
+    }
+    9. !(E x P(x))                  !i 2
+    //use !i to conclude ¬ (∃x P(x))
+}
