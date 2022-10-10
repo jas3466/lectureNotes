@@ -1,0 +1,129 @@
+HW 7 due Thurs Oct 13
+
+Exam 2 will be Thursday, October 13
+    - can bring one 8.5"x11" sheet of handwritten notes (both sides)
+
+/////////////////////////////////
+
+Today:
+
+- proofs with nested quantifiers
+- soundness and completeness issues in predicate logic
+- one more induction proof
+- exam 2 review
+
+///////////////////////////////
+
+Proofs with nested quantifiers.
+
+- approach exactly the same as proofs with single quantifiers
+...but, can only plug in for / introduce a single quantifier at once
+
+
+Examples:
+
+A x (A y (P(x, y))) |- A y (A x (P(x, y)))          //nested1.logika
+
+
+E x (E y P(x, y)) |- E y (E x P(x, y))              //nested2.logika
+
+
+A x (A y (C(x) -> D(y))), E x C(x)  |- A y D(y)     //nested3.logika
+
+
+E y (A x P(x, y)) |- A x (E y P(x, y))              //nested4.logika
+
+
+//////////////////////////////
+
+Soundness and completeness of predicate logic.
+
+
+Soundness: definition?
+    propositional: Everything we could prove (with proof rules) is actually true
+    predicate logic: is sound
+
+
+Completeness: definition?
+    propositional: Everything that is true (with truth tables) can be proved
+    predicate logic is not complete
+
+propositional: sound and complete
+predicate: sound, not complete
+
+///////////////////////////////////
+
+Domain with integers, where predicates are different arithmetic operations
+
+maybe predicate is addition. 2 + 3 = 5
+
+maybe domain is: 0,1,2,3,4
+
+       2 + 3 = 0
+
+
+Godel's Incompleteness Theorem.
+
+Any consistent formal system where integer arithmetic is
+carried out is incomplete -- there will be statements that
+can be neither proved nor disproved.
+
+(depends on interpretations)
+
+
+
+Decidability - whether a problem can be decided one way or another
+
+Halting problem - given a computer program and a set of inputs
+    can you write another program to determine if the original
+        program will halt for the inputs
+
+
+//////////////////////////////////////
+
+Induction: another example
+
+Prove that for all natural numbers n >= 1:
+
+1^3 + 2^3 + 3^3 +⋯+ n^3 = (n^2(n+1)^2)/4
+
+/////////////////////////////////////
+
+Exam 2: Thursday, October 13
+
+- Finishing propositional logic
+    - Proof by contradiction (pbc) and bottom elimination (_|_e) rules
+    - Semantic entailment (a |= b)
+        truth tables
+        anytime a is true, then b is also true
+        show a->b is a tautology
+        (or show that any truth assignment that makes a true also be makes b true)
+    - Proving theorems
+        a V !a
+        a proof with no premises
+        |- (theorem)
+    - Satisfiability
+        p -> q
+        p = T, q = T, then p->q is true
+        (there is some truth assignment that makes it true)
+    - Soundness and completeness
+        (just definitions, what is true for prop./pred logic)
+    - Showing equivalence using both truth tables and proofs
+        truth tables: same set of truth assignments make both true
+        prove A |- B and B |- A
+    - Showing a sequent is invalid
+        A |- B
+        invalid if there is a truth assignment that makes premises true
+            but conclusion false
+- Predicate logic
+    - Translating between English and predicate logic
+    - Proofs in predicate logic (including Ai, Ae, Ei, and Ee rules),
+        including proofs with nested quantifiers
+    - Showing equivalence using proofs
+    - Explain proof rules
+    - Maybe, do translations first and then prove your translations
+- Mathematical induction
+
+/////////////////////////////////////////
+
+Work practice exam

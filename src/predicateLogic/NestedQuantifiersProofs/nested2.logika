@@ -1,0 +1,4 @@
+//Tues Oct 11
+
+
+E x (E y P(x, y)) |- E y (E x P(x, y))

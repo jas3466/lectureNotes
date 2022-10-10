@@ -1,0 +1,4 @@
+//Tues Oct 11
+
+
+A x (A y (C(x) -> D(y))), E x C(x)  |- A y D(y)
