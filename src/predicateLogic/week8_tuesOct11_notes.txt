@@ -1,4 +1,6 @@
 HW 7 due Thurs Oct 13
+    - careful: proofs that require induction need to be proved with induction
+        (and not using a different technique)
 
 Exam 2 will be Thursday, October 13
     - can bring one 8.5"x11" sheet of handwritten notes (both sides)
@@ -50,6 +52,8 @@ Completeness: definition?
 
 propositional: sound and complete
 predicate: sound, not complete
+
+not complete: we can't prove everything that is true
 
 ///////////////////////////////////
 

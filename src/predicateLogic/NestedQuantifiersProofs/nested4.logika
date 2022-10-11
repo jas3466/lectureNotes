@@ -1,4 +1,4 @@
 //Tues Oct 11
-
+//didn't work in lecture - would be good practice material for exam 2
 
 E y (A x P(x, y)) |- A x (E y P(x, y))

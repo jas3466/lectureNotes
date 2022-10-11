@@ -1,4 +1,4 @@
 //Tues Oct 11
-
+//didn't work in lecture - would be good practice material for exam 2
 
 A x (A y (C(x) -> D(y))), E x C(x)  |- A y D(y)

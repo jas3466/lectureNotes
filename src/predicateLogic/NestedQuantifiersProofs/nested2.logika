@@ -2,3 +2,20 @@
 
 
 E x (E y P(x, y)) |- E y (E x P(x, y))
+{
+    1. E x (E y P(x, y))                    premise
+    2. {
+        3. a E y P(a, y)                    assume
+        4. {
+            5. b P(a, b)                    assume
+            6. E x P(x, b)                  Ei 5 a
+            7. E y (E x P(x, y))            Ei 6 b
+            //want:  E y (E x P(x, y))
+        }
+        8. E y (E x P(x, y))                Ee 3 4
+        //use Ee afterwards
+        //want: E y (E x P(x, y))
+    }
+    9. E y (E x P(x, y))                    Ee 1 2
+    //use Ee to conclude E y (E x P(x, y)) again
+}
