@@ -1,0 +1,15 @@
+//Tues Oct 18
+
+import org.sireum.logika._
+
+val x: Z = 2
+
+//what can we put in a logic block here?
+
+val y: Z = x + 2
+
+//what can we put in a logic block here?
+
+
+
+//want to assert that y is 4 and x is 2

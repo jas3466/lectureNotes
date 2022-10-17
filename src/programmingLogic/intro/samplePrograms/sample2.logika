@@ -1,0 +1,14 @@
+//Tues Oct 18
+
+import org.sireum.logika._
+
+//get user input number, print whether it is positive or negative
+
+//what does "val" mean?
+val num: Z = readInt("Enter a number: ")
+
+if (num > 0) {
+    println(num, " is positive")
+} else {
+    println(num, " is negative (or zero)")
+}

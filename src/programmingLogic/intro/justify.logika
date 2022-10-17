@@ -1,0 +1,24 @@
+//Tues Oct 18
+
+//complete justifications without using algebra
+
+import org.sireum.logika._
+val x: Z = 0
+val y: Z = 1
+val z: Z = 2 + x
+val w: Z = 2 + 0
+
+l"""{
+    1. x == 0                           ???
+    2. z == 2 + x                       ???
+    3. z == 2 + 0                       ???
+    4. w == 2 + 0                       ???
+    5. w == z                           ???
+    6. z == w                           ???
+    7. w == 2                           algebra 4
+    8. z == 2                           ???
+    9. w == 2 ∧ z == 2                  ???
+    10. (w == 2 ∧ z == 2) ∧ x == 0      ???
+    11. ((w == 2 ∧ z == 2) ∧ x == 0) V x == 1   ???
+}"""
+assert((w == 2 & z == 2 & x == 0) | x == 1)

@@ -1,0 +1,14 @@
+//Tues Oct 18
+
+import org.sireum.logika._
+
+//use a loop to print the numbers from 10 down to 1
+
+//we can't run this without doing some verification work
+    //...but this is what a loop will look like
+
+var cur: Z = 10
+while (cur >= 1) {
+    println("Next number: ", cur)
+    cur = cur - 1
+}

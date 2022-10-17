@@ -1,0 +1,10 @@
+//Tues Oct 18
+
+import org.sireum.logika._
+
+val x: Z = readInt("Enter a positive number: ")
+
+//want to assume input is positive
+
+
+//want to assert input is greater than -1

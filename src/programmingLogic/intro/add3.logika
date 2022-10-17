@@ -1,0 +1,21 @@
+//Tues Oct 18
+
+import org.sireum.logika._
+
+var x: Z = readInt("Enter a number: ")
+val orig: Z = x
+
+//orig will always be the original user input value
+
+//what can we put in a logic block here?
+
+x = x + 1
+
+//what can we put in a logic block here?
+
+x = x + 2
+
+//what can we put in a logic block here?
+
+
+//what do we want to assert? How has x changed?

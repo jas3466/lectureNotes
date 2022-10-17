@@ -1,0 +1,13 @@
+//Tues Oct 18
+
+import org.sireum.logika._
+
+val x: Z = 4
+
+val y: Z = x + 2
+
+val z: Z = x + 2
+
+//complete justification (using subst instead of algebra)
+
+//want to assert that y equals z

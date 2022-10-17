@@ -1,0 +1,12 @@
+//Tues Oct 18
+
+import org.sireum.logika._
+
+//get user input number, add one to it, print it out
+
+//what does "var" mean?
+var x: Z = readInt("Enter a number: ")
+
+x = x + 1
+
+println("One more is ", x)
