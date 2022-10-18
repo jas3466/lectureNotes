@@ -5,11 +5,21 @@ import org.sireum.logika._
 val x: Z = 2
 
 //what can we put in a logic block here?
+l"""{
+    1. x == 2                   premise
+}"""
 
 val y: Z = x + 2
 
 //what can we put in a logic block here?
 
+l"""{
+    1. y == x + 2               premise
+    2. x == 2                   premise
+    3. y == 4                   algebra 1 2
+    4. y == 4 ^ x == 2          ^i 3 2
+}"""
 
 
 //want to assert that y is 4 and x is 2
+assert(y == 4 & x == 2)

@@ -7,10 +7,22 @@ val y: Z = readInt("Enter second number: ")
 
 assume(x > y)
 
+l"""{
+    1. x > y                premise
+}"""
+
 //what can we put in a logic block here?
 
 val max: Z = x
 
 //what can we put in a logic block here?
+l"""{
+    1. x > y                premise
+    2. max == x             premise
+    3. max >= x             algebra 2
+    4. max >= y             algebra 1 3
+    5. max >= x ^ max >= y  ^i 3 4
+}"""
 
 //want to assert that the max is greater than or equal to both x and y
+assert(max >= x & max >= y)

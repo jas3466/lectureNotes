@@ -5,6 +5,12 @@ import org.sireum.logika._
 val x: Z = readInt("Enter a positive number: ")
 
 //want to assume input is positive
+assume(x > 0)
 
+l"""{
+    1. x > 0                premise
+    2. x > -1               algebra 1
+}"""
 
 //want to assert input is greater than -1
+assert(x > -1)

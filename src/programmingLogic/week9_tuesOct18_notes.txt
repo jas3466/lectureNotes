@@ -6,6 +6,20 @@ HW 8 is due Thursday, October 20
 
 Exam 2 results.
 
++2 to all scores (your Canvas score already has the +2 included)
+the circled score on your exam is your overall score (after the +2)
+
+High: 81/80
+Average (before entering zeroes): 60/80 (75%)
+
+A (72-80): 17 students
+B (64-71): 13 students
+C (56-63): 20 students
+D (48-55): 12 students
+F (below 48): 17 students (includes 4 zeroes from students who didn't take exam)
+
+work through some exam problems
+
 
 /////////////////////////////
 
@@ -78,7 +92,8 @@ assume statements
 
 
 assert statements
-    - I want to claim what will be true after some code
+    - postconditions
+    - what we want to be true after some code
     - PROVE, not test
 
 
@@ -102,15 +117,15 @@ Process of validating a program:
 
 program statement
 
-(claim)
+(claims)
 
 program statement
 
-(claim)
+(claims)
 
 program statement
 
-(claim about output/results/postconditions - assert)
+(claims about output/results/postconditions - assert)
 
 
 
@@ -130,7 +145,7 @@ l"""{
 
 //////////////////////////////
 
-Justifications:
+Justifications (for now):
 
 premise
     - something from an assume
@@ -227,7 +242,7 @@ l"""{
     n. LHS_N == RHS_N
     ...
     x. (claim)              subst1 m n
-}
+}"""
 
 (claim) rewrites claim n by substituting all occurrences of
     LHS_M with RHS_M
@@ -241,8 +256,8 @@ l"""{
     ...
     n. x*(x + 1) == (x + 1) + y
     ...
-    x. x*(y - 4) == (y - 4) + y     subst1 m n
-}
+    j. x*(y - 4) == (y - 4) + y     subst1 m n
+}"""
 
 
 
@@ -275,7 +290,7 @@ l"""{
     n. y*(x + 1) == (x + 1) + y
     ...
     x. (x + 1)*(x + 1) == (x + 1) + (x + 1) subst2 m n
-}
+}"""
 
 
 
@@ -314,7 +329,7 @@ Then, redo using algebra
 
 //////////////////////////////
 
-(if time)
+(if time) -- no time, saved for Thurs
 
 start on assignment with mutation
 

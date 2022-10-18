@@ -8,6 +8,14 @@ val y: Z = x + 2
 
 val z: Z = x + 2
 
+l"""{
+    1. x == 4                   premise
+    2. y == x + 2               premise
+    3. z == x + 2               premise
+    4. y == z                   subst2 3 2
+}"""
+
 //complete justification (using subst instead of algebra)
 
 //want to assert that y equals z
+assert(y == z)
