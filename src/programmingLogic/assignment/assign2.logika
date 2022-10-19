@@ -1,0 +1,24 @@
+//Thurs Oct 20
+
+
+import org.sireum.logika._
+
+/*
+write a program that:
+
+- gets a positive input number (and also saves it to an orig val)
+- multiplies the input number by 2
+        - (the number should be even now)
+
+- adds 2 to the running total
+        - (the number should still be even)
+
+- divides the result by 2 and subtract 1
+        - (the number should be back to the original)
+
+Example: suppose input is 3
+
+First: write all asserts (what should be true after each step)
+
+Next: add necessary logic blocks
+*/

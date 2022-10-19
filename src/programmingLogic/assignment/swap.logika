@@ -1,0 +1,18 @@
+//Thurs Oct 20
+
+import org.sireum.logika._
+
+var x: Z = readInt()
+var y: Z = readInt()
+
+//save out the original values
+val xOrig: Z = x
+val yOrig: Z = y
+
+//want to swap x and y
+x = x + y
+y = x - y
+x = x - y
+
+//what do we want to claim we did?
+assert(x == yOrig & y == xOrig)

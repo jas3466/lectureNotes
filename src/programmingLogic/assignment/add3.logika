@@ -9,13 +9,24 @@ val orig: Z = x
 
 //what can we put in a logic block here?
 
+
+
+
 x = x + 1
 
 //what can we put in a logic block here?
 
+
+
+
+
 x = x + 2
 
 //what can we put in a logic block here?
+
+
+
+
 
 
 //what do we want to assert? How has x changed?

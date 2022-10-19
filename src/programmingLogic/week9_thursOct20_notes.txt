@@ -1,0 +1,243 @@
+HW 8 due by midnight tonight (questions?)
+
+HW 9 will be posted after class
+
+/////////////////////////////////////
+
+Can pick up your exam up front after class (if didn't already)
+
+If your grade is lower than you'd like:
+    - it is still possible to pull it up
+    - remember that your final exam can replace your lowest exam score
+    - programming logic does not rely *too* much on previous material
+            --> it is quite possible to do well on Exam 3 even if you struggled on the previous 2 exams
+
+To review old material / prepare for the final:
+    - go through what you missed on Exam 2, consulting the solution
+    - do the same for Exam 1
+    - please come to office hours and ask if there is any problem you still don't understand
+    - make a list of the topics that you struggled with so you can do extra studying before the final
+
+
+I'd be happy to give more individual feedback on test preparation if you come talk to me.
+
+/////////////////////////////////////
+
+Today:
+- brief review of assume/assert/algebra/subst
+- what are we trying to do again?
+- verifying programs with variable mutation
+
+/////////////////////////////////////
+
+Reminder: assume statements
+
+When do we use them?
+    - user input that needs to be in a particular range
+    - after you get user input, put:
+
+    assume(the range of that input)
+
+What do they mean?
+    the logic that follows is based on the assumption that
+        the user input is within the bounds of the assume
+
+What can we do in the next logic block?
+    list exactly the assume statement as a premise
+
+
+
+//////////////////////////////////////
+
+Reminder: assert statements
+
+- will check to see if our program is logically correct
+
+When do we use them?
+    at end usually, but sometimes midway (stating what is true at that point)
+
+
+What do they mean?
+    what we want to claim about what our program did
+
+
+How do we get an assert statement to be verified?
+
+    with logic blocks
+    a previous logic block must include EXACTLY the statement we are asserting
+
+
+
+//////////////////////////////////////
+
+Reminder: subst rules
+
+l"""{
+    1. x == y + 1                       (some justification)
+    2. (x > 0) ^ (y + 1 < 10)           (some justification)
+    3. (y+1 > 0) ^ (y + 1 < 10)         ???
+    4. (x > 0) ^ (x < 10)               ???
+}"""
+
+//////////////////////////////////////
+
+Reminder: algebra rule
+
+l"""{
+    1. x > 0                            (some justification)
+    2. x >= 0                           ??? why?
+    3. y == x + 1                       (some justification)
+    4. y > 0                            ???
+}"""
+
+/////////////////////////////////////
+
+max example - similar to a HW problem
+(max.logika)
+
+/////////////////////////////////////
+
+start on assignment with mutation
+
+if you change the value of a variable, want to add this claim
+    to the next logic block:
+
+x = x + 3
+l"""{
+    1. x == x_old + 3                   premise
+
+}"""
+
+The name_old refers to the OLD value of the variable, just before
+the latest update.
+
+By the end of the next logic block, want to state what the
+variable's current value is WITHOUT using the _old value
+(it won't be available after the next logic block)
+
+
+
+
+
+//////////////////////
+
+Example (add3.logika):
+
+- get an input number
+- save out an "orig" value that is equal to the input
+
+add 1 to the input number
+add 2 to the input number
+
+want to assert that the resulting number is 3 more than the orig value
+
+
+
+--> what if we added an assume that the input number was positive?
+--> could we add to our assert that the resulting number is positive?
+
+//////////////////////
+
+Example: see assign1.logika
+
+First, fill in assert statements
+Then, fill in logic blocks
+
+///////////////////////
+
+Example (swap.logika): swap program
+
+inputs x and y (save their original values)
+
+x = x + y
+y = x - y
+x = x - y
+
+now x and y will have switched
+
+Example: x is 10 and y is 3
+
+
+/////////////////////////////////
+
+Processing programs with / and %
+
+All / is integer division (no decimal type)
+
+For every line of code with num / denom:
+    - must have EXACTLY this claim in the previous logic block:
+        denom != 0
+
+    - Other forms will not work
+        0 != denom (NO!)
+        denom > 0   (NO!)
+
+
+This is even true when dividing by a literal (like 2):
+
+l"""{
+    1. 2 != 0           algebra
+}"""
+
+x = a / 2
+
+
+/////////////////////////////
+
+Processing programs with %
+
+For every line of code with num % denom
+    - must have EXACTLY these claims in the previous logic block:
+        denom > 0
+        num >= 0
+
+l"""{
+    1. 2 > 0           algebra
+    2. a >= 0          (some justification)
+}"""
+
+x = a % 2
+
+/////////////////////////////////////
+
+Logika is aware that all division is integer division.
+
+
+This will not validate!!! (why?)
+
+l"""{
+    1. x == (x/3) * 3           algebra
+}"""
+
+
+
+/////////////////////////////////////
+
+Example (assign2.logika): write a program that:
+
+- gets a positive input number (and also saves it to an orig val)
+- multiplies the input number by 2
+        - (the number should be even now)
+
+- adds 2 to my running total
+        - (the number should still be even)
+
+- divide the result by 2 and subtract 1
+        - (the number should be back to the original)
+
+Example: suppose input is 3
+
+First: write all asserts (what should be true after each step)
+
+Next: add necessary logic blocks
+
+//////////////////////////////////
+
+When working with multiplication and division...
+
+Try to avoid using division in logic blocks if you can
+help it. Try to express things with multiplication instead.
+
+//////////////////////////////////
+
+

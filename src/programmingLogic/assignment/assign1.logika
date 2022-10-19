@@ -1,0 +1,29 @@
+//Thurs Oct 20
+
+import org.sireum.logika._
+
+var num: Z = readInt()
+val orig: Z = num   //orig never changes (always the original user input value)
+val diff: Z = readInt()
+
+//Add a logic block
+
+
+
+
+
+num = num + diff
+
+//what do we know now?
+//add a logic block
+
+
+
+
+
+num = num - diff
+print("originally ", orig, " back to ", num)
+
+//what do we know now about num?
+//Add an assert statement
+//add a logic block
