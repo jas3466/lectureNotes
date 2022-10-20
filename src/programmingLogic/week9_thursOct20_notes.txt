@@ -1,5 +1,33 @@
 HW 8 due by midnight tonight (questions?)
 
+    Problem 1:
+
+!(A x P(x)) |- E x !P(x)
+{
+    1. !(A x P(x))              premise
+    2. {
+        3. !(E x !P(x))         assume //goal: use pbc
+        4. {
+            5. a
+            6. {
+                7. !P(a)        assume
+                //use Ei on !P(a), which will contradict with line 3
+                //want: contradiction
+            }
+            //use pbc to get P(a)
+        }
+        //use Ai to conclude A x P(x)
+
+        //if I prove A x P(x), I would have a _|_ with the premise
+
+        //need: contradiction
+    }
+    //use pbc to conclude E x !P(x)
+}
+
+
+
+
 HW 9 will be posted after class
 
 /////////////////////////////////////
@@ -10,13 +38,20 @@ If your grade is lower than you'd like:
     - it is still possible to pull it up
     - remember that your final exam can replace your lowest exam score
     - programming logic does not rely *too* much on previous material
-            --> it is quite possible to do well on Exam 3 even if you struggled on the previous 2 exams
+            --> you can do well on Exam 3 even if you struggled on the previous 2 exams
+    - if you are near the cutoff of a higher grade, I look for improvement
+        across the course when deciding whether to bump up
+
+
 
 To review old material / prepare for the final:
     - go through what you missed on Exam 2, consulting the solution
     - do the same for Exam 1
-    - please come to office hours and ask if there is any problem you still don't understand
-    - make a list of the topics that you struggled with so you can do extra studying before the final
+    - please come to office hours and ask if there is any problem you still
+        don't understand
+    - make a list of the topics that you struggled with so you can do
+        extra studying before the final
+
 
 
 I'd be happy to give more individual feedback on test preparation if you come talk to me.
@@ -36,15 +71,25 @@ When do we use them?
     - user input that needs to be in a particular range
     - after you get user input, put:
 
-    assume(the range of that input)
+
+    ???
+    assume(x > 0)   //assume x is positive
+    assume(x < 10 & x > 0) //assume x is a positive single digit number
+
+
 
 What do they mean?
     the logic that follows is based on the assumption that
         the user input is within the bounds of the assume
 
-What can we do in the next logic block?
-    list exactly the assume statement as a premise
+What can we do in the next logic block? state it as a premise
 
+    ???
+assume(x < 10 & x > 0)
+
+l"""{
+    1. x < 10 ^ x > 0             premise
+}""""
 
 
 //////////////////////////////////////
@@ -63,10 +108,13 @@ What do they mean?
 
 How do we get an assert statement to be verified?
 
-    with logic blocks
-    a previous logic block must include EXACTLY the statement we are asserting
+    ??? prove that exact statement in a logic block
 
+l"""{
+    1. num * 2 == x             (some justification)
+}"""
 
+assert(num * 2 == x)
 
 //////////////////////////////////////
 
@@ -75,9 +123,17 @@ Reminder: subst rules
 l"""{
     1. x == y + 1                       (some justification)
     2. (x > 0) ^ (y + 1 < 10)           (some justification)
-    3. (y+1 > 0) ^ (y + 1 < 10)         ???
-    4. (x > 0) ^ (x < 10)               ???
+    3. (y+1 > 0) ^ (y + 1 < 10)         subst1 1 2
+    4. (x > 0) ^ (x < 10)               subst2 1 2
 }"""
+
+
+
+
+
+
+
+
 
 //////////////////////////////////////
 
@@ -85,15 +141,27 @@ Reminder: algebra rule
 
 l"""{
     1. x > 0                            (some justification)
-    2. x >= 0                           ??? why?
+    2. x >= 0                           algebra 1
     3. y == x + 1                       (some justification)
-    4. y > 0                            ???
+    4. y > 0                            algebra 1 3
 }"""
+
+
+
+
+
+
+
 
 /////////////////////////////////////
 
 max example - similar to a HW problem
 (max.logika)
+
+
+
+
+
 
 /////////////////////////////////////
 
@@ -102,7 +170,11 @@ start on assignment with mutation
 if you change the value of a variable, want to add this claim
     to the next logic block:
 
+//x_old means the value of x right here
 x = x + 3
+
+//Add this statement in a logic block:
+
 l"""{
     1. x == x_old + 3                   premise
 
@@ -115,6 +187,19 @@ By the end of the next logic block, want to state what the
 variable's current value is WITHOUT using the _old value
 (it won't be available after the next logic block)
 
+
+
+x = x + 1
+
+//x_old refers to the value of x RIGHT HERE
+x = x + 3
+
+l"""{
+    1. x == x_old + 1           premise
+
+}"""
+
+--> what could we say in a logic block here?
 
 
 
@@ -133,8 +218,10 @@ want to assert that the resulting number is 3 more than the orig value
 
 
 
+
 --> what if we added an assume that the input number was positive?
 --> could we add to our assert that the resulting number is positive?
+
 
 //////////////////////
 
@@ -142,6 +229,10 @@ Example: see assign1.logika
 
 First, fill in assert statements
 Then, fill in logic blocks
+
+
+
+
 
 ///////////////////////
 
@@ -158,11 +249,17 @@ now x and y will have switched
 Example: x is 10 and y is 3
 
 
+
+
+
 /////////////////////////////////
 
 Processing programs with / and %
 
 All / is integer division (no decimal type)
+
+5 / 2 is 2 (throws away the decimal, keeps the whole portion)
+
 
 For every line of code with num / denom:
     - must have EXACTLY this claim in the previous logic block:
@@ -175,8 +272,10 @@ For every line of code with num / denom:
 
 This is even true when dividing by a literal (like 2):
 
+//what logic block statement do we need first?
+
 l"""{
-    1. 2 != 0           algebra
+    1. 2 != 0               algebra
 }"""
 
 x = a / 2
@@ -191,14 +290,22 @@ For every line of code with num % denom
         denom > 0
         num >= 0
 
+
+--> what logic block statements do we need first?
+
 l"""{
-    1. 2 > 0           algebra
-    2. a >= 0          (some justification)
+    1. 2 > 0                algebra
+    2. a >= 0               (some justification)
 }"""
 
 x = a % 2
 
+
+
+
 /////////////////////////////////////
+
+(stopped here -- will pick up from here on Tuesday
 
 Logika is aware that all division is integer division.
 
@@ -211,11 +318,24 @@ l"""{
 
 
 
+
+
+
+
+
+
+But what if we also know that x is a multiple of 3?
+
+
+
+
+
 /////////////////////////////////////
 
 Example (assign2.logika): write a program that:
 
 - gets a positive input number (and also saves it to an orig val)
+
 - multiplies the input number by 2
         - (the number should be even now)
 
@@ -225,7 +345,9 @@ Example (assign2.logika): write a program that:
 - divide the result by 2 and subtract 1
         - (the number should be back to the original)
 
+
 Example: suppose input is 3
+
 
 First: write all asserts (what should be true after each step)
 
@@ -240,4 +362,5 @@ help it. Try to express things with multiplication instead.
 
 //////////////////////////////////
 
+Next time: verifying programs with conditional statements
 

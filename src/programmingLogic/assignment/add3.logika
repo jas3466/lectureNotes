@@ -2,31 +2,37 @@
 
 import org.sireum.logika._
 
-var x: Z = readInt("Enter a number: ")
+var x: Z = readInt("Enter a positive number: ")
 val orig: Z = x
+assume(x > 0)
 
 //orig will always be the original user input value
 
 //what can we put in a logic block here?
 
-
-
-
 x = x + 1
 
 //what can we put in a logic block here?
-
-
-
-
+l"""{
+    1. x == x_old + 1               premise
+    2. orig == x_old                premise
+    3. x == orig + 1                subst2 2 1
+    4. x_old > 0                    premise
+    5. x > 0                        algebra 1 4
+}"""
 
 x = x + 2
 
+l"""{
+    1. x == x_old + 2               premise
+    2. x_old == orig + 1            premise
+    3. x == orig + 3                algebra 1 2
+    4. x_old > 0                    premise
+    5. x > 0                        algebra 1 4
+    6. x == orig+3 ^ x > 0          ^i 3 5
+}"""
+
 //what can we put in a logic block here?
 
-
-
-
-
-
 //what do we want to assert? How has x changed?
+assert(x == orig+3 & x > 0)

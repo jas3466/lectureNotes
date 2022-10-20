@@ -1,5 +1,7 @@
 //Thurs Oct 20
 
+//recommend: try this one on your own
+
 import org.sireum.logika._
 
 var num: Z = readInt()
@@ -8,22 +10,16 @@ val diff: Z = readInt()
 
 //Add a logic block
 
-
-
-
-
 num = num + diff
 
 //what do we know now?
 //add a logic block
 
-
-
-
-
 num = num - diff
-print("originally ", orig, " back to ", num)
+print("original input: ", orig, " final value: ", num)
 
 //what do we know now about num?
 //Add an assert statement
 //add a logic block
+
+assert(num == orig)
