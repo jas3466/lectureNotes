@@ -1,4 +1,4 @@
-//Tues Oct 25
+//Tues Oct 25 --> will do on Thurs Oct 27
 
 import org.sireum.logika._
 
@@ -13,7 +13,7 @@ var numEven: B = false
 
 
 if (num % 2 == 0) {
-    even = true
+    numEven = true
 } else {
     //do nothing
 }

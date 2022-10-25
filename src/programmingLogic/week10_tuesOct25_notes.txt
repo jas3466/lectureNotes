@@ -1,4 +1,11 @@
-HW 9 due Thursday, October 29
+HW 9 due Thursday, October 27
+
+last problem: get input number, do something with the tens digit and the ones digit
+
+What if "num" is our user input (say, num = 57):
+
+val onesPlace: Z = num % 10 //would be 7
+val tensPlace: Z = num / 10 //would be 5
 
 ////////////////////////
 
@@ -15,12 +22,15 @@ Logika is aware that all division is integer division.
 This will not validate!!! (why?)
 
 l"""{
-    1. x == (x/3) * 3           algebra
+    1. 3 != 0                   algebra
+    2. x % 3 == 0               (???)
+    3. x == (x/3) * 3           algebra 2
 }"""
 
 
 
-
+x = 8. in this case, x/3 would be 2, so (x/3)*3 would be 6. Not equal.
+x = 9. in this case, the equation would work out. (x/3)*3 would be 9.
 
 
 
@@ -35,11 +45,17 @@ Reminders:
 
 What do we need before num / denom?
 
-
+{"""
+    1. denom != 0           (some reason)
+}"""
 
 
 What do we need before num % denom?
 
+{"""
+    1. num >= 0             (some reason)
+    2. denom > 0            (some reason)
+}"""
 
 
 
@@ -75,6 +91,14 @@ Try to avoid using division in logic blocks if you can
 help it. Try to express things with multiplication instead.
 
 /////////////////////////////////
+
+if (condition) {
+
+}
+
+
+
+
 
 if (condition) {
 
@@ -216,6 +240,9 @@ Revisit the max example (maxOfTwo.logika)
 - what claim will be different in the two branches?
 - finish the validation
 
+
+////////////////////////////////
+(stopped here -- rest will be on Thurs Oct 27)
 
 ////////////////////////////////
 
