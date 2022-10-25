@@ -1,0 +1,28 @@
+//Tues Oct 25
+
+import org.sireum.logika._
+
+var num: Z = readInt("Enter a non-negative number: ")
+
+assume (num >= 0)
+
+var numEven: B = false
+
+//use modulus, p % q, what previous statements are needed?
+
+
+
+if (num % 2 == 0) {
+    even = true
+} else {
+    //do nothing
+}
+
+//IF num was even, THEN numEven is true
+//IF num was odd (not even), THEN numEven is false
+
+
+
+//asserts can't use ->
+
+//what equivalent asserts could we write?

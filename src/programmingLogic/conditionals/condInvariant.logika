@@ -1,0 +1,33 @@
+//Tues Oct 25
+
+import org.sireum.logika._
+
+var total: Z = 0
+var pos: Z = 0
+var nonPos: Z = 0
+
+// Prove the invariant
+//      total == pos + nonPos
+// holds BEFORE the conditional statement
+
+
+//want this assert to hold
+assert (total == pos + nonPos)
+
+val x: Z = readInt()
+
+if (x > 0) {
+    pos = pos + 1
+    total = total + 1
+} else {
+    nonPos = nonPos + 1
+    total = total + 1
+}
+
+
+
+//prove invariant property: total == pos + nonPos
+//is still true AFTER the conditional
+
+//want this assert to hold
+assert(total == pos + nonPos)

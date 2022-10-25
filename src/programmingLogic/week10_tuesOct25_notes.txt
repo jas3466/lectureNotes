@@ -1,0 +1,244 @@
+HW 9 due Thursday, October 29
+
+////////////////////////
+
+Today:
+
+- example with division and modulo
+- verifying programs with conditional statements
+
+////////////////////////
+
+Logika is aware that all division is integer division.
+
+
+This will not validate!!! (why?)
+
+l"""{
+    1. x == (x/3) * 3           algebra
+}"""
+
+
+
+
+
+
+
+
+
+But what if we also know that x is a multiple of 3?
+
+
+/////////////////////////////////////
+
+Reminders:
+
+What do we need before num / denom?
+
+
+
+
+What do we need before num % denom?
+
+
+
+
+
+/////////////////////////////////////
+
+Example (assign2.logika): write a program that:
+
+- gets a positive input number (and also saves it to an orig val)
+
+- multiplies the input number by 2
+        - (the number should be even now)
+
+- adds 2 to my running total
+        - (the number should still be even)
+
+- divide the result by 2 and subtract 1
+        - (the number should be back to the original)
+
+
+Example: suppose input is 3
+
+
+First: write all asserts (what should be true after each step)
+
+Next: add necessary logic blocks
+
+//////////////////////////////////
+
+When working with multiplication and division...
+
+Try to avoid using division in logic blocks if you can
+help it. Try to express things with multiplication instead.
+
+/////////////////////////////////
+
+if (condition) {
+
+} else {
+
+}
+
+
+--> want to be able to reason about programs with conditionals
+
+
+/////////////////////////////////
+
+(maxOfTwo.logika)
+
+Example: max of two numbers
+
+1) write our assert -- how do we know our program found the max?
+
+2) write the code
+
+...we still need to prove our assert
+
+
+
+
+
+
+////////////////////////////////
+
+How to validate programs with conditionals.
+
+if (C) {
+
+} else {
+
+}
+
+assert(something)
+
+/////////////////////////////////
+
+Each branch reaches a different conclusion:
+
+l"""{
+    1. P
+}"""
+
+if (C) {
+    l"""{
+        1. P            premise
+        2. C            premise
+    }"""
+
+    claims
+
+    l"""{
+        1. Q1           (some justification)
+    }"""
+
+} else {
+    l"""{
+        1. P            premise
+        2. !(C)         premise
+    }"""
+
+    claims
+
+    l"""{
+        1. Q2           (some justification)
+    }"""
+}
+
+l"""{
+    1. Q1 V Q2          premise
+}"""
+
+
+The claim last logic block above is what we learned from the
+two branches. If they reached different conclusions, Q1 and Q2,
+then we know at least one of those claims is true after the
+conditional (so we can claim Q1 V Q2).
+
+/////////////////////////////
+
+Each branch reaches the same conclusion.
+
+l"""{
+    1. P
+}"""
+
+if (C) {
+    l"""{
+        1. P            premise
+        2. C            premise
+    }"""
+
+    claims
+
+    l"""{
+        1. Q            (some justification)
+    }"""
+
+} else {
+    l"""{
+        1. P            premise
+        2. !(C)         premise
+    }"""
+
+    claims
+
+    l"""{
+        1. Q            (some justification)
+    }"""
+}
+
+l"""{
+    1. Q                premise
+}"""
+
+If both blocks reach the same conclusion, Q, we know that
+Q must be true after the conditional.
+
+What rule is this similar to?
+
+
+
+//////////////////////////////////
+
+Note that there might be MULTIPLE claims in each branch.
+- Some we might tie together with V afterward
+- Some we might claim by themselves afterward
+
+/////////////////////////////////
+
+Revisit the max example (maxOfTwo.logika)
+
+- what claims can we make in BOTH branches?
+- what claim will be different in the two branches?
+- finish the validation
+
+
+////////////////////////////////
+
+Proving an invariant in a program with conditionals (condInvariant.logika)
+
+What is an invariant?
+    statement that remains true after each atomic unit of work
+
+- show the invariant is true BEFORE the conditional
+- show the invariant is still true AFTER the conditional
+
+See example (condInvariant.logika)
+    --> this is similar to what we will do to prove
+        the correctness of loops
+
+////////////////////////////
+
+(isEven.logika)
+
+If time: check whether an input number is even
+
+boolean type (B)
+
+///////////////////////////
+
+Next: verifying nested conditional statements

@@ -1,0 +1,23 @@
+//Tues Oct 25
+
+import org.sireum.logika._
+
+var x: Z = readInt()
+var y: Z = readInt()
+
+var max: Z = 0
+
+//how would we update max to be the biggest of x and y?
+
+
+
+
+
+//we WANT max to correctly be the biggest between x and y
+println("Biggest number is: ", max)
+
+
+
+
+
+//what do we want to be able to assert to know our program worked?
