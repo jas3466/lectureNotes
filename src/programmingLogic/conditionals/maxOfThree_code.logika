@@ -1,0 +1,31 @@
+//Thurs Oct 25
+
+//just the code for finding the biggest of three numbers
+
+import org.sireum.logika._
+
+val a: Z = readInt()
+val b: Z = readInt()
+val c: Z = readInt()
+var max: Z = 0
+
+
+if (a >= b) {
+    //what do we know is NOT the max?
+    if (a >= c) {
+        max = a
+    } else {
+        max = c
+    }
+} else {
+    //what do we know is NOT the max?
+    if (b >= c) {
+        max = b
+    } else {
+        max = c
+    }
+}
+
+print("Max between ", a, ", ", b, " and ", c, " is ", max)
+
+//What do we want to assert to know we have the max

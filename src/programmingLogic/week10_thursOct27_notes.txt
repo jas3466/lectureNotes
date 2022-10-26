@@ -1,0 +1,76 @@
+HW 9 due Thursday, October 27
+    Problems 4 and 5 involve writing a Logika program.
+    Add to top of file:
+
+    import org.sireum.logika._
+
+Will post HW 10 after class (is over verifying conditional statements)
+
+////////////////
+
+Today:
+- more with conditional statements
+- nested conditional statements
+
+////////////////
+
+Reminder:
+
+code / logic blocks
+
+if (condition) {
+    //what can I claim as a premise here?
+} else {
+    //what can I claim as a premise here?
+}
+
+l"""{
+    1. claim            premise //what needs to be true about claim?
+    2. first V second   premise //what needs to be true about first and second?
+}"""
+
+/////////////////
+
+Proving an invariant in a program with conditionals (condInvariant.logika)
+
+What is an invariant?
+    statement that remains true after each atomic unit of work
+
+- show the invariant is true BEFORE the conditional
+- show the invariant is still true AFTER the conditional
+
+See example (condInvariant.logika)
+    --> this is similar to what we will do to prove
+        the correctness of loops
+
+////////////////////////////
+
+(isEven.logika)
+
+check whether an input number is even
+
+boolean type (B)
+
+/////////////////////////
+
+Absolute value (abs.logika)
+
+First, write assert
+Next, write code
+Finally, do verification
+
+////////////////////////
+
+Max of 3 (maxOfThree_code.logika and maxOfThree_logic.logika)
+
+Look at code
+
+How to verify nested conditionals?
+
+How to assert we have the biggest of 3?
+
+Finish the verification
+
+//////////////////////
+
+Next: verifying programs with functions

@@ -1,0 +1,69 @@
+//Thurs Oct 25
+
+//the logic for proving we have the biggest of three numbers
+
+import org.sireum.logika._
+
+val a: Z = readInt()
+val b: Z = readInt()
+val c: Z = readInt()
+var max: Z = 0
+
+
+if (a >= b) {
+    if (a >= c) {
+        max = a
+
+        l"""{
+            //FILL IN
+        }"""
+    } else {
+        max = c
+
+        l"""{
+            //FILL IN
+        }"""
+    }
+    l"""{
+        //FILL IN
+    }"""
+} else {
+    if (b >= c) {
+        max = b
+
+        l"""{
+            1. !(a >= b)                        premise
+            2. b >= c                           premise
+            3. max == b                         premise
+            4. max >= a                         algebra 3 1
+            5. max >= b                         algebra 3
+            6. max >= c                         algebra 3 2
+            7. max >= a ^ max >= b              ^i 4 5
+            8. max >= a ^ max >= b ^ max >= c   ^i 7 6
+        }"""
+    } else {
+        max = c
+
+        l"""{
+            1. !(a >= b)                        premise
+            2. !(b >= c)                        premise
+            3. max == c                         premise
+            4. max >= a                         algebra 3 1 2
+            5. max >= b                         algebra 3 2
+            6. max >= c                         algebra 3
+            7. max >= a ^ max >= b              ^i 4 5
+            8. max >= a ^ max >= b ^ max >= c   ^i 7 6
+        }"""
+    }
+    l"""{
+        //FILL IN
+        //what was true in both branches?
+        //what was different in the two branches?
+    }"""
+}
+
+//summarize both branches
+
+print("Max between ", a, ", ", b, " and ", c, " is ", max)
+assert(max >= a & max >= b & max >= c)
+assert(max == a | max == b | max == c)

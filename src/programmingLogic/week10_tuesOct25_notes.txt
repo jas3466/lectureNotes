@@ -260,6 +260,16 @@ See example (condInvariant.logika)
 
 ////////////////////////////
 
+How could we assert something like:
+
+if (this happened) then (this is true)
+
+p -> q?
+
+can't use -> in assert statements
+
+////////////////////////////
+
 (isEven.logika)
 
 If time: check whether an input number is even
@@ -268,4 +278,12 @@ boolean type (B)
 
 ///////////////////////////
 
-Next: verifying nested conditional statements
+(abs.logika)
+
+Write program to find absolute value, add assert and verify
+
+//////////////////////////
+
+Nested conditional statements.
+
+Write max of three code (maxOfThree.logika)

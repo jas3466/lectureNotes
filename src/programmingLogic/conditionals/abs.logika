@@ -1,0 +1,7 @@
+//Thurs Oct 27
+
+val num: Z = readInt("Enter a number: ")
+
+//update num to be absolute value of the input
+
+//how do we know we were right?
