@@ -1,4 +1,4 @@
-//Tues Oct 25 --> will complete on Thurs Oct 27
+//Thurs Oct 27
 
 import org.sireum.logika._
 
@@ -9,18 +9,55 @@ assume (num >= 0)
 var numEven: B = false
 
 //use modulus, p % q, what previous statements are needed?
+//p >= 0, q > 0
 
-
+l"""{
+    1. 2 > 0                algebra //needed for %
+    2. num >= 0             premise //from assume, needed for %
+}"""
 
 if (num % 2 == 0) {
     numEven = true
+    l"""{
+        1. num % 2 == 0         premise //condition is true
+        2. numEven == true      premise //from variable assignment
+    }"""
 } else {
     //do nothing
+
+    l"""{
+        1. !(num % 2 == 0)      premise //condition is false
+        2. numEven == false     premise //numEven hasn't changed
+        3. num % 2 != 0         algebra 1
+    }"""
 }
 
-//IF num was even, THEN numEven is true
-//IF num was odd (not even), THEN numEven is false
+l"""{
+    //for each one, looking to build one part in if, one part in else
+    10. numEven == true V num % 2 != 0      premise
+    11. num % 2 == 0 V numEven == false     premise
+    12. {
+        13. numEven == true                 assume
+        14. num % 2 != 0 V numEven == true  Vi2 13
+    }
+    15. {
+        16. num % 2 != 0                    assume
+        17. num % 2 != 0 V numEven == true  Vi1 16
+    }
+    18. num % 2 != 0 V numEven == true      Ve 10 12 15
+}"""
 
+// p V q |- q V p
+
+//IF num was even, THEN numEven is true
+//can't use -> in assert
+//p -> q is equivalent to !p V q
+//p -> q is only false when p is true and q is false
+//!p V q is only false when p is true and q is false
+assert(num % 2 != 0 | numEven == true)
+
+//IF num was odd (not even), THEN numEven is false
+assert(num % 2 == 0 | numEven == false)
 
 
 //asserts can't use ->

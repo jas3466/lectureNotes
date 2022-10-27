@@ -1,4 +1,4 @@
-//Tues Oct 25 --> will do on Thurs Oct 27
+//Thurs Oct 27
 
 import org.sireum.logika._
 
@@ -10,6 +10,15 @@ var nonPos: Z = 0
 //      total == pos + nonPos
 // holds BEFORE the conditional statement
 
+//-3
+
+
+l"""{
+    1. total == 0                           premise
+    2. pos == 0                             premise
+    3. nonPos == 0                          premise
+    4. total == pos + nonPos                algebra 1 2 3
+}"""
 
 //want this assert to hold
 assert (total == pos + nonPos)
@@ -18,13 +27,51 @@ val x: Z = readInt()
 
 if (x > 0) {
     pos = pos + 1
+    l"""{
+        1. x > 0                    premise //condition is true
+        2. pos == pos_old + 1       premise //from variable assignment
+        3. total == 0               premise //total hasn't changed
+        4. nonPos == 0              premise //nonPos hasn't changed
+        5. pos_old == 0             premise //pos was 0 before the latest update
+        6. total == pos_old + nonPos    premise //from the previous invariant, pos has changed
+        7. pos == 1                 algebra 2 5
+    }"""
+
     total = total + 1
+    l"""{
+        1. total == total_old + 1   premise //from variable assignment
+        2. total_old == 0           premise //total just changed, was prev. 0
+        3. nonPos == 0              premise //nonPos is still 0
+        4. pos == 1                 premise //pos hasn't changed from being 1
+        5. total == 1               algebra 1 2
+        6. total == pos + nonPos    algebra 3 4 5
+    }"""
 } else {
     nonPos = nonPos + 1
+    l"""{
+        1. !(x > 0)                 premise //!(condition) since we're in else
+        2. nonPos == nonPos_old + 1 premise //from variable assignment
+        3. nonPos_old == 0          premise //nonPos was 0, just chaned
+        4. total == 0               premise //total hasn't changed
+        5. pos == 0                 premise //pos hasn't changed
+        6. nonPos == 1              algebra 2 3
+    }"""
+
     total = total + 1
+    l"""{
+        1. nonPos == 1              premise //nonPos hasn't changed since being 1
+        2. total == total_old + 1   premise //from variable assignment
+        3. total_old == 0           premise //old value was 0
+        4. pos == 0                 premise //pos hasn't changed
+        5. total == 1               algebra 2 3
+        6. total == pos + nonPos    algebra 1 4 5
+    }"""
 }
 
-
+l"""{
+    //needs to be true at end of if and at end of else
+    1. total == pos + nonPos        premise
+}"""
 
 //prove invariant property: total == pos + nonPos
 //is still true AFTER the conditional

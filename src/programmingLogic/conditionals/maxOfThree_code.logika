@@ -1,12 +1,12 @@
-//Thurs Oct 25
+//Thurs Oct 25 --> will do Tues Nov 1
 
 //just the code for finding the biggest of three numbers
 
 import org.sireum.logika._
 
-val a: Z = readInt()
-val b: Z = readInt()
-val c: Z = readInt()
+val a: Z = readInt()    //suppose a is 3
+val b: Z = readInt()    //suppose b is 5
+val c: Z = readInt()    //suppose c is 10
 var max: Z = 0
 
 
@@ -26,6 +26,8 @@ if (a >= b) {
     }
 }
 
+//Reminder: how do we run Logika programs?
 print("Max between ", a, ", ", b, " and ", c, " is ", max)
 
-//What do we want to assert to know we have the max
+//How do we know we have the max?
+// --> break apart: what assert(s) do we need to know max is the biggest of the input values?

@@ -1,4 +1,4 @@
-//Thurs Oct 25
+//Thurs Oct 25 --> will do Tues Nov 1
 
 //the logic for proving we have the biggest of three numbers
 
@@ -38,8 +38,6 @@ if (a >= b) {
             4. max >= a                         algebra 3 1
             5. max >= b                         algebra 3
             6. max >= c                         algebra 3 2
-            7. max >= a ^ max >= b              ^i 4 5
-            8. max >= a ^ max >= b ^ max >= c   ^i 7 6
         }"""
     } else {
         max = c
@@ -51,8 +49,6 @@ if (a >= b) {
             4. max >= a                         algebra 3 1 2
             5. max >= b                         algebra 3 2
             6. max >= c                         algebra 3
-            7. max >= a ^ max >= b              ^i 4 5
-            8. max >= a ^ max >= b ^ max >= c   ^i 7 6
         }"""
     }
     l"""{
@@ -65,5 +61,7 @@ if (a >= b) {
 //summarize both branches
 
 print("Max between ", a, ", ", b, " and ", c, " is ", max)
-assert(max >= a & max >= b & max >= c)
+assert(max >= a)
+assert(max >= b)
+assert(max >= c)
 assert(max == a | max == b | max == c)

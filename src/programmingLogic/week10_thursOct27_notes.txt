@@ -1,4 +1,4 @@
-HW 9 due Thursday, October 27
+HW 9 due tonight
     Problems 4 and 5 involve writing a Logika program.
     Add to top of file:
 
@@ -16,17 +16,32 @@ Today:
 
 Reminder:
 
-code / logic blocks
+
+some previous claim
 
 if (condition) {
-    //what can I claim as a premise here?
+    //what can I list as a premise here?
+
+    l"""{
+        1. condition                premise
+        2. some previous claim      premise
+    }"""
+
+
 } else {
-    //what can I claim as a premise here?
+    //what can I list as a premise here?
+
+    l"""{
+        1. !(condition)             premise
+        2. some previous claim      premise
+    }"""
+
 }
 
 l"""{
-    1. claim            premise //what needs to be true about claim?
-    2. first V second   premise //what needs to be true about first and second?
+    1. claim            premise //"claim" would need to be in if and else logic blocks
+    2. first V second   premise //"first" must be claim from if, "second"
+                                //must be claim from "else"
 }"""
 
 /////////////////
@@ -60,6 +75,8 @@ Next, write code
 Finally, do verification
 
 ////////////////////////
+
+--> will do this example next Tuesday, November 1
 
 Max of 3 (maxOfThree_code.logika and maxOfThree_logic.logika)
 
