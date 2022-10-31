@@ -1,4 +1,4 @@
-//Thurs Oct 25 --> will do Tues Nov 1
+//Tues Nov 1
 
 //just the code for finding the biggest of three numbers
 
@@ -30,4 +30,4 @@ if (a >= b) {
 print("Max between ", a, ", ", b, " and ", c, " is ", max)
 
 //How do we know we have the max?
-// --> break apart: what assert(s) do we need to know max is the biggest of the input values?
+//what assert(s) do we want?

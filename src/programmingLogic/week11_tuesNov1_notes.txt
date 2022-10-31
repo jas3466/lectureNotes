@@ -1,0 +1,91 @@
+HW 10 due Thursday, November 3
+
+////////////////
+
+Today:
+- nested conditional statements
+- verifying functions
+
+////////////////
+
+Max of 3 (maxOfThree_code.logika and maxOfThree_logic.logika)
+
+Look at code
+
+How to verify nested conditionals?
+
+How to assert we have the biggest of 3?
+
+Finish the verification
+
+//////////////////////
+
+Verifying programs with functions.
+
+
+
+Function contracts - just under function definition:
+
+l"""{
+    requires (precondition)
+    modifies (list of variables)
+    ensures (postcondition)
+}"""
+
+
+Requires/precondition:
+- any assumptions we need to make about the parameters
+- user must prove these requirements BEFORE calling the function
+- list preconditions as PREMISES in first logic block in function
+- can have several preconditions -- put on the next lines, tabbed over
+
+
+Modifies:
+- list of any sequences or global variables modified by this function
+- we won't be using until we get to sequences
+
+
+Ensures/postcondition:
+- describes what the function returns
+    result == (describe the value being returned)
+
+- user can use a postcondition as a PREMISE in a logic block
+    after calling the function
+- describes any changes the function makes to sequences/globals
+- can have several postconditions -- put on the next lines, tabbed over
+
+
+/////////////////////////////////
+
+Example: plusOne.logika
+
+
+Write function contract for plusOne
+
+Prove the postcondition for plusOne
+
+Validate the assert after calling plusOne
+
+/////////////////////////////////
+
+Example: tickets.logika
+- find the total cost of tickets based on adult/child numbers
+- each adult ticket is $50, and each child ticket is $30
+
+- what do we need as preconditions?
+- what should be the postcondition?
+
+--> write the code
+--> prove the postcondition
+--> write test code to call getTicketCosts
+--> add an assert
+--> validate the assert
+
+//////////////////////////////////
+
+Example: put our abs code in a function (absFn.logika)
+
+
+/////////////////////////////////
+
+Next time: recursive functions

@@ -1,0 +1,25 @@
+//Tues Nov 1
+
+import org.sireum.logika._
+
+def plusOne(n: Z): Z = {
+    //what goes here?
+
+    val answer: Z = n+1
+
+    //what do we need to do before returning?
+
+    return answer
+}
+
+////////// Test code ///////////////
+
+var x: Z = 5
+
+//do we need a logic block here?
+
+var added: Z = plusOne(x)
+
+//how do we get the assert to hold?
+
+assert(added == 6)

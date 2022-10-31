@@ -1,0 +1,59 @@
+// Tues Nov 1
+
+
+// This was our code for absolute value
+
+// modify it to be in a function
+
+//Thurs Oct 27
+import org.sireum.logika._
+
+val num: Z = readInt("Enter a number: ")
+var answer: Z = 0
+
+//update answer to be absolute value of num
+
+if (num < 0) {
+    answer = -1*num
+
+    l"""{
+        1. num < 0              premise //condition is true
+        2. answer == -1*num     premise //from variable assignment
+        3. answer >= 0          algebra 1 2 //also the case that answer > 0,
+                                            //but we want the claim "answer >= 0"
+
+        4. answer + num == 0    algebra 1 2
+    }"""
+} else {
+    answer = num
+
+    l"""{
+        1. !(num < 0)           premise //condition is false
+        2. num >= 0             algebra 1
+        3. answer == num        premise //from variable assignment
+        4. answer >= 0          algebra 2 3
+        5. answer - num == 0    algebra 3
+    }"""
+}
+
+l"""{
+    //need answer >= 0 in both if and else
+    10. answer >= 0                                 premise
+
+    //need "answer + num == 0" from if, and "answer - num == 0" from else
+    11. answer + num == 0 V answer - num == 0       premise
+}"""
+
+//how do we know we were right?
+
+print(answer)           //should print the absolute value of num
+                        //user entered -5, should print 5
+                        //if they entered 3, should print 3
+
+
+assert(answer >= 0)
+assert(answer + num == 0 | answer - num == 0)
+
+//OR, could have done: assert(answer == num | answer == -1*num)
+
+// --> break apart: what assert(s) do we need to know answer is the absolute value of num?

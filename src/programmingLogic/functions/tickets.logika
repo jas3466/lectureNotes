@@ -1,0 +1,22 @@
+//Tues Nov 1
+
+import org.sireum.logika._
+
+    //adult tickets: $50
+    //kid tickets: $30
+def getTicketCosts(adult: Z, kid: Z): Z = {
+
+    //want to return the total ticket cost
+}
+
+////////////// Test code /////////////////
+
+val k: Z = 3
+val a: Z = 2
+
+//what goes here?
+val cost: Z = getTicketCosts(a, k)
+
+//what goes here?
+
+//what *should* cost be?
