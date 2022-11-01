@@ -81,7 +81,9 @@ Example: tickets.logika
 --> add an assert
 --> validate the assert
 
-//////////////////////////////////
+////////////////////////////////// --> stopped here
+
+Do this on Thursday.
 
 Example: put our abs code in a function (absFn.logika)
 

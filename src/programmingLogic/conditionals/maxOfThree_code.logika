@@ -11,23 +11,40 @@ var max: Z = 0
 
 
 if (a >= b) {
-    //what do we know is NOT the max?
+    //what do we know is NOT the max? b
     if (a >= c) {
         max = a
+
+        //logic block here
     } else {
         max = c
+
+        //logic block here
     }
+    //summary logic block
 } else {
-    //what do we know is NOT the max?
+    //what do we know is NOT the max? a, because it is smaller then b
     if (b >= c) {
         max = b
+
+        //block here
     } else {
         max = c
+
+        //block here
     }
+
+    //summary logic block
 }
+
+//overall summary here
 
 //Reminder: how do we run Logika programs?
 print("Max between ", a, ", ", b, " and ", c, " is ", max)
 
 //How do we know we have the max?
 //what assert(s) do we want?
+assert(max >= a)
+assert(max >= b)
+assert(max >= c)
+assert(max == a | max == b | max == c)

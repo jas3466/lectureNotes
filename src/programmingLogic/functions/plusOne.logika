@@ -3,11 +3,21 @@
 import org.sireum.logika._
 
 def plusOne(n: Z): Z = {
-    //what goes here?
+    //what goes here? function contract
+    l"""{
+        ensures result == n + 1
+    }"""
 
     val answer: Z = n+1
 
     //what do we need to do before returning?
+    //it needs to prove its postcondition
+    //need to show: answer == n + 1
+
+    l"""{
+        1. answer == n + 1          premise //from the assignment
+                                            //proves the postcondition
+    }"""
 
     return answer
 }
@@ -17,9 +27,16 @@ def plusOne(n: Z): Z = {
 var x: Z = 5
 
 //do we need a logic block here?
+//no, because the function has no requires clause
 
 var added: Z = plusOne(x)
 
 //how do we get the assert to hold?
+
+l"""{
+    1. added == x + 1       premise //from the postcondition
+    2. x == 5               premise //x hasn't changed
+    3. added == 6           algebra 1 2 //satisfies the assert
+}"""
 
 assert(added == 6)

@@ -1,11 +1,10 @@
-// Tues Nov 1
+// Tues Nov 1 --> do on Thurs Nov 3
 
 
 // This was our code for absolute value
 
 // modify it to be in a function
 
-//Thurs Oct 27
 import org.sireum.logika._
 
 val num: Z = readInt("Enter a number: ")
@@ -46,14 +45,5 @@ l"""{
 
 //how do we know we were right?
 
-print(answer)           //should print the absolute value of num
-                        //user entered -5, should print 5
-                        //if they entered 3, should print 3
-
-
 assert(answer >= 0)
 assert(answer + num == 0 | answer - num == 0)
-
-//OR, could have done: assert(answer == num | answer == -1*num)
-
-// --> break apart: what assert(s) do we need to know answer is the absolute value of num?

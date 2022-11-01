@@ -16,25 +16,42 @@ if (a >= b) {
 
         l"""{
             //FILL IN
+            1. a >= b               premise //we are in the outer if
+            2. a >= c               premise //we are in the inner if
+            3. max == a             premise //we assigned max to a
+            4. max >= a             algebra 3 //needed for assert
+            5. max >= b             algebra 1 3 //needed for assert
+            6. max >= c             algebra 2 3 //needed for assert
         }"""
     } else {
         max = c
 
         l"""{
             //FILL IN
+            1. a >= b               premise //we are in the outer if
+            2. !(a >= c)            premise //we are in the inner else
+            3. max == c             premise //we assigned max to c
+            4. a < c                algebra 2 //make it easier to read
+            5. max >= a             algebra 4 3 //needed for assert
+            6. max >= b             algebra 1 5 //needed for assert
+            7. max >= c             algebra 3   //needed for assert
         }"""
     }
     l"""{
         //FILL IN
+        1. max >= a                 premise //true in if and else
+        2. max >= b                 premise //true in if and else
+        3. max >= c                 premise //true in if and else
+        4. max == a V max == c      premise //LHS from if, RHS from else
     }"""
 } else {
     if (b >= c) {
         max = b
 
         l"""{
-            1. !(a >= b)                        premise
-            2. b >= c                           premise
-            3. max == b                         premise
+            1. !(a >= b)                        premise //in the else of the outer if
+            2. b >= c                           premise //in the inner if statement
+            3. max == b                         premise //from the assignment
             4. max >= a                         algebra 3 1
             5. max >= b                         algebra 3
             6. max >= c                         algebra 3 2
@@ -43,9 +60,9 @@ if (a >= b) {
         max = c
 
         l"""{
-            1. !(a >= b)                        premise
-            2. !(b >= c)                        premise
-            3. max == c                         premise
+            1. !(a >= b)                        premise //in the else of the outer if
+            2. !(b >= c)                        premise //in the inner else
+            3. max == c                         premise //assignment
             4. max >= a                         algebra 3 1 2
             5. max >= b                         algebra 3 2
             6. max >= c                         algebra 3
@@ -53,15 +70,56 @@ if (a >= b) {
     }
     l"""{
         //FILL IN
-        //what was true in both branches?
-        //what was different in the two branches?
+        1. max >= a                             premise //true in both
+        2. max >= b                             premise //true in both
+        3. max >= c                             premise //true in both
+        4. max == b V max == c                  premise //LHS from if, RHS from else
     }"""
 }
 
 //summarize both branches
+l"""{
+    1. max >= a                 premise //true in outer if and outer else
+    2. max >= b                 premise //same
+    3. max >= c                 premise //same
+    4. (max == a V max == c) V (max == b V max == c)    premise //LHS from outer if, RHS from outer else
+    5. {
+        6. max == a V max == c          assume //LHS of or from 4
+        7. {
+            8. max == a                 assume //LHS of or from 6
+            9. max == a V max == b      Vi1 8
+            10. max == a V max == b V max == c  Vi1 9
+        }
+        11. {
+            12. max == c                assume //RHS of of from 6
+            13. max == a V max == b V max == c  Vi2 12
+        }
+        14. max == a V max == b V max == c      Ve 6 7 11
+    }
+    15. {
+        16. max == b V max == c                 assume //RHS of or from 4
+        17. {
+            18. max == b                        assume //LHS of or from 16
+            19. max == a V max == b             Vi2 18
+            20. max == a V max == b V max == c  Vi1 19
+        }
+        21. {
+            22. max == c                        assume //LHS of or from 16
+            23. max == a V max == b V max == c  Vi2 22
+        }
+        24. max == a V max == b V max == c      Ve 16 17 21
+    }
+    25. max == a V max == b V max == c          Ve 4 5 15
+}"""
 
 print("Max between ", a, ", ", b, " and ", c, " is ", max)
+
+//these three need to be shown in ALL possible branches
 assert(max >= a)
 assert(max >= b)
 assert(max >= c)
+
+//one of these should be true in each branch
+//we will pull together if V else afterwards
 assert(max == a | max == b | max == c)
+//equivalent to: (max == a V max == b) V max == c
