@@ -1,0 +1,22 @@
+//Thurs Nov 3
+
+import org.sireum.logika._
+
+
+//x + x + ... + x (y times)
+def mult(x: Z, y: Z): Z = {
+    //want to return x * y, through repeated addition
+    //use recursion
+
+
+}
+
+////////////// Test code //////////////
+
+val a: Z = 5
+val b: Z = 4
+
+//call mult to get the product between a and b
+var answer: Z = mult(a, b)
+
+//what do we want to assert that it is?

@@ -1,0 +1,98 @@
+HW 10 due tonight
+
+HW 11 will be posted after class
+
+/////////////////////////////////
+
+Today:
+- if-statements in functions
+- recursive functions
+
+////////////////////////////////
+
+Reminder: function contracts
+
+l"""{
+    requires (preconditions)
+    ensures (postconditions)
+}"""
+
+preconditions:
+
+postconditions:
+
+
+
+Four steps:
+1) What should be done before calling the function?
+
+2) What can the function itself do with the precondition?
+
+3) What must the function do with the postcondition?
+
+
+
+4) What can the calling code do with the postcondition after
+    the function returns?
+
+    x = function(param)
+
+
+/////////////////////////////////
+
+Example: put our abs code in a function (absFn.logika)
+
+
+/////////////////////////////////
+
+
+Recursive functions
+
+- exactly the same idea
+
+ --> recursive call should go on its own line, like:
+        total = recursiveCall(params)
+
+    NOT combined with an expression:
+        total = total + recursiveCall(params)
+
+/////////////////////////////////
+
+Example (mult_recursive.logika):
+
+- write recursive mult function (mult_recursive.logika)
+
+
+
+- how would we verify it?
+
+///////////////////////////////
+
+SumOdds example (sumOdds_recursive.logika)
+
+Want to get sum of first n odd numbers
+
+First 2 odd numbers?
+
+First 5 odd numbers?
+
+
+--> How do we find the nth odd number, starting with 1?
+    (Hint: 2*n is the nth even number)
+
+
+- write the code
+
+- write the function contract
+
+- verify it (with some test code)
+
+/////////////////////////////
+
+Next:
+Logika facts (create recursive definitions to use in postconditions)
+Start verifying loops
+
+--> on HW 11, problem 4 uses a Logika fact and problem 5 has a loop
+--> we will cover those topics on Tuesday, but you have seen everything
+    for problems 1-3
