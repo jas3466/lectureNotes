@@ -18,29 +18,58 @@ l"""{
 }"""
 
 preconditions:
+    - anything the function needs to assume
+    - parameters (any restrictions on the range of parameters)
 
 postconditions:
+    - promises from the function about what it will do / return
+    - result (use as a keyword for whatever is being returned)
+    - might make a promise about range of result (range of returned value)
+    - often, something like:
+        result == (an expression involving the parameters)
 
-
+//////////////////////////
 
 Four steps:
+
 1) What should be done before calling the function?
 
-2) What can the function itself do with the precondition?
+- you must show that whatever you are passing as parameters satisfy
+that function's preconditions
 
-3) What must the function do with the postcondition?
+2) What can the function itself do with the preconditions?
 
+- the function can list the preconditions as premises
 
+3) What must the function do with the postconditions?
+
+- before returning, function must prove ALL postcondition
+
+if a postcondition is: result > 0
+
+and we have:
+
+return answer
+
+we must prove:
+
+answer > 0
 
 4) What can the calling code do with the postcondition after
     the function returns?
 
     x = function(param)
 
+- use any postconditions of that function as premises
+
+maybe a postcondition is: result > 0
+
+x > 0
 
 /////////////////////////////////
 
 Example: put our abs code in a function (absFn.logika)
+
 
 
 /////////////////////////////////
@@ -56,9 +85,25 @@ Recursive functions
     NOT combined with an expression:
         total = total + recursiveCall(params)
 
+
+    Must do something like this instead:
+        temp = recursiveCall(params)
+        total = total + temp
+
+
+Before making a recursive call:
+    must prove the preconditions
+
+After returning from the recursive call:
+    you can list the postconditions as premises
+
 /////////////////////////////////
 
 Example (mult_recursive.logika):
+
+- write the function header, test code
+
+- write the function contract
 
 - write recursive mult function (mult_recursive.logika)
 
@@ -66,19 +111,27 @@ Example (mult_recursive.logika):
 
 - how would we verify it?
 
-///////////////////////////////
+/////////////////////////////// --> stopped here
+
+(will do rest on Tues Nov 9)
+
 
 SumOdds example (sumOdds_recursive.logika)
 
 Want to get sum of first n odd numbers
 
+
+
 First 2 odd numbers?
+
 
 First 5 odd numbers?
 
 
+
 --> How do we find the nth odd number, starting with 1?
     (Hint: 2*n is the nth even number)
+
 
 
 - write the code

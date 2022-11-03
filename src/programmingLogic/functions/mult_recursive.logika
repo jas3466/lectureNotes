@@ -8,7 +8,68 @@ def mult(x: Z, y: Z): Z = {
     //want to return x * y, through repeated addition
     //use recursion
 
+    l"""{
+        requires y >= 0 //(precondition) because that's the number of times I'm stepping
+        ensures result == x*y   //postcondition
+    }"""
 
+    var answer: Z = 0
+
+    //base case (no more recursive calls - you know the answer)
+    if (y == 0) {
+        //do nothing -- answer is already 0
+
+        l"""{
+            1. y == 0               premise //if statement is true
+            2. answer == 0          premise //from earlier assignment
+            3. answer == x*y        algebra 1 2
+        }"""
+
+    } else {
+        //y is > 0
+        //want to make a recursive call
+
+        //before making ANY function call, prove its precondition
+
+        l"""{
+            1. !(y == 0)                premise //if statement is NOT true
+            2. y >= 0                   premise //precondition is true
+            3. y > 0                    algebra 1 2
+            //need to show the precondition
+            //we are passing y-1 as the second parameter, so it needs to be >= 0
+            4. y-1 >= 0                 algebra 3
+        }"""
+
+        //add up y-1 x's
+        answer = mult(x, y-1)
+
+        l"""{
+            //list the postcondition
+            1. answer == x*(y-1)                premise //the postcondition
+        }"""
+
+        //add on one of the x's
+        answer = answer + x
+
+        l"""{
+            1. answer == answer_old + x         premise //from variable assignment
+            2. answer_old == x*(y-1)            premise //from the previous (about answer_old)
+            3. answer == x*(y-1) + x            algebra 1 2
+            4. answer == x*y - x + x            algebra 3
+            5. answer == x*y                    algebra 4
+        }"""
+    }
+
+
+    //need to prove postcondition
+    //must show it is true in both if and else
+    //answer == x*y
+
+    l"""{
+        1. answer == x*y                        premise
+    }"""
+
+    return answer
 }
 
 ////////////// Test code //////////////
@@ -17,6 +78,20 @@ val a: Z = 5
 val b: Z = 4
 
 //call mult to get the product between a and b
+
+//prove the precondition before calling function
+l"""{
+    1. b == 4                       premise // from assignment
+    2. b >= 0                       algebra 1 //proves the precondition
+}"""
 var answer: Z = mult(a, b)
 
+l"""{
+    1. answer == a*b                premise //from the postcondition
+    2. a == 5                       premise //from assignment
+    3. b == 4                       premise //from assignment
+    4. answer == 20                 algebra 1 2 3 //proves the assert
+}"""
+
 //what do we want to assert that it is?
+assert(answer == 20)

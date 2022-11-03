@@ -7,43 +7,81 @@
 
 import org.sireum.logika._
 
-val num: Z = readInt("Enter a number: ")
-var answer: Z = 0
+//abs should return the absolute value of num
+def abs(num: Z): Z = {
+    //function contract
+    l"""{
+        //no requires (will work on all parameters)
+        ensures
+            result >= 0
+            result + num == 0 V result - num == 0
+    }"""
 
-//update answer to be absolute value of num
+    var answer: Z = 0
 
-if (num < 0) {
-    answer = -1*num
+    //update answer to be absolute value of num
+
+    if (num < 0) {
+        answer = -1*num
+
+        l"""{
+            1. num < 0              premise //condition is true
+            2. answer == -1*num     premise //from variable assignment
+            3. answer >= 0          algebra 1 2 //also the case that answer > 0,
+                                                //but we want the claim "answer >= 0"
+
+            4. answer + num == 0    algebra 1 2
+        }"""
+    } else {
+        answer = num
+
+        l"""{
+            1. !(num < 0)           premise //condition is false
+            2. num >= 0             algebra 1
+            3. answer == num        premise //from variable assignment
+            4. answer >= 0          algebra 2 3
+            5. answer - num == 0    algebra 3
+        }"""
+    }
 
     l"""{
-        1. num < 0              premise //condition is true
-        2. answer == -1*num     premise //from variable assignment
-        3. answer >= 0          algebra 1 2 //also the case that answer > 0,
-                                            //but we want the claim "answer >= 0"
+        //need answer >= 0 in both if and else
+        10. answer >= 0                                 premise
 
-        4. answer + num == 0    algebra 1 2
+        //need "answer + num == 0" from if, and "answer - num == 0" from else
+        11. answer + num == 0 V answer - num == 0       premise
     }"""
-} else {
-    answer = num
 
-    l"""{
-        1. !(num < 0)           premise //condition is false
-        2. num >= 0             algebra 1
-        3. answer == num        premise //from variable assignment
-        4. answer >= 0          algebra 2 3
-        5. answer - num == 0    algebra 3
-    }"""
+    return answer
 }
 
-l"""{
-    //need answer >= 0 in both if and else
-    10. answer >= 0                                 premise
 
-    //need "answer + num == 0" from if, and "answer - num == 0" from else
-    11. answer + num == 0 V answer - num == 0       premise
+////////////////// Test code //////////////
+
+val x: Z = 4
+
+//before calling a function, prove that what you are passing
+//as parameters satisfy the preconditions
+
+val absX: Z = abs(x)
+
+l"""{
+    1. absX >= 0                                    premise //1st postconditon
+    2. absX + x == 0 V absX - x == 0                premise //2nd postcondition
+    3. x == 4                                       premise //from assignment
+    4. {
+        5. absX + x == 0                            assume //LHS of or
+        6. absX + 4 == 0                            algebra 3 5
+        7. absX == -4                               algebra 6
+        8. _|_                                      algebra 1 7
+        9. absX == 4                                _|_e 8
+    }
+    10. {
+        11. absX - x == 0                           assume //RHS of or
+        12. absX - 4 == 0                           algebra 3 11
+        13. absX == 4                               algebra 12
+    }
+    14. absX == 4                                   Ve 2 4 10
 }"""
 
-//how do we know we were right?
-
-assert(answer >= 0)
-assert(answer + num == 0 | answer - num == 0)
+assert(absX == 4)
