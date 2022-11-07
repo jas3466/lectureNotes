@@ -1,0 +1,16 @@
+//Tues Nov 8
+
+import org.sireum.logika._
+
+def mult(x: Z, y: Z): Z = {
+
+    var total: Z = 0
+    var i: Z = 0
+
+    while (i < y) {
+        total = total + x
+        i = i + 1
+    }
+
+    return total
+}

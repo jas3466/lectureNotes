@@ -1,0 +1,47 @@
+//Tues Nov 8
+
+import org.sireum.logika._
+
+//returns the sum of the first n even numbers
+//sumEvens(0) = 0
+//sumEvens(1) = 2
+//sumEvens(2) = 2 + 4 = 6
+//sumEvens(3) = 2 + 4 + 6 = 12
+//sumEvens(4) = 2 + 4 + 6 + 8 = 20
+//do you see a pattern?
+def sumEvens(n: Z): Z = {
+    l"""{
+        requires n >= 0
+        ensures result == n*(n+1)
+    }"""
+
+    var sum: Z = 0
+    var count: Z = 0
+    var even: Z = 2
+
+    while (count != n) {
+        l"""{
+            invariant sum == count*(count+1)
+                even == 2*(count+1)
+            modifies sum, count, even
+        }"""
+
+        count = count + 1
+
+        sum = sum + even
+
+        even = even + 2
+    }
+
+    return sum
+}
+
+/////////// Test code ////////////////
+
+var num: Z = 3
+
+
+var test: Z = sumEvens(num)
+
+//what do we want to assert?
+assert(test == 12)

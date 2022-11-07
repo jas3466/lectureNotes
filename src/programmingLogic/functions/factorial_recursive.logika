@@ -1,0 +1,18 @@
+//Tues Nov 8
+
+import org.sireum.logika._
+
+def factorial(n: Z): Z = {
+
+    var product: Z = 0
+    if (n == 1) {
+        product = 1
+    } else {
+        product = factorial(n-1)
+        product = product * n
+    }
+
+    return product
+}
+
+/////////// Test code //////////////////

@@ -1,16 +1,20 @@
-//will do Tues Nov 9
+//will leave this as an additional practice problem
+
 
 import org.sireum.logika._
 
 def sumOdds(n: Z): Z = {
     //write the recursive function
+    //then write the function contract and do the verification
 
     //should return the sum of the first n odd numbers
     //sumOdds(1) should be 1
     //sumOdds(2) should be 1+3 = 4
+    //sumOdds(3) should be 1+3+5 = 9
+
     //etc.
 
-
+    //Notice that the result of sumOdds(n) always equals n^2
 }
 
 ////////////// Test code //////////////
