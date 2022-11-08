@@ -1,4 +1,4 @@
-//Tues Nov 8
+//Tues Nov 8 --> will do Thurs Nov 10
 
 import org.sireum.logika._
 
@@ -10,26 +10,20 @@ import org.sireum.logika._
 //sumEvens(4) = 2 + 4 + 6 + 8 = 20
 //do you see a pattern?
 def sumEvens(n: Z): Z = {
-    l"""{
-        requires n >= 0
-        ensures result == n*(n+1)
-    }"""
+    //what do we need to require?
+    //what should we ensure?
 
     var sum: Z = 0
     var count: Z = 0
     var even: Z = 2
 
     while (count != n) {
-        l"""{
-            invariant sum == count*(count+1)
-                even == 2*(count+1)
-            modifies sum, count, even
-        }"""
+        //add invariant block
+        //how does sum relate to count? what have we added so far?
+        //what is even? how does it relate to count?
 
         count = count + 1
-
         sum = sum + even
-
         even = even + 2
     }
 

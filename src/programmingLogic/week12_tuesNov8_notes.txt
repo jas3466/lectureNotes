@@ -4,6 +4,14 @@ Exam 3 will be Thursday, November 17
 
 /////////////////////////////////
 
+Today:
+
+- Logika facts (create our own proof rules with recursive definition)
+- Verifying programs with loops
+- Loop invariants
+
+/////////////////////////////////
+
 See our factorial recursive function
 (factorial_recursive.logika)
 
@@ -12,9 +20,7 @@ See our factorial recursive function
 
 
 
-...want to say we're returning n!, or n*(n-1)*...*2*1
 
---> We need a way to express that ... value
 
 /////////////////////////////////
 
@@ -31,6 +37,9 @@ n! =
     n * (n-1)!, if n > 1
 
 
+3! = 3 * 2! = 3 * 2 * 1! = 3 * 2 * 1
+
+
 Here is the equivalent Logika fact for this definition:
 
 l"""{
@@ -44,7 +53,8 @@ l"""{
 Example: what is factDef(3)?
 
 
---> we can now use "factDef(some parameter)" in our function contracts
+--> we can now use "factDef(n)" in our function contracts
+    would mean n!
 
 --> we can also do:
 
@@ -71,6 +81,7 @@ while (condition) {
     statements
 }
 
+
 We want to be able to make claims about our program after loop
 is done
     ...but we don't know how many times it will execute
@@ -87,25 +98,30 @@ invariant should be true when loop begins
 should be STILL true at the end of each iteration
 
 1) Prove the invariant is true before the loop begins
+
     (what is this like in mathematical induction?)
-    this is like the base case!
+    base case
+
+
 
 2) Assume the invariant is true at the beginning of an iteration.
     Prove the invariant still holds at the end of the iteration.
-    (what is this like in mathematical induction?)
-    this is like the inductive step!
 
+    (what is this like in mathematical induction?)
+    inductive step
 
 /////////////////////////
 
 When loop ends, you know two things:
-    1) About the invariant? still true
+    1) About the invariant? it is true
 
-    2) About the loop condition? loop condition is false
+    2) About the loop condition? it is false
 
 
 If your loop is in a function, you can use those two pieces
 to prove the postcondition of the function.
+
+(And if you can't, you need to make your invariant stronger.)
 
 /////////////////////////
 
@@ -138,7 +154,9 @@ What do we need to show?
 
 Finish the verification.
 
-///////////////////////
+/////////////////////// <------ stopped here
+
+(will do rest on Thurs Nov 10)
 
 Another loop example: adding even numbers
 
