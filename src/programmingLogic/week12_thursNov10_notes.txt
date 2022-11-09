@@ -1,0 +1,57 @@
+HW 11 due tonight
+
+HW 12 will be posted after class
+
+Exam 3 will be Thursday, November 17
+    - posted review information to Canvas
+    - will spend time reviewing during class on Tuesday, November 15
+    - I recommend finishing HW 12 before Exam 3
+
+//////////////////////////////////
+
+How to study for an exam?
+
+//////////////////////////////////
+
+Today:
+
+- more with verifying programs with loops
+- more with creating loop invariants
+- loop invariants and Logika facts
+
+
+///////////////////////////////////
+
+Another loop example: adding even numbers
+
+sumEvens_loop.logika
+
+///////////////////////////////////
+
+Repeat sumEvens with a Logika fact (sumEvens_fact.logika)
+
+--> add function contract, loop invariant block
+
+--> without doing proof, what how do we prove invariant?
+    - how do we prove postcondition?
+
+--> add logic block locations. What can we state as premises?
+    - what are we trying to prove?
+
+--> what do we need to do to make function call verified?
+
+///////////////////////////////////
+
+Postconditions/invariants that work with booleans
+
+isAnswer.logika
+
+check whether first two parameters add to second parameter
+
+do slow (loop) approach to find sum
+
+///////////////////////////////////
+
+Next time:
+- nested loops
+- review for Exam 3

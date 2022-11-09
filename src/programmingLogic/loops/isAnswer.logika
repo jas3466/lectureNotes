@@ -1,0 +1,32 @@
+//Thurs Nov 10
+
+import org.sireum.logika._
+
+def isAnswer(a: Z, b: Z, sum: Z): B = {
+
+    var count: Z = 0
+    var total: Z = a
+
+    while (count < b) {
+        total = total + 1
+        count = count + 1
+    }
+
+    var same: B = true
+    if (total == sum) {
+        //do nothing - same is already true
+    } else {
+        same = false
+    }
+
+    return same
+}
+
+////////////////////// Test code /////////////////////
+
+var x: Z = 3
+var y: Z = 4
+
+var match: B = isAnswer(x, y, 6)
+
+assert(match == false)

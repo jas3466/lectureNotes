@@ -2,6 +2,13 @@
 
 import org.sireum.logika._
 
+l"""{
+    fact
+        def evenDef(n: Z): Z
+            sumFirst. evenDef(0) == 0
+            sumRest. A x: Z x > 0 -> evenDef(x) == evenDef(x-1) + 2*(x)
+}"""
+
 //returns the sum of the first n even numbers
 //sumEvens(0) = 0
 //sumEvens(1) = 2
@@ -32,10 +39,9 @@ def sumEvens(n: Z): Z = {
 
 /////////// Test code ////////////////
 
-var num: Z = 3
-
+var num: Z = 2
 
 var test: Z = sumEvens(num)
 
 //what do we want to assert?
-assert(test == 12)
+assert(test == 6)
