@@ -2,6 +2,7 @@
 
 import org.sireum.logika._
 
+//another way of defining sum of 1st n even numbers
 l"""{
     fact
         def evenDef(n: Z): Z
@@ -20,19 +21,46 @@ def sumEvens(n: Z): Z = {
     //what do we need to require?
     //what should we ensure?
 
+    l"""{
+        requires n >= 0
+        ensures result == evenDef(n)
+    }"""
+
     var sum: Z = 0
     var count: Z = 0
     var even: Z = 0
+
+    //Step 1: need to prove the invariants (all 3) hold before loop begins
 
     while (count != n) {
         //add invariant block
         //how does sum relate to count? what have we added so far?
         //what is even? how does it relate to count?
 
+        l"""{
+            invariant
+                sum == evenDef(count)
+                even == 2*count
+                count >= 0
+            modifies even, sum, count
+        }"""
+
+        //could list all invariants as premises here
+        //since they hold at the beginning of an iteration
+
         even = even + 2
         sum = sum + even
         count = count + 1
+
+        //Step 2: prove all 3 invariants still hold
+        //have logic blocks after each variable to update to process how
+        //invariant statements are affected
     }
+
+    //Step 3: prove the postcondition
+    // can list all 3 invariants as premises
+    // can use !(loop condition) as a premise
+    // in this case, might also want to use precondition as a premise
 
     return sum
 }
@@ -41,7 +69,14 @@ def sumEvens(n: Z): Z = {
 
 var num: Z = 2
 
+//Step 4: prove the precondition
+//need the claim: num>=0
+
 var test: Z = sumEvens(num)
+
+//Step 5: use the postcondition to prove the assert
+//could list postcondition as a premise:
+    //test == evenDef(num)
 
 //what do we want to assert?
 assert(test == 6)

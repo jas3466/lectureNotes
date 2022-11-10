@@ -12,20 +12,96 @@ import org.sireum.logika._
 def sumEvens(n: Z): Z = {
     //what do we need to require?
     //what should we ensure?
+    l"""{
+        requires n >= 0
+        ensures result == n*(n+1)
+    }"""
 
     var sum: Z = 0
     var count: Z = 0
     var even: Z = 0
+
+    //Step 1: prove invariants hold before loop begins
+    l"""{
+        1. sum == 0                         premise
+        2. count == 0                       premise
+        3. even == 0                        premise
+        4. sum == count*(count+1)           algebra 1 2 //proves 1st invariant
+        5. even == 2*count                  algebra 2 3 //proves 2nd invariant
+    }"""
 
     while (count != n) {
         //add invariant block
         //how does sum relate to count? what have we added so far?
         //what is even? how does it relate to count?
 
+        l"""{
+            invariant
+                sum == count*(count+1)
+                even == 2*count
+            modifies sum, even, count
+        }"""
+
+        //we can use the invariants as premises
+        //we know they hold at the beginning of an iteration
+
+        //need a logic block to process each variable change
+
+        //updates even to be the next value on my total
         even = even + 2
+
+        l"""{
+            1. even == even_old + 2             premise //from variable assignment
+            2. even_old == 2*count              premise //from 2nd invariant
+            3. even == 2*count + 2              algebra 1 2
+        }"""
+
+        //add on the next even number
         sum = sum + even
+
+        l"""{
+            1. sum == sum_old + even            premise //from variable assignment
+            2. sum_old == count*(count+1)       premise //from 1st invariant
+            3. sum == count*(count+1) + even    algebra 1 2
+        }"""
+
+        //update how many even numbers I've added
         count = count + 1
+
+        l"""{
+            1. count == count_old + 1           premise //from variable assignment
+            2. sum == count_old*(count_old+1) + even    premise //from previous block
+            3. even == 2*count_old + 2                  premise //from previous block
+            4. count_old == count - 1                   algebra 1
+            5. even == 2*(count-1) + 2                  algebra 3 4
+            6. sum == (count-1)*(count) + even          algebra 2 4
+            7. even == 2*count                          algebra 5 //proves 2nd invariant
+            8. sum == (count-1)*(count) + 2*count       algebra 6 7
+            9. sum ==  count*(count - 1 + 2)            algebra 8
+            10. sum == count*(count + 1)                algebra 9 //proves 1st invariant
+        }"""
+
+        //Step 2: need to prove that invariants still hold here
     }
+
+    /*
+    after x iterations:  |  0 (before 1st)  |   after 1  |  after 2 |  after 3
+    -----------------------------------------------------------------------------
+    count:               |  0               |    1       |   2      |  3
+    sum:                 |  0               |    2       |   6      |  12
+    even:                |  0               |    2       |   4      |  6
+   */
+
+   //sum always holds the sum of the first count even numbers
+
+   //prove the postcondition
+   l"""{
+        1. sum == count*(count+1)           premise //1st invariant holds
+        2. even == 2*count                  premise //2nd invariant holds
+        3. !(count != n)                    premise //loop condition is false
+        4. count == n                       algebra 3
+        5. sum == n*(n+1)                   algebra 1 4 //proves the postcondition
+   }"""
 
     return sum
 }
@@ -34,8 +110,21 @@ def sumEvens(n: Z): Z = {
 
 var num: Z = 3
 
+//1) prove precondition
+
+l"""{
+    1. num == 3                 premise
+    2. num >= 0                 algebra 1 //proves the precondition
+}"""
 
 var test: Z = sumEvens(num)
 
+l"""{
+    1. test == num*(num+1)      premise //from the postcondition
+    2. num == 3                 premise
+    3. test == 12               algebra 1 2 //proves the assert
+}"""
+
 //what do we want to assert?
+//2 + 4 + 6 = 12
 assert(test == 12)

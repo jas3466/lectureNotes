@@ -11,6 +11,16 @@ Exam 3 will be Thursday, November 17
 
 How to study for an exam?
 
+open-ended problems: similar to HW and lecture
+
+multiple choice: terms, definitions
+    postcondition
+    precondition
+    invariant
+    how do we prove a postcondition
+    where do we need to prove an invariant
+
+
 //////////////////////////////////
 
 Today:
@@ -23,6 +33,13 @@ Today:
 ///////////////////////////////////
 
 Another loop example: adding even numbers
+
+another way to describe returning the sum of the first n even numbers:
+    result == 2 + 4 + 6 + ... + 2*n
+
+
+n!:
+    result = n * (n-1) * ... * 2 * 1
 
 sumEvens_loop.logika
 

@@ -2,22 +2,98 @@
 
 import org.sireum.logika._
 
+//return whether sum == a + b
+//isAnswer(3, 4, 6) returns false
+//isAnswer(2, 4, 6) returns true
 def isAnswer(a: Z, b: Z, sum: Z): B = {
+    l"""{
+        requires b >= 0 //we are doing b iterations in the loop, can't be negative
+        ensures result == (a+b == sum)
+    }"""
 
     var count: Z = 0
     var total: Z = a
 
+    l"""{
+        1. count == 0               premise
+        2. total == a               premise
+        3. total == a + count       algebra 1 2 //1st invariant holds
+        4. b >= 0                   premise //from precondition
+        5. count <= b               algebra 1 4
+    }"""
+
     while (count < b) {
+        l"""{
+            invariant
+                total == a + count
+                count <= b
+            modifies total, count
+        }"""
         total = total + 1
+
+        l"""{
+            1. total == total_old + 1          premise
+            2. total_old == a + count           premise
+            3. total == a + count + 1           algebra 1 2
+        }"""
+
         count = count + 1
+
+        l"""{
+
+            1. count == count_old + 1           premise
+            2. total == a + count_old + 1       premise
+            3. count_old == count - 1           algebra 1
+            4.  total == a + count - 1 + 1  algebra 2 3
+            5. total == a + count               algebra 4 //proves 1st invariant
+            6. count_old < b                    premise //from loop condition
+            7. count <= b                       algebra 1 6 //proves 2nd invariant
+        }"""
     }
+
+    //want to say that count equals b
+    //!(count < b)      equiv to count >= b
+    l"""{
+        1. total == a + count               premise //1st invariant
+        2. count <= b                       premise //2nd invariant
+        3. !(count < b)                     premise //!(loop condition)
+        4. count == b                       algebra 2 3
+        5. total == a + b                   algebra 1 4
+    }"""
+
+    //total is now going to be a + b
 
     var same: B = true
     if (total == sum) {
         //do nothing - same is already true
+
+        l"""{
+            1. total == sum         premise //if statement is true
+            2. same == true         premise
+            3. total == a + b       premise //haven't changed since then
+            4. a + b == sum         algebra 1 3
+            5. same == (a+b == sum)     algebra 2 4
+        }"""
+
     } else {
         same = false
+
+        l"""{
+            1. !(total == sum)      premise //if statement is false
+            2. same == false        premise
+            3. total == a + b       premise //haven't changed
+            4. total != sum         algebra 1
+            5. a + b != sum         algebra 3 4
+            6. same == (a+b == sum)    algebra 2 5
+        }"""
     }
+
+    l"""{
+        1. same == (a+b == sum)         premise //proves postcondition
+
+    }"""
+
+    //need this claim: same == (a+b == sum)
 
     return same
 }
@@ -27,6 +103,18 @@ def isAnswer(a: Z, b: Z, sum: Z): B = {
 var x: Z = 3
 var y: Z = 4
 
+l"""{
+    1. y == 4               premise
+    2. y >= 0               algebra 1 //proves precondition
+}"""
+
 var match: B = isAnswer(x, y, 6)
+
+l"""{
+    1. match == (x+y == 6)      premise //from precondition
+    2. x == 3                   premise
+    3. y == 4                   premise
+    4. match == false           algebra 1 2 3   //it's not the case that x+y == 6
+}"""
 
 assert(match == false)
