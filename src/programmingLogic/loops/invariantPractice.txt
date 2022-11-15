@@ -1,0 +1,82 @@
+//Tues Nov 15
+
+Practicing loop invariants.
+
+
+l"""{
+    fact
+        def pow3(n: Z): Z
+            pow0. pow3(0) == 1
+            powN. A x: Z x > 0 -> pow3(x) == 3 * pow3(x - 1)
+}"""
+
+var x: Z = 1;
+var i: Z = 0;
+while (i < n) {
+    x = x * 3;
+    i = i + 1;
+}
+
+1) What is the code doing? Walk through variable updates.
+
+x = 1, 3, 9, 27
+i = 0, 1, 2, 3
+
+
+
+2) How can we describe the progress at a particular point?
+
+
+
+3) Bound the loop counter
+    (only sometimes needed, but never hurts)
+
+
+////////////////////////////////
+
+var x: Z = n;
+var d: Z = 0;
+while (x >= a) {
+    x = x - a
+    d = d + 1
+}
+
+1) What is the code doing? Walk through variable updates.
+
+Suppose n is 20 and a is 3.
+
+x =
+d =
+
+
+What about a general n and a?
+
+2) How can we describe the progress at a particular point?
+
+
+
+3) Bound the loop counter
+
+
+
+//////////////////////////////////////
+
+//this is not a Logika program, but the idea remains
+
+//nums is an int array
+
+int x = 0;
+
+for (int i = 0; i < nums.Length; i++) {
+    nums[i] = x;
+    x = x + 2;
+}
+
+1) What is the code doing? Walk through variable updates.
+
+2) How can we describe the progress at a particular point?
+
+
+
+
+3) Bound the loop counter

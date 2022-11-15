@@ -1,0 +1,116 @@
+HW 12 due Thursday, November 17
+
+Exam 3 is Thursday, November 17
+    During lecture (9:30-10:45 am)
+    Can bring one 8.5"x11" sheet of handwritten notes (both sides)
+    Please sit every other chair for exam
+
+I'll be out of town from Fri Nov 18 until the end of fall break
+Should still have exams graded by the first class period after fall break...
+    but won't be earlier than that.
+
+Will likely be unavailable over email/Discord.
+    --> you can still post to Discord...another student or a TA might answer
+
+/////////////////////////////////////
+
+How do we come up with loop invariants?
+
+(invariantPractice.txt)
+
+/////////////////////////////////////
+
+Verifying programs with nested loops
+
+Discuss #5 on HW 12
+
+////////////////////////////////////
+
+Topics (everything we have done in programming logic):
+
+- when do we do this, and what does it mean?
+    assume(something)
+
+- what does an assert mean? How are they checked?
+    --> What do we need in a previous logic block?
+
+- subst rules
+    subst1 will look for the left (1st side) of the equivalence
+        and exchange it for the right side
+    subst2 will look for the right side (2nd side) and exchange it
+        for the left side
+
+- algebra rule
+- verifying asserts with variables/expressions/updating variables
+- be able to fill in claims or justifications in a partial block
+
+- handling division and modulus
+
+    if you use division a/b:
+        b != 0  in a prior logic block
+
+    if you use modulus a % b:
+        a >= 0
+        b > 0
+        in a prior logic block
+
+
+- how to verify a program with an if/else statement
+    - what can we claim as a premise just inside the if?
+        the if condition
+        anything true just before if
+    - what can we claim as a premise just inside the else?
+        !(condition)
+        anything true just before if/else
+    - what can we claim as a premise after the if/else?
+        reach "claim" in the if and in the else
+            list same claim after if/else
+        reach "claim1" in the if and "claim2" in the else
+            afterwards: claim1 V claim2
+    - what if there are variable updates?
+
+
+- how to verify a function
+    - function contract (requires, ensures)
+        --> precondition/postcondition
+    - what can the function do with the precondition?
+        list it as a premise
+    - what must the function do with the postcondition?
+        prove it
+    - what must we do before calling a function?
+        prove the precondition
+    - what can we do after calling a function?
+        the postcondition as a premise
+    - basics of writing a postcondition
+
+
+- how to verify a program with a loop
+    - loop invariant block (invariant, modifies)
+    - where must we prove that the invariant is true?
+        before loop begins
+        at the end of each iteration
+    - where can we list the invariant as a premise?
+        at the beginning of an iteration
+        right after the loop ends
+    - how do we tie things together to also verify a postcondition?
+        can also have !(condition) after loop ends
+    - Logika facts
+        - how to interpret
+        - how to cite as justifications
+        - how to use as invariants and postconditions
+    - basics of writing an invariant
+
+
+- how to verify a program with a recursive function
+    - (really, the same idea as verifying a regular function)
+
+
+Multiple choice section, open-ended section.
+
+Covers HW 8-12 -- even if you did these, try to rework anything that
+stumped you. Think especially about the process, and why you
+can claim things as premises.
+
+////////////////////////
+
+Work through practice exam.
