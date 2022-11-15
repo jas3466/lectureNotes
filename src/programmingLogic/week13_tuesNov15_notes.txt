@@ -12,6 +12,9 @@ Should still have exams graded by the first class period after fall break...
 Will likely be unavailable over email/Discord.
     --> you can still post to Discord...another student or a TA might answer
 
+HW 13 will be posted on Thursday - due Thurs Dec 1
+    involves switching to Logika's "symexe" mode
+
 /////////////////////////////////////
 
 How do we come up with loop invariants?
@@ -22,7 +25,16 @@ How do we come up with loop invariants?
 
 Verifying programs with nested loops
 
-Discuss #5 on HW 12
+Discuss #4 on HW 12
+
+outer loop
+    outer loop invariant
+
+    inner loop
+        inner loop invariant
+
+    need to prove here that the outer loop invariant still holds
+    use inner loop invariant(s) and !(inner loop condition)
 
 ////////////////////////////////////
 
@@ -31,8 +43,14 @@ Topics (everything we have done in programming logic):
 - when do we do this, and what does it mean?
     assume(something)
 
+    we can use "something" with premise justification afterwards
+
 - what does an assert mean? How are they checked?
     --> What do we need in a previous logic block?
+
+    assert(something)
+
+    NEED "something" justified in previous logic block
 
 - subst rules
     subst1 will look for the left (1st side) of the equivalence
@@ -40,8 +58,10 @@ Topics (everything we have done in programming logic):
     subst2 will look for the right side (2nd side) and exchange it
         for the left side
 
-- algebra rule
+- algebra rule (can't use with ^, V, ->)
+
 - verifying asserts with variables/expressions/updating variables
+
 - be able to fill in claims or justifications in a partial block
 
 - handling division and modulus
@@ -57,16 +77,20 @@ Topics (everything we have done in programming logic):
 
 - how to verify a program with an if/else statement
     - what can we claim as a premise just inside the if?
-        the if condition
-        anything true just before if
+        condition is true
+        any statement that was true just before the if
+
+
     - what can we claim as a premise just inside the else?
         !(condition)
-        anything true just before if/else
+        any statement true just before if/else
+
     - what can we claim as a premise after the if/else?
         reach "claim" in the if and in the else
-            list same claim after if/else
         reach "claim1" in the if and "claim2" in the else
-            afterwards: claim1 V claim2
+
+            claim1 V claim2
+
     - what if there are variable updates?
 
 
