@@ -1,0 +1,122 @@
+//Tues Nov 29
+
+import org.sireum.logika._
+
+l"""{
+    fact
+        def factDef(n: Z): Z
+            fOne. factDef(1) == 1
+            fBig.  ∀x: Z  x > 1 → factDef(x) == factDef(x - 1) * x
+}"""
+
+//want to return n!
+//5! = 5 * 4 * 3 * 2 * 1
+def factorial(n: Z): Z = {
+    //function contract
+    l"""{
+        requires n >= 1
+        ensures result == factDef(n)    //I promise to return n!
+    }"""
+
+    var product: Z = 0
+    if (n == 1) {
+        product = 1
+
+        l"""{
+            1. n >= 1                       premise //from precondition
+            2. n == 1                       premise //from the if- condition
+            3. product == 1                 premise //from the variable assignment
+            4. factDef(1) == 1              fact fOne //because 1! is defined as 1
+            5. factDef(n) == 1              algebra 2 4 //because n == 1
+            6. product == factDef(n)        algebra 3 5 //this is my postcondition
+
+            //since n is 1, and 1! is 1, need to show that
+            //product (1) is that
+            //want: product == factDef(n)
+        }"""
+
+    } else {
+        //show we have satisfied precondition before recursive call
+        l"""{
+            1. n >= 1                       premise //from precondition
+            2. !(n == 1)                    premise //condition is false
+            3. n > 1                        algebra 1 2
+            4. n-1 >= 1                     algebra 3
+            //need: n-1 >= 1
+        }"""
+
+        //find (n-1)!
+        product = factorial(n-1)
+
+        l"""{
+            1. product == factDef(n-1)          premise //from the postcondition of the
+                                                        //recursive call
+
+
+        }"""
+
+        //multiply by n so product is n!
+        product = product * n
+
+        l"""{
+            1. product == product_old*n         premise //from the assignment
+            2. product_old == factDef(n-1)      premise //from the previous block
+            3. product == factDef(n-1)*n        algebra 1 2
+            4. ∀x: Z  x > 1 → factDef(x) == factDef(x - 1) * x  fact fBig //from Logika fact
+            5. n > 1 → factDef(n) == factDef(n - 1) * n         Ae 4 n
+            6. n >= 1                               premise //precondition
+            7. !(n == 1)                            premise //we are in the else
+            8. n > 1                                algebra 6 7
+            9. factDef(n) == factDef(n - 1) * n     ->e 5 8
+            10. product == factDef(n)               algebra 3 9
+        }"""
+
+        //need to show: product == factDef(n)
+    }
+
+    //need to show: product == factDef(n) for my postcondition
+    //need to show it is true in both the if and the else
+
+    l"""{
+        //this was true in if and else
+        //proves the postcondition
+        1. product == factDef(n)                    premise
+    }"""
+
+    return product
+}
+
+/////////// Test code //////////////////
+
+val test: Z = 3
+
+//prove the precondition
+//need the claim: test >= 1
+
+l"""{
+    1. test == 3                        premise //from assignment
+    2. test >= 1                        algebra 1 //proves the precondition
+}"""
+
+val answer: Z = factorial(test)
+
+l"""{
+    1. answer == factDef(test)          premise //from the postcondition
+    2. test == 3                        premise
+    3. answer == factDef(3)             algebra 1 2
+    4. ∀x: Z  x > 1 → factDef(x) == factDef(x - 1) * x  fact fBig
+    5. 3 > 1 → factDef(3) == factDef(3 - 1) * 3         Ae 4 3
+    6. 3 > 1                                            algebra
+    7. factDef(3) == factDef(3 - 1) * 3                 ->e 5 6
+    8. factDef(3) == factDef(2) * 3                     algebra 7
+    9. 2 > 1 → factDef(2) == factDef(2 - 1) * 2         Ae 4 2
+    10. 2 > 1                                           algebra
+    11. factDef(2) == factDef(2 - 1) * 2                ->e 9 10
+    12. factDef(2) == factDef(1) * 2                    algebra 11
+    13. factDef(1) == 1                                 fact fOne
+    14. factDef(2) == 2                                 algebra 12 13
+    15. factDef(3) == 6                                 algebra 8 14
+    16. answer == 6                                     algebra 3 15
+}"""
+
+assert(answer == 6)

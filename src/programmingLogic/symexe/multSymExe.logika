@@ -1,0 +1,105 @@
+//Tues Nov 29
+
+import org.sireum.logika._
+
+l"""{
+    fact
+        def multDef(m: Z, n: Z): Z
+            //anything multiplied by 0 is just 0
+            mult0. A x: Z multDef(x, 0) == 0
+            multPos. A x: Z (A y: Z y > 0 -> multDef(x, y) == multDef(x, y-1) + x)
+}"""
+
+
+//finding x*y by doing x + x + x + ... + x (y times)
+//rewrite with symexe first using current approach
+//then use the Logika fact
+
+def mult(x: Z, y: Z): Z = {
+    l"""{
+        requires y >= 0 //(precondition) because that's the number of times I'm stepping
+        ensures result == x*y   //postcondition
+    }"""
+
+    var total: Z = 0
+    var i: Z = 0
+
+    //show the invariant is true before the loop begins
+
+    l"""{
+        1. total == 0               premise //from assignment
+        2. i == 0                   premise //from assignment
+        3. total == x*i             algebra 1 2 //proves 1st invariant
+        4. y >= 0                   premise //from precondition
+        5. i <= y                   algebra 2 4 //proves 2nd invariant
+    }"""
+
+    while (i < y) {
+        l"""{
+            invariant total == x*i
+                i <= y
+            modifies i,total
+        }"""
+
+        //we can list the invariant(s) as premises
+
+        total = total + x
+
+        l"""{
+            1. total_old == x*i     premise //invariant was true at begin. of iteration
+            2. total = total_old + x    premise //from the assignment
+            3. total = x*i + x      algebra 1 2 //summarize what happened
+        }"""
+
+        i = i + 1
+
+        l"""{
+            1. i = i_old + 1            premise //from assignment
+            2. total = x*i_old + x      premise //from previous block
+            3. i_old = i - 1            algebra 1
+            4. total = x*(i-1)+ x       algebra 2 3
+            5. total == x*i             algebra 4   //proves 1st invariant
+            6. i_old <= y               premise //from 2nd invariant (true at begin of it.)
+            7. i_old < y                premise //from the loop condition
+            8. i <= y                   algebra 1 7 //proves 2nd invariant still holds
+            //want: total == x*i and i <= y
+        }"""
+
+        //we must prove invariant(s) still true here
+    }
+
+    l"""{
+        1. total == x*i                 premise //1st invariant is true
+        2. !(i < y)                     premise //loop condition is false
+        3. i <= y                       premise //2nd invariant is true
+        4. i == y                       algebra 2 3
+        5. total == x*y                 algebra 1 4 //proves the postcondition
+        //want: total == x*y     (need that i equals y)
+    }"""
+
+    return total
+}
+
+//////////// test code /////////
+
+val a: Z = 5
+val b: Z = 4
+
+//call mult to get the product between a and b
+
+//prove the precondition before calling function
+l"""{
+    1. b == 4                       premise // from assignment
+    2. b >= 0                       algebra 1 //proves the precondition
+}"""
+var answer: Z = mult(a, b)
+
+l"""{
+    1. answer == a*b                premise //from the postcondition
+    2. a == 5                       premise //from assignment
+    3. b == 4                       premise //from assignment
+    4. answer == 20                 algebra 1 2 3 //proves the assert
+}"""
+
+//what do we want to assert that it is?
+assert(answer == 20)

@@ -1,0 +1,24 @@
+//Tues Nov 29
+
+//symexe mode
+
+import org.sireum.logika._
+
+//"Unit" is like a void return type
+def setAllTo10(nums: ZS): Unit = {
+    //how would we write the function contract?
+
+    var i: Z = 0
+    while (i != nums.size) {
+        nums(i) = 10
+        i = i + 1
+    }
+}
+
+///// Test code ///////////
+
+var test: ZS = ZS(1,2,3,4,5)
+setAllTo10(test)
+
+//we want to claim that test is the same size, but all 10s
+//--> what should we assert?

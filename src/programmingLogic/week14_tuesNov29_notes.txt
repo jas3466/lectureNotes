@@ -1,0 +1,135 @@
+
+Exam 3 results.
+
+High: 80/80
+Average: 59/80 (a 74%) -- this includes a number of 0s for students who didn't take it
+
+A (72-80): 33 students!!! awesome!
+B (64-71): 11 students
+C (56-63): 12 students
+D (48-55): 5 students
+F (below 48): 17 students (includes 8 no-shows)
+
+////////////////////////////
+
+HW 13 due Thurs Dec 1
+    (one more HW after this one)
+
+Final exam: Thursday, December 15 2:00-3:50 pm
+
+/////////////////////////////
+
+Updated assignment categories in Canvas.
+
+Per syllabus, exams (3 midterm + 1 final) are 70% of your grade.
+
+Each exam is 80 points, and the final will be 120 points (total of 360 points)
+
+Among exams, midterms are worth a total of 66.67% and the final is worth 33.33%.
+
+In your overall grade:
+    Midterms are worth 66.67% of the 70% from all exams --> 46.67% of your overall grade
+    Final is worth 33.33% of the 70% from all exams --> 23.33% of your overall grade
+    HW is worth 30%
+
+
+You can replace your lowest midterm with the same percentage from your final exam (if it is better)
+
+
+To help you determine your final grade, I changed the assignment groups in Canvas:
+    66.67% from 4 midterms -- exam 1, exam 2, exam 3, midterm equivalent from final
+        Canvas is set to drop the lowest of those 4 midterms
+    23.33% from the final exam
+    30% from the HW
+
+You can try the "what if" on both the midterm equiv. from final and the final
+    --> the "midterm equivalent" will be the same PERCENTAGE as your final
+    if you get 90/120 = 75% on your final, your "midterm equivalent" score will be 60 (which is 75% of 80)
+
+/////////////////////////////
+
+Today:
+
+- Logika modes
+- Verifying programs with sequences
+
+//////////////////////////////
+
+Logika modes.
+
+Default/manual mode - what we've been doing.
+
+SymExe mode - only needs function contracts and invariant blocks.
+    --> can do all intermediate reasoning itself.
+
+**See how to switch modes
+
+For SymExe:
+
+File->Settings->Tools->Sireum->Logika
+    Auto is checked
+    Checker kind is "summarizing symexe"
+
+
+**All HW 13 (and HW 14) problems will use SymExe mode
+
+////////////////////////////
+
+Example: See what we can change in factorial verification.
+    (factSymExe.logika)
+
+
+
+
+///////////////////////////
+
+More with Logika facts, using SymeExe.
+
+Example: multiplication --> first a rewrite, then with a Logika fact
+    (multSymExe.logika)
+
+
+result == m*n
+
+////////////////////////////
+
+Sequences. (like an array or list)
+
+--> see Logika sequence operations (seqOp.logika)
+
+--> Logika wants to ensure sequence position is always valid
+
+--> sequences are passed to a function by reference
+    --> postcondition should describe how a sequence changes
+
+///////////////////////////
+
+Example: function that sets first element in a sequence to 0
+(seqZeroFirst.logika)
+
+
+///////////////////////////
+
+Example: function that sets some position in a sequence to 0
+(seqZeroPos.logika)
+
+//////////////////////////
+
+Example: swap function
+(seqSwap.logika)
+
+///////////////////////////
+
+Functions with sequences and loops.
+--> same idea, but loop invariant block needs to describe
+    what has been changed so far about the sequence (and what
+    has not been changed)
+
+Example: function that sets every position in a sequence to 10
+(seqAll10.logika)
+
+//////////////////////////
+
+Next: more sequences and loops
+Sequences and Logika facts
+Programs with multiple functions
