@@ -9,10 +9,21 @@ def makeFirstZero(seq: ZS): Unit = {
     //how would we write the function contract?
     //what do we want to require of seq?
     //how can we describe how seq will change?
+    l"""{
+        requires seq.size > 0
+        modifies seq
+        ensures
+            seq(0) == 0
+            //want to say: the other sequence elements are unchanged
+            //seq_in is value of the sequence when the function was called
+            A x: (1..<seq.size) seq(x) == seq_in(x)
 
+            //final size of the sequence is the same as the original size
+            seq.size == seq_in.size //size is unchanged
+
+    }"""
 
     seq(0) = 0
-
 }
 
 ///// Test code ///////////
@@ -25,3 +36,4 @@ makeFirstZero(nums)
 
 
 //---> what should we assert?
+assert(nums == ZS(0,2,3))

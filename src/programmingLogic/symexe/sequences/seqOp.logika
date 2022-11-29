@@ -7,6 +7,8 @@ import org.sireum.logika._
 //create a sequence of literals
 var seq: ZS = ZS(5,10,15)
 
+var bools: BS = BS(true, false, true)
+
 //create an empty sequence
 var empty: ZS = ZS()
 
@@ -17,12 +19,3 @@ assert(seq == ZS(5,10,100))
 
 //getting the size of a sequence
 var len: Z = seq.size   //len will be 3
-
-//appending (adding to the end)
-seq = seq:+37   //seq is now (5,10,100,37)
-
-//prepending (adding to the beginning)
-seq = 16+:seq   //seq is now (16,5,10,100,37)
-
-//cloning
-var another: ZS = seq.clone //another is also (16,5,10,100,37)

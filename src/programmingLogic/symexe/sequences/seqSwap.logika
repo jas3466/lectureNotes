@@ -3,6 +3,34 @@
 import org.sireum.logika._
 
 //want to write a swap function
+def swap(nums: ZS, pos1: Z, pos2: Z): Unit = {
+    l"""{
+        requires
+            pos1 >= 0
+            pos1 < nums.size
+            pos2 >= 0
+            pos2 < nums.size
+        modifies nums
+        ensures
+            nums(pos1) == nums_in(pos2)
+            nums(pos2) == nums_in(pos1)
+
+            //all other positions are unchanged
+            A x: (0..<nums.size) (x != pos1 ^ x != pos2) -> nums(x) == nums_in(x)
+            nums.size == nums_in.size
+    }"""
+
+    var temp: Z = nums(pos1)
+    nums(pos1) = nums(pos2)
+    nums(pos2) = temp
+}
+
+///////////////////////////
+
+var test: ZS = ZS(4,1,3,8,10,2)
+
+swap(test, 2, 4)
 
 
 //how to write test case + assert?
+assert(test == ZS(4,1,10,8,3,2))

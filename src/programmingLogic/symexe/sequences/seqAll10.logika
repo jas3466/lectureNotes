@@ -7,9 +7,32 @@ import org.sireum.logika._
 //"Unit" is like a void return type
 def setAllTo10(nums: ZS): Unit = {
     //how would we write the function contract?
+    l"""{
+        modifies nums
+        ensures
+            A x: (0..<nums.size) nums(x) == 10
+            nums.size == nums_in.size
+    }"""
 
     var i: Z = 0
     while (i != nums.size) {
+        l"""{
+            invariant
+                //what I have changed so far
+                A x: (0..<i) nums(x) == 10
+
+                //what is still the same
+                A x: (i..<nums.size) nums(x) == nums_in(x)
+
+                //bounding the loop counter
+                i >= 0
+                i <= nums.size
+
+                //the size doesn't change
+                nums.size == nums_in.size
+            modifies nums, i
+        }"""
+
         nums(i) = 10
         i = i + 1
     }
@@ -22,3 +45,4 @@ setAllTo10(test)
 
 //we want to claim that test is the same size, but all 10s
 //--> what should we assert?
+assert(test == ZS(10,10,10,10,10))
