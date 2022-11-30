@@ -1,0 +1,55 @@
+HW 13 due tonight
+
+HW 14 will be posted after class - due Thurs Dec 8
+    (last HW)
+
+Final exam: Thursday, December 15 2:00-3:50 pm
+
+/////////////////////////////////
+
+Today:
+- more with sequences
+
+//////////////////////////////////
+
+Function contracts with sequences:
+
+    requires?
+
+    modifies?
+
+    ensures?
+
+
+Loop invariants with sequences:
+
+
+
+
+//////////////////////////////////
+
+Review: verify a function that adds 1 to all elements in a sequence
+
+--> what happens if we don't describe what parts haven't changed?
+
+(addToAll.logika)
+
+//////////////////////////////
+
+Harder example: verify a function that returns the sum of elements
+    in a sequence
+
+(seqSum.logika)
+
+/////////////////////////////
+
+
+Write a function that returns the min element of a sequence
+
+(seqMin.logika)
+
+/////////////////////////////
+
+Next time: global variables and global invariants
+
+(covers material for problems 3 and 4 on HW 14)

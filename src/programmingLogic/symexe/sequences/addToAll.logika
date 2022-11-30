@@ -1,0 +1,20 @@
+//Thurs Dec 1
+
+import org.sireum.logika._
+
+def addToAll(list: ZS): Unit = {
+
+    var pos: Z = 0
+    while (pos < list.size) {
+        list(pos) = list(pos) + 1
+        i = i + 1
+    }
+}
+
+///////////////////////////////////
+
+var test: ZS = ZS(1,2,3,4,5)
+
+addToAll(test)
+
+assert(test == ZS(2,3,4,5,6))

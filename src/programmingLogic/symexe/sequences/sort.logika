@@ -1,0 +1,79 @@
+import org.sireum.logika._
+
+//we wrote this on Tuesday
+def swap(list: ZS, pos1: Z, pos2: Z): Unit = {
+    l"""{
+        //fill in the function contract
+        requires
+            pos1 < list.size
+            pos1 >= 0
+            pos2 < list.size
+            pos2 >= 0
+        modifies list
+        ensures
+            //the new value at pos1 is the old value at pos2
+            list(pos1) == list_in(pos2)
+            list(pos2) == list_in(pos1)
+            //all other values haven't changed
+            A x: (0..<list.size) (x != pos1 ^ x != pos2) -> list(x) == list_in(x)
+            list.size == list_in.size
+    }"""
+
+    //How would we swap two positions?
+    var temp: Z = list(pos1)
+    list(pos1) = list(pos2)
+    list(pos2) = temp
+}
+
+//start is a starting position in the list
+//return the position of the smallest element from position start on
+//(smallest position in unsorted section)
+def minPos(list: ZS, start: Z): Z = {
+    l"""{
+        //COMPLETE THE FUNCTION CONTRACT
+    }"""
+
+    var i: Z = start + 1
+    var smallPos: Z = start
+    while (i < list.size) {
+        l"""{
+            invariant
+                //COMPLETE THE INVARIANTS
+
+            modifies i, smallPos
+        }"""
+
+        if (list(i) < list(smallPos)) {
+            smallPos = i
+        }
+
+        i = i + 1
+    }
+
+    return smallPos
+}
+
+def selectionSort(nums: ZS): Unit = {
+    l"""{
+        requires
+            //anything about size? might depend on code
+            //no duplicates allowed to make it easier
+        modifies nums
+        ensures
+            //COMPLETE THE POSTCONDITIONS
+    }"""
+
+    //write the code
+
+    //write the invariants
+}
+
+///////// Test code /////////////
+
+var test: ZS = ZS(4,3,2,1)
+selectionSort(test)
+
+print(test)
+
+//what should test be now?
+assert(test == ZS(1,2,3,4))

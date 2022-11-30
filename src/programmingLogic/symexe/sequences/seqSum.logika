@@ -1,0 +1,47 @@
+import org.sireum.logika._
+
+//What is this Logika fact saying?
+
+l"""{
+    fact
+        def sum(seq: ZS, pos: Z): Z
+            = 0, if pos == 0                                    (sum0)
+            = seq(pos-1) + sum(seq, pos-1), if pos > 0          (sumN)
+}"""
+
+//OR, we could write the Logika fact this way...but I think it is
+    //hard to read
+/*
+l"""{
+    fact
+        def sum(seq: ZS, pos: Z): Z
+            sum0. A list: ZS sum(list, 0) == 0
+            sumN. A list: ZS (A x: Z x > 0 -> sum(list, x) == sum(list, x-1) + list(x-1))
+}"""
+*/
+
+
+
+def seqSum(list: ZS): Z = {
+
+
+    var i: Z = 0
+    var total: Z = 0
+
+    while (i < list.size) {
+
+        total = total + list(i)
+        i = i + 1
+    }
+
+    //don't forget the loop invariant block
+
+    return total
+}
+
+////////////// Calling code ///////////////////
+
+var test: ZS = ZS(1,2,3,4)
+var added: Z = seqSum(test)
+
+//what should added be now?
