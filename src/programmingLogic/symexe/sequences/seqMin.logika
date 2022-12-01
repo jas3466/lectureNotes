@@ -1,11 +1,40 @@
+//Thurs Dec 1
+
 import org.sireum.logika._
 
 //return the smallest element in list
 def min(list: ZS): Z = {
-
+    l"""{
+        requires
+            list.size > 0
+        ensures
+            A x: (0..<list.size) result <= list(x)
+            //what I'm returning IS a list element
+            E x: (0..<list.size) result == list(x)
+    }"""
 
     //write the function
+    var small: Z = list(0)
+    var i: Z = 1
 
+    while (i < list.size) {
+        l"""{
+            invariant
+                 A x: (0..<i) small <= list(x)
+                 E x: (0..<i) small == list(x)
+                 i >= 1
+                 i <= list.size
+            modifies small, i
+        }"""
+
+
+        if (list(i) < small) {
+            small = list(i)
+        }
+        i = i + 1
+    }
+
+    return small
     //then do the verification
 }
 
@@ -16,3 +45,4 @@ var testMin: Z = min(test)
 
 //what should testMin be?
 //--> assert what?
+assert(testMin == 0)

@@ -3,11 +3,27 @@
 import org.sireum.logika._
 
 def addToAll(list: ZS): Unit = {
+    l"""{
+        modifies list
+        ensures
+            A x: (0..<list.size) list(x) == list_in(x) + 1
+            list.size == list_in.size
+    }"""
 
     var pos: Z = 0
     while (pos < list.size) {
+        l"""{
+            invariant
+                A x: (0..<pos) list(x) == list_in(x) + 1
+                A x: (pos..<list.size) list(x) == list_in(x)
+                list.size == list_in.size
+                pos >= 0
+                pos <= list.size
+            modifies list, pos
+        }"""
+
         list(pos) = list(pos) + 1
-        i = i + 1
+        pos = pos + 1
     }
 }
 

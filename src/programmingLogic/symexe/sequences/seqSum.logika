@@ -1,3 +1,5 @@
+//Thurs Dec 1
+
 import org.sireum.logika._
 
 //What is this Logika fact saying?
@@ -8,6 +10,16 @@ l"""{
             = 0, if pos == 0                                    (sum0)
             = seq(pos-1) + sum(seq, pos-1), if pos > 0          (sumN)
 }"""
+
+/*
+    nums: ZS(1,2,3,4)
+    sum(nums, 2)
+        = 2 + sum(nums, 1)
+            = 2 + 1 + sum(nums, 0)
+
+   to get sum of entire sequence: sum(nums, nums.size)
+
+*/
 
 //OR, we could write the Logika fact this way...but I think it is
     //hard to read
@@ -23,13 +35,22 @@ l"""{
 
 
 def seqSum(list: ZS): Z = {
-
+    l"""{
+        ensures
+            result == sum(list, list.size)
+    }"""
 
     var i: Z = 0
     var total: Z = 0
 
     while (i < list.size) {
-
+        l"""{
+            invariant
+                total == sum(list, i)
+                i >= 0
+                i <= list.size
+            modifies total, i
+        }"""
         total = total + list(i)
         i = i + 1
     }
@@ -45,3 +66,4 @@ var test: ZS = ZS(1,2,3,4)
 var added: Z = seqSum(test)
 
 //what should added be now?
+assert(added == 10)

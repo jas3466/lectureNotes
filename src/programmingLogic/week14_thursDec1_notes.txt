@@ -15,15 +15,25 @@ Today:
 Function contracts with sequences:
 
     requires?
+        make sure any position is in range
+        sometimes need to make sure sequence is not empty
 
     modifies?
+        only include if the function changes the sequence parameter
 
     ensures?
-
+        describe what result is being returned
+        describe how every single value in the sequence has changed
+        if the sequence is modified, state that the final size is the same
 
 Loop invariants with sequences:
 
-
+    if the sequence changes:
+        describe what has changed so far
+        describe what is still the same
+        state the lower bound for the loop counter
+        state the upper bound for the loop counter
+        the final size is the same
 
 
 //////////////////////////////////
@@ -47,6 +57,11 @@ Harder example: verify a function that returns the sum of elements
 Write a function that returns the min element of a sequence
 
 (seqMin.logika)
+
+/////////////////////////////
+
+Write selection sort that combines multiple functions
+(sort.logika --> will finish next week)
 
 /////////////////////////////
 
