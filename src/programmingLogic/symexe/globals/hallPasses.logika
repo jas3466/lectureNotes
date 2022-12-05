@@ -1,0 +1,95 @@
+//Tues Dec 6
+
+//SYMEXE MODE
+
+import org.sireum.logika._
+
+//returns a count of the trues in the sequence
+l"""{
+    //pos starts at the sequence size
+    //every time, subtract one
+    fact
+        def sumPasses(list: BS, pos: Z): Z
+            = 0, if pos == 0        (sum0)
+            = 1 + sumPasses(list, pos-1),
+                if pos >= 1 ^ list(pos-1)   (sumTrue)
+            = sumPasses(list, pos-1),
+                if pos >= 1 ^ !list(pos-1)   (sumFalse)
+}"""
+
+//what if list: BS(true,false,true)
+/*
+sumPasses(list, 3) -> ??
+*/
+
+//total of 3 hall passes available
+val totalPasses: Z = 3
+
+var passesAvailable: Z = totalPasses
+
+//5 students in the class
+var passesOut: BS = BS(false,false,false,false,false)
+
+
+
+l"""{
+    invariant
+        //LIST THE GLOBAL INVARIANTS
+
+}"""
+
+def takeHallPass(studentPos: Z): Unit = {
+    l"""{
+        //WRITE THE FUNCTION CONTRACT
+    }"""
+
+    //what could we list as a premise if we were in manual mode?
+
+    passesOut(studentPos) = true
+    passesAvailable = passesAvailable - 1
+
+    //what would we need to explicitly prove if we were in manual mode?
+}
+
+def returnHallPass(studentPos: Z): Unit = {
+    l"""{
+        //WRITE THE FUNCTION CONTRACT
+
+    }"""
+    passesOut(studentPos) = false
+    passesAvailable = passesAvailable + 1
+}
+
+
+/////// Test code //////////
+assert(passesAvailable == 3)
+
+takeHallPass(0)
+
+//what can we assert about passesOut and passesAvailable?
+
+//what could we list as a premise if we were in manual mode?
+
+
+//what if I did takeHallPass(0) again?
+
+
+takeHallPass(2)
+
+//what can we assert about passesOut and passesAvailable?
+
+takeHallPass(4)
+
+//what can we assert about passesOut and passesAvailable?
+
+
+//what if I did takeHallPass(1) now?
+
+
+returnHallPass(2)
+
+//what can we assert about passesOut and passesAvailable?
+
+returnHallPass(0)
+
+//what can we assert about passesOut and passesAvailable?

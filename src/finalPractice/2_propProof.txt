@@ -1,0 +1,3 @@
+Complete the following propositional logic proof so it would be verified in Logika:
+
+(p ^ q) -> r, r -> s, q ^ !s |- !p

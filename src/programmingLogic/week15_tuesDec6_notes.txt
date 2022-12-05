@@ -1,0 +1,80 @@
+HW 14 due Thurs Dec 8
+
+Final exam is Thursday, December 15 2:00-3:50
+
+Will review for the final on Thursday
+
+////////////////////////////////
+
+Today:
+- finish verifying sort
+- programs with multiple functions, in practice
+- global variables and global invariants
+
+////////////////////////////////
+
+Finish verifying sort (sort.logika)
+
+////////////////////////////////
+
+Programs with multiple functions, in practice:
+
+- If you are calling a function someone else wrote
+    - You probably can't see that code
+    - You want that function's specification (pre/post conditions)
+        to be as specific as possible
+
+- If you are writing a function
+    - Supply a GOOD specification
+    - Often best to write the specification before the code
+
+
+It is good to do this in the documentation even when your
+programs aren't formally verified.
+
+////////////////////////////////////
+
+Global variables and global invariants.
+
+- Multiple functions might share the same global variables
+- (true for fields/properties when writing general classes)
+
+- Will add GLOBAL INVARIANTS specifying what must always be true
+    about global variables
+
+- Global invariants must be true initially (using the initial variable values)
+
+- If a function works with global variables:
+    - What do we know about global invariants at beginning of function?
+        --> What could we do with them in manual mode?
+
+    - What needs to be true about global invariants by the end of the function?
+        --> What would we need to do with them in manual mode?
+
+
+
+- After returning from a function call, what do we know about global invariants?
+    --> What could we do with them in manual mode?
+
+/////////////////////////////////////
+
+Bank example (bank.logika)
+
+Global variables:
+    - account balance
+    - "elite" status (a boolean for whether the balance is >= 1 million)
+
+Global invariants:
+    - balance should be non-negative
+    - elite status should match balance
+
+////////////////////////////////////
+
+Hall passes example (hallPasses.logika)
+
+////////////////////////////////////
+
+Thursday:
+- specifications and assertions in practice
+- termination
+- review for final exam

@@ -1,0 +1,3 @@
+Complete the following predicate logic proof so it would be verified in Logika:
+
+A x (P(x) V Q(x)), !E x Q(x) |- A y P(y)

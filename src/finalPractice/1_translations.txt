@@ -1,0 +1,41 @@
+Translate the sentence below to proposition logic:
+
+"I drive to work only if it is below freezing or my bicycle is broken."
+
+1) Identify the propositional atoms
+
+
+
+2) Translate the sentence to propositional logic:
+
+
+
+////////////////
+
+Domain: food
+
+C(x, y): x costs more than y
+P(x): x is produce
+V(x): x is a vegetable
+F(x): x is a frozen food
+
+
+
+Using the predicates above, complete the following translations:
+
+
+1) All vegetables are produce.
+
+
+
+
+2) Some vegetables are not frozen.
+
+
+
+
+3) Not all produce foods are vegetables.
+
+
+
+4) There is no frozen food that costs more than every vegetable.

@@ -1,0 +1,81 @@
+import org.sireum.logika._
+
+//ASSUME WE ARE IN MANUAL MODE
+
+//At each "PREMISES" heading, list ALL claims we could make using the justification "premise"
+
+//At each "SHOW" heading, list the claim that we MUST prove for the program to be validated in Logika's manual mode
+    //(you don't have to prove it - just list what we want to prove)
+
+def diff(big: Z, small: Z): Z = {
+    l"""{
+        requires big >= small
+        ensures result == big-small
+    }"""
+
+    //PREMISES:
+
+
+
+    var count: Z = 0
+    var cur: Z = big
+
+    //PREMISES:
+
+
+
+    //SHOW:
+
+
+
+    while (cur != small) {
+        l"""{
+            invariant
+                count == (big-cur)
+            modifies count, cur
+        }"""
+
+        //PREMISES:
+
+
+
+        cur = cur - 1
+        count = count + 1
+
+        //SHOW:
+
+
+    }
+
+    //PREMISES:
+
+
+
+    //SHOW:
+
+
+
+    return count
+}
+
+/////////// Test code ////////////////
+
+var one: Z = 10
+
+//PREMISES:
+
+
+//SHOW:
+
+
+var answer: Z = diff(one+4, one)
+
+
+
+//PREMISES:
+
+
+//SHOW:
+
+
+assert(answer == 4)

@@ -1,0 +1,5 @@
+Use mathematical induction to prove that the following expression:
+
+    n(n+1)(n+5)
+
+Is a multiple of 3 for all integers n>=1.

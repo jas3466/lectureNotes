@@ -1,0 +1,83 @@
+//Tues Dec 6
+
+import org.sireum.logika._
+
+//global variables
+var balance: Z = 0
+var elite: B = false
+val eliteMin: Z = 1000000 //$1M is the minimum balance for elite status
+
+//global invariants
+l"""{
+    invariant
+        //balance should be non-negative
+
+        //elite status should reflect if balance is at least a million
+}"""
+
+def deposit(amount: Z): Unit = {
+    l"""{
+        //COMPLETE THE FUNCTION CONTRACT
+
+        //list impact of function on global variables
+    }"""
+
+    //what *could* we list as premises here?
+
+    balance = balance + amount
+    if (balance >= eliteMin) {
+        elite = true
+    } else {
+        elite = false
+    }
+
+    //if we were in manual mode, would need to explicitly prove
+    //each global invariant and postcondition
+
+    //in symexe mode, Logika must be able to deduce these things
+}
+
+def withdraw(amount: Z): Unit = {
+    l"""{
+        //COMPLETE THE FUNCTION CONTRACT
+    }"""
+
+    balance = balance - amount
+    if (balance >= eliteMin) {
+        elite = true
+    } else {
+        elite = false
+    }
+}
+
+/////// Client code ///////////
+
+//this can be checked automatically in symexe mode, but this is the kind of thing
+//we need to be able to show before each function call:
+//1) global invariants hold
+//2) precondition for function holds
+
+
+
+deposit(500000)
+
+//after each function call, we know:
+//1) the postconditions are true
+//2) the global invariants are true
+
+
+
+
+
+
+//what can we assert here?
+
+
+
+deposit(500000)
+
+//what can we assert here?
+
+
+
+//withdraw 2000000? (problem?)
