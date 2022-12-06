@@ -26,11 +26,13 @@ Programs with multiple functions, in practice:
 
 - If you are writing a function
     - Supply a GOOD specification
-    - Often best to write the specification before the code
+    - Can be best to write the specification before the code
 
 
 It is good to do this in the documentation even when your
 programs aren't formally verified.
+
+Quickly: see documentation for Java's String indexOf
 
 ////////////////////////////////////
 

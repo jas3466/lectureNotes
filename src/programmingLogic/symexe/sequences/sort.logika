@@ -76,20 +76,67 @@ def minPos(list: ZS, start: Z): Z = {
 def selectionSort(nums: ZS): Unit = {
     l"""{
         requires
+            nums.size > 0
             //anything about size? might depend on code
-            //no duplicates allowed to make it easier
+              //won't go into the loop. Come back to this.
+            //no duplicates to make postconditions easier
+            A x: (0..<nums.size) A y: (0..<nums.size) (nums(x)==nums(y) -> (x == y))
+
         modifies nums
         ensures
             //COMPLETE THE POSTCONDITIONS
+            //should be sorted
+            //each element is <= the one after it
+            A x: (0..<nums.size-1) nums(x) <= nums(x+1)
+            nums.size == nums_in.size
+
+            //everything that ends up in nums really was in nums to begin with
+            A x: (0..<nums.size) (E y: (0..<nums_in.size) nums(x) == nums_in(y))
+
+            //for everything in the original list, need to make sure it's still there
+            A x: (0..<nums_in.size) (E y: (0..<nums.size) nums_in(x) == nums(y))
+
+            //what if nums had duplicates?
     }"""
 
     //write the code
-    var cur: Z = 0
+
+    var cur: Z = 0  //the position I'm trying to place
     while (cur < nums.size-1) {
+        l"""{
+            invariant
+                cur >= 0
+                cur <= nums.size-1
+                A x: (0..<cur) nums(x) <= nums(x+1) //what I've sorted so far
+
+                //everything that ends up in nums really was in nums to begin with
+                A x: (0..<nums.size) (E y: (0..<nums_in.size) nums(x) == nums_in(y))
+
+                //for everything in the original list, need to make sure it's still there
+                A x: (0..<nums_in.size) (E y: (0..<nums.size) nums_in(x) == nums(y))
+
+                //everything in sorted section <= everything in unsorted section
+                A x: (0..<cur) A y: (cur..<nums.size) nums(x) <= nums(y)
+
+                nums.size == nums_in.size
+
+            modifies cur, nums
+        }"""
+
+
         //I want element to put at position cur
         var curMin: Z = minPos(nums, cur)
 
+
+
+
         swap(nums, cur, curMin)
+
+
+        //suppose cur is 5
+        //at the beginning of iteration, then first 5 elements are sorted
+
+        //placing position 5 with result of minPos
 
         cur = cur + 1
     }

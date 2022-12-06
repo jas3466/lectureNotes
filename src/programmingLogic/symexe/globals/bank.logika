@@ -11,18 +11,25 @@ val eliteMin: Z = 1000000 //$1M is the minimum balance for elite status
 l"""{
     invariant
         //balance should be non-negative
+        balance >= 0
 
         //elite status should reflect if balance is at least a million
+        elite == (balance >= eliteMin)
 }"""
 
 def deposit(amount: Z): Unit = {
     l"""{
         //COMPLETE THE FUNCTION CONTRACT
+        requires amount >= 0
+        modifies balance, elite
+        ensures
+            balance == balance_in + amount
 
         //list impact of function on global variables
     }"""
 
     //what *could* we list as premises here?
+    //global invariants, preconditions
 
     balance = balance + amount
     if (balance >= eliteMin) {
@@ -40,6 +47,10 @@ def deposit(amount: Z): Unit = {
 def withdraw(amount: Z): Unit = {
     l"""{
         //COMPLETE THE FUNCTION CONTRACT
+        requires amount <= balance
+        modifies balance, elite
+        ensures
+            balance == balance_in - amount
     }"""
 
     balance = balance - amount
@@ -59,6 +70,9 @@ def withdraw(amount: Z): Unit = {
 
 
 
+// what if we set balance to -500?
+//balance = -500    -->no! global invariant doesn't hold
+
 deposit(500000)
 
 //after each function call, we know:
@@ -71,10 +85,13 @@ deposit(500000)
 
 
 //what can we assert here?
+assert(balance == 500000 & elite == false)
 
 
 
 deposit(500000)
+
+assert(balance == 1000000 & elite == true)
 
 //what can we assert here?
 

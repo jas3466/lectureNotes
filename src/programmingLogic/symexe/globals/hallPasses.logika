@@ -30,17 +30,32 @@ var passesAvailable: Z = totalPasses
 //5 students in the class
 var passesOut: BS = BS(false,false,false,false,false)
 
-
+//passesAvailable = 1
+//passesOut = BS(true,false,false,false,false)
 
 l"""{
     invariant
         //LIST THE GLOBAL INVARIANTS
-
+        passesAvailable <= totalPasses
+        passesAvailable >= 0
+        totalPasses == passesAvailable + sumPasses(passesOut, passesOut.size)
+        passesOut.size == 5 //size stays same
 }"""
 
 def takeHallPass(studentPos: Z): Unit = {
     l"""{
         //WRITE THE FUNCTION CONTRACT
+        requires
+            studentPos >= 0
+            studentPos < passesOut.size
+            passesAvailable > 0
+            passesOut(studentPos) == false
+        modifies passesAvailable, passesOut
+        ensures
+            passesOut(studentPos) == true
+            passesAvailable == passesAvailable_in - 1
+            //all other array spots aren't changed
+            //passesOut size is the same
     }"""
 
     //what could we list as a premise if we were in manual mode?
