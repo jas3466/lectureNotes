@@ -1,0 +1,128 @@
+
+HW 14 due tonight
+
+Final exam is Thursday, December 15 2:00-3:50
+
+
+////////////////////////////////
+
+Today:
+- finish hall passes example with global variables
+- termination
+- review for final
+
+////////////////////////////////////
+
+Finish hall passes example (hallPasses.logika)
+
+////////////////////////////////////
+
+Termination
+
+Partial Correctness:
+    - if the function/procedure’s pre-condition holds,
+    - and if it terminates,
+    - then its post-condition is guaranteed
+
+Total Correctness:
+    - if the function/procedure’s pre-condition holds,
+    - then it terminates,
+    - and its post-condition is guaranteed
+
+
+We need to show termination to achieve total correctness
+
+
+////////////////////////
+
+Proving termination.
+
+We want to show:
+    - The decreasing amount of work left to do
+    - An indication of when the work is done
+
+Use an integer to show the (decreasing) amount of work left
+    - Each loop iteration decreases the integer
+    - 0 means we are done (no more work)
+    - If the integer is 0 (or less), then the loop should exit
+
+//////////////////////////
+
+Recall mult (slightly modified).
+
+Will it necessarily terminate?
+
+
+
+- Add measure tracking how much work is left
+- Compute measure before and after loop body
+- Prove that the measure decreases with each iteration
+    (add an assert)
+- Prove that if the measure is 0 or less, then the loop exits
+    (might need to strengthen to invariant)
+
+
+Note that proving termination isn't always possible...
+
+See Collatz problem.
+
+Halting problem.
+
+////////////////////////////
+
+Final exam review.
+
+Cumulative.
+Similar format as the midterms exams (multiple choice + open-ended).
+Can bring one 8.5"x11" sheet of handwritten notes.
+
+/////////////////////////////////////
+
+- Introduction to logical reasoning
+    - Basic logical reasoning
+    - Knights and knaves puzzles
+- Propositional logic
+    - Translating between English and propositional logic
+    - Truth tables, top-level operators,
+            tautology/contingent/contradictory, satisfiability
+    - Propositional logic proofs
+        and, or, implies, and negation rules
+    - Semantic entailment (uses truth tables)
+        p semantically entails q if p->q is a tautology
+    - Logical equivalence (with proofs and with truth tables)
+    - Soundness and completeness
+        soundness: anything that I can prove (with proof rules)
+                    is actually true
+
+        completeness: everything that is true can be proved
+- Predicate logic
+    - Universal and existential quantifiers
+    - Translating between English and predicate logic
+    - Predicate logic proofs with Ai, Ae, Ei, and Ee rules
+        (including those with more than one variable
+        and/or nested quantifiers)
+- Programming logic (I'll specify manual/symexe for each problem)
+    - Assumes and asserts
+    - The subst rules
+    - The algebra rule
+    - Verifying asserts with variables/expressions/updating variables
+        (including claims with division and modulus)
+    - Verifying programs with if/else statements, functions,
+        loops, recursion, sequences, and global variables/invariants
+    - Function contracts
+    - Loop invariant blocks
+    - Verifying "test code" that calls a function
+    - Interpreting and using Logika facts
+    - Full vs. partial correctness, and proving termination
+
+
+I strongly recommend reworking previous exams,
+going through previous exam review problems, and reworking
+previous homework problems.
+
+These practice problems do not cover all exam topics.
+
+/////////////////////////////////////////
+
+
+See practice problems

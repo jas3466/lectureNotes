@@ -1,0 +1,50 @@
+import org.sireum.logika._
+
+//computes m * n using repeated addition
+//m + m + ... + m a total of n times
+def mult(m: Z, n: Z): Z = {
+    l"""{
+        ensures result == m*n
+    }"""
+
+    //Will this program always terminate?
+
+    var sum: Z = 0
+    var count: Z = 0
+
+    while (count != n) {
+        l"""{
+            invariant sum == m*count
+            modifies sum, count
+        }"""
+
+        //what should we measure? (what decreases?)
+        //get measure value at beginning of iteration
+
+        sum = sum + m
+        count = count + 1
+
+
+        //get measure value at end of iteration
+
+        //how can I assert that I am making progress?
+
+
+
+        //how can I assert that if I have no more work to do, then the loop will exit?
+
+
+
+    }
+
+    return sum
+}
+
+//////// Test code //////////////
+
+var x: Z = 4
+var y: Z = 9
+
+var answer: Z = mult(x, y)
+
+assert(answer == 36)
