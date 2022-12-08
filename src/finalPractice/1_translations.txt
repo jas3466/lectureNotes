@@ -1,10 +1,20 @@
-Translate the sentence below to proposition logic:
+Translate the sentence below to propositional logic:
 
 "I drive to work only if it is below freezing or my bicycle is broken."
 
 1) Identify the propositional atoms
 
+p: I drive to work
+q: It is below freezing
+r: My bicycle is broken
 
+[if no exception is true], I don't drive
+
+!(q V r) -> !p
+
+(!q ^ !r) -> !p
+
+p -> (q V r)
 
 2) Translate the sentence to propositional logic:
 
@@ -26,16 +36,21 @@ Using the predicates above, complete the following translations:
 
 1) All vegetables are produce.
 
-
+A x (V(x) -> P(x))
 
 
 2) Some vegetables are not frozen.
 
-
+E x (V(x) ^ !F(x))
 
 
 3) Not all produce foods are vegetables.
 
+!(A x (P(x) -> V(x)))
+
+E x (P(x) ^ !V(x))
 
 
 4) There is no frozen food that costs more than every vegetable.
+
+!(E x (F(x) ^ A y (V(y) -> C(x, y))))

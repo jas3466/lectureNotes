@@ -55,22 +55,42 @@ def takeHallPass(studentPos: Z): Unit = {
             passesOut(studentPos) == true
             passesAvailable == passesAvailable_in - 1
             //all other array spots aren't changed
+            A x: (0..<passesOut.size) (x != studentPos) -> passesOut(x) == passesOut_in(x)
             //passesOut size is the same
+            passesOut.size == 5
     }"""
 
     //what could we list as a premise if we were in manual mode?
+
+    //any of the preconditions (requires)
+    //any of the global invariants
 
     passesOut(studentPos) = true
     passesAvailable = passesAvailable - 1
 
     //what would we need to explicitly prove if we were in manual mode?
+    //postconditions
+    //global invariants
 }
 
 def returnHallPass(studentPos: Z): Unit = {
     l"""{
         //WRITE THE FUNCTION CONTRACT
+        requires
+            studentPos >= 0
+            studentPos < passesOut.size
+            passesAvailable < totalPasses
+            passesOut(studentPos) == true
+        modifies passesAvailable, passesOut
+        ensures
+            passesOut(studentPos) == false
+            passesAvailable == passesAvailable_in + 1
+            //all other array spots aren't changed
+            A x: (0..<passesOut.size) (x != studentPos) -> passesOut(x) == passesOut_in(x)
+            //passesOut size is the same
+            passesOut.size == 5
+        }"""
 
-    }"""
     passesOut(studentPos) = false
     passesAvailable = passesAvailable + 1
 }
@@ -79,7 +99,15 @@ def returnHallPass(studentPos: Z): Unit = {
 /////// Test code //////////
 assert(passesAvailable == 3)
 
+//need to show (or have evidence of) function preconditions
+//needs to be evidence of all global invariants
+
 takeHallPass(0)
+
+assert(passesAvailable == 2 & passesOut == BS(true,false,false,false,false))
+
+takeHallPass(1)
+takeHallPass(2)
 
 //what can we assert about passesOut and passesAvailable?
 

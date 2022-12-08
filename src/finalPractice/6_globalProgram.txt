@@ -22,6 +22,14 @@ l"""{
 def castVotes(candNum: Z, numVotes: Z) : Unit = {
     l"""{
         //COMPLETE THE FUNCTION CONTRACT
+        requires
+            candNum == 1 V candNum == 2
+            numVotes >= 0
+        modifies total, cand1, cand2
+        ensures
+            candNum == 1 -> cand1 == cand1_in + numVotes
+            candNum == 2 -> cand2 == cand2_in + numVotes
+            total == total_in + numVotes
     }"""
 
     //could list the global invariants as premises

@@ -3,3 +3,33 @@ Use mathematical induction to prove that the following expression:
     n(n+1)(n+5)
 
 Is a multiple of 3 for all integers n>=1.
+
+
+Base case: Suppose n = 1. We have that:
+
+    1(1+1)(1+5) = 1*2*6 = 12
+
+12 is a multiple of 3, so the base case holds.
+
+
+
+Inductive step: Assume n(n+1)(n+5) is a multiple of 3 for some n >= 1. We must show that:
+
+    (n+1)((n+1)+1)((n+1)+5) = (n+1)(n+2)(n+6)
+
+is also a multiple of 3.
+
+If n(n+1)(n+5) is a multiple of 3, then either n, n+1, or n+5 is a multiple of 3.
+
+Suppose n is a multiple of 3. Then (n+6) is also a multiple of 3, as adding 6 to a multiple of 3
+yields another multiple of 3. Thus (n+1)(n+2)(n+6) is also a multiple of 3, as one its factors is a
+multiple of 3.
+
+Suppose n+1 is a multiple of 3. Thus (n+1)(n+2)(n+6) is also a multiple of 3, as one its factors is a
+multiple of 3.
+
+Suppose n+5 is a multiple of 3. Then (n+2) is also a multiple of 3, as subtracting 3 from a multiple of 3
+yields another multiple of 3 (as long as n+2 is at least 3, which it is since n >= 1).
+Thus (n+1)(n+2)(n+6) is also a multiple of 3, as one its factors is a multiple of 3.
+
+In all cases, (n+1)(n+2)(n+6) is also a multiple of 3. The inductive step holds.

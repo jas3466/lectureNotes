@@ -14,18 +14,20 @@ def diff(big: Z, small: Z): Z = {
     }"""
 
     //PREMISES:
-
+    big >= small
 
 
     var count: Z = 0
     var cur: Z = big
 
     //PREMISES:
-
+    count == 0
+    cur == big
+    big >= small
 
 
     //SHOW:
-
+    count == (big-cur)
 
 
     while (cur != small) {
@@ -36,23 +38,27 @@ def diff(big: Z, small: Z): Z = {
         }"""
 
         //PREMISES:
-
+        count == (big-cur)
+        big >= small
+        cur != small
 
 
         cur = cur - 1
         count = count + 1
 
         //SHOW:
-
+        count == (big-cur)
 
     }
 
     //PREMISES:
-
+    count == (big-cur)
+    !(cur != small)
+    big >= small
 
 
     //SHOW:
-
+    count == big - small
 
 
     return count
@@ -63,9 +69,10 @@ def diff(big: Z, small: Z): Z = {
 var one: Z = 10
 
 //PREMISES:
-
+one == 10
 
 //SHOW:
+one+4 >= one
 
 
 var answer: Z = diff(one+4, one)
@@ -73,9 +80,11 @@ var answer: Z = diff(one+4, one)
 
 
 //PREMISES:
+answer == one+4-one
+one == 10
 
 
 //SHOW:
-
+answer == 4
 
 assert(answer == 4)

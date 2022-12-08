@@ -1,3 +1,20 @@
 Complete the following propositional logic proof so it would be verified in Logika:
 
 (p ^ q) -> r, r -> s, q ^ !s |- !p
+{
+    1. (p ^ q) -> r                 premise
+    2. r -> s                       premise
+    3. q ^ !s                       premise
+    4. q                            ^e1 3
+    5. !s                           ^e2 3
+    6. {
+        7. p                        assume
+        8. p ^ q                    ^i 7 4
+        9. r                        ->e 1 8
+        10. s                       ->e 2 9
+        11. _|_                     !e 10 5
+        //want: _|_
+    }
+    12. !p                          !i 6
+    //conclude !p (with !i)
+}

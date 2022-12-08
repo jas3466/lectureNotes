@@ -8,14 +8,30 @@ import org.sireum.logika._
 def addToNeg(a: ZS, pos: Z): Unit = {
     l"""{
         //COMPLETE THE FUNCTION CONTRACT
-
+        requires
+            pos >= 0
+            pos < a.size
+        modifies a
+        ensures
+            a.size == a_in.size
+            A x: (pos..<a.size) a_in(x) < 0 -> a(x) == a_in(x) + 1
+            A x: (0..<pos) a(x) == a_in(x)
+            A x: (pos..<a.size) a_in(x) >- 0 -> a(x) == a_in(x)
     }"""
     var i: Z = pos
 
     while (i < a.size) {
         l"""{
             //COMPLETE THE LOOP INVARIANT BLOCK
-
+            invariant
+                a.size == a_in.size
+                A x: (pos..<i) a_in(x) < 0 -> a(x) == a_in(x) + 1
+                A x: (0..<pos) a(x) == a_in(x)
+                A x: (pos..<i) a_in(x) >- 0 -> a(x) == a_in(x)
+                A x: (i..<a.size) a(x) == a_in(x)
+                i >= pos
+                i <= a.size
+            modifies a, i
         }"""
 
         if (a(i) < 0) {

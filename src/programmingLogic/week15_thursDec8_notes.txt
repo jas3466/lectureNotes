@@ -20,14 +20,13 @@ Finish hall passes example (hallPasses.logika)
 Termination
 
 Partial Correctness:
-    - if the function/procedure’s pre-condition holds,
-    - and if it terminates,
-    - then its post-condition is guaranteed
+    we guarantee the postcondition as long as the program terminates
+    (if the precondition is satisfied)
+
 
 Total Correctness:
-    - if the function/procedure’s pre-condition holds,
-    - then it terminates,
-    - and its post-condition is guaranteed
+    we guarantee the postcondition AND termination
+    (if the precondition is satisfied)
 
 
 We need to show termination to achieve total correctness
@@ -67,6 +66,8 @@ Note that proving termination isn't always possible...
 See Collatz problem.
 
 Halting problem.
+
+We cannot prove that any program will necessarily terminate.
 
 ////////////////////////////
 

@@ -4,6 +4,7 @@ import org.sireum.logika._
 //m + m + ... + m a total of n times
 def mult(m: Z, n: Z): Z = {
     l"""{
+        requires n >= 0
         ensures result == m*n
     }"""
 
@@ -15,25 +16,35 @@ def mult(m: Z, n: Z): Z = {
     while (count != n) {
         l"""{
             invariant sum == m*count
+                count >= 0
+                count <= n
             modifies sum, count
         }"""
 
         //what should we measure? (what decreases?)
         //get measure value at beginning of iteration
 
+        val measureBegin: Z = n - count
+
         sum = sum + m
         count = count + 1
 
+        val measureEnd: Z = n - count
 
         //get measure value at end of iteration
 
         //how can I assert that I am making progress?
+        assert(measureBegin > measureEnd)
 
 
 
         //how can I assert that if I have no more work to do, then the loop will exit?
 
+        //measureEnd <= 0 -> count == n
+        // p -> q
+        // !p V q
 
+        assert(measureEnd > 0 | count == n)
 
     }
 
